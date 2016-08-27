@@ -1,0 +1,598 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor} % colors
+\usepackage[hidelinks]{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage{systeme}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand\ii{\mathrm{i}} 
+
+\newcommand*\N{\mathbb{N}}
+\newcommand*\R{\mathbb{R}}
+\newcommand*\C{\mathbb{C}}
+
+\newcommand{\IconPc}{\includegraphics[width=1em]{computer.png}}
+\newcommand{\IconCalc}{\includegraphics[width=1em]{calculator.png}}
+\newcommand{\IconThink}{\includegraphics[width=1em]{pencil.png}}
+\newcommand{\IconCheck}{\includegraphics[width=1em]{checkmark.png}}
+\newcommand{\IconConcept}{\includegraphics[width=1em]{edit.png}}
+
+\newlength{\SmileysLength}
+\setlength{\SmileysLength}{\labelwidth}\addtolength{\SmileysLength}{\labelsep}
+
+\newcommand{\calc}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCalc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\software}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconPc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\teoria}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconThink}%
+   \hspace*{\SmileysLength}}
+\newcommand{\conceito}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+\newcommand{\concept}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+\newcommand{\swap}{\leftrightarrow}
+
+\author{Helder Geovane Gomes de Lima}
+\title{2ª Lista de exercícios - ALI0001/ALG2001}
+\date{}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+\includegraphics[width=9.0cm]{marca.jpg}
+\noindent\begin{tabular}{l c c r}
+  \textbf{2ª Lista de Exercícios} & \textbf{(ALI0001/ALG2001)}\\
+\end{tabular}
+\\ Prof. Helder Geovane Gomes de Lima
+\end{center}
+
+\section*{Legenda}
+\begin{multicols}{4}
+\begin{itemize}
+\item[] \hspace*{\SmileysLength} \calc \hspace*{-\SmileysLength} Cálculos
+\item[] \hspace*{\SmileysLength} \conceito \hspace*{-\SmileysLength} Conceitos
+\item[] \hspace*{\SmileysLength} \teoria \hspace*{-\SmileysLength} Teoria
+%\item[] \hspace*{\SmileysLength} \software \hspace*{-\SmileysLength} Software
+\end{itemize}
+\end{multicols}
+
+\section*{Questões}
+\begin{enumerate}
+\item \conceito Revise cada um dos axiomas que definem o que é um espaço vetorial $V$ sobre o corpo de escalares $\R$, certificando-se de que todas as propriedades são válidas nos seguintes conjuntos, com as operações de adição e multiplicação por escalar indicadas. Provisoriamente, a adição do espaço vetorial será denotada por $\oplus$ para diferenciá-la da adição $+$ dos escalares. Do mesmo modo, $\odot$ será usado em vez do $\cdot$ tradicional.
+\begin{enumerate}
+\item $V = \R^n$, formado por todas as sequências de $n$ números reais, e
+\begin{align*}
+(x_1, \ldots, x_n) \oplus (y_1, \ldots, y_n)
+& = (x_1 + y_1, \ldots, x_n + y_n)\\
+k \odot (x_1, \ldots, x_n)
+& = (kx_1, \ldots, kx_n)
+\end{align*}
+\item $V = M_{m \times n} (\R)$, formado por todas as matrizes de ordem $m \times n$, com $m,n$ fixos e
+\begin{align*}
+(A \oplus B)_{ij}
+& = (A)_{ij} + (B)_{ij}, \text{ para } 1 \leq i \leq m \text{ e } 1 \leq j \leq n,\\
+(k \odot B)_{ij}
+& = k(A_{ij}), \text{ para } 1 \leq i \leq m \text{ e } 1 \leq j \leq n
+\end{align*}
+\item $V = \mathcal{F}(\R) = \mathcal{F}(-\infty, +\infty)$, formado por todas as funções $f: \R \to \R$ e
+\begin{align*}
+(f \oplus g)(x)
+& = f(x) + g(x), \forall x \in \R\\
+(k \odot f)(x)
+& = k (f(x)), \forall x \in \R
+\end{align*}
+\item $V = \C$, formado por todos os números complexos e
+\begin{align*}
+(a + b \ii) \oplus (c + d \ii)
+& = (a + c) + (b + d) \ii \\
+k \odot (a + b \ii)
+& = (ka) + (kb) \ii
+\end{align*}
+\item $V = \R^\infty$, formado por todas as sequências infinitas de números reais, e
+\begin{align*}
+(x_1, x_2, \ldots) \oplus (y_1, y_2, \ldots)
+& = (x_1 + y_1, x_2 + y_2, \ldots)\\
+k \odot (x_1, \ldots, x_n)
+& = (kx_1, kx_2, \ldots)
+\end{align*}
+\end{enumerate}
+
+\item \conceito Verifique se as operações definidas a seguir fazem com que os conjuntos $V$ indicados sejam espaços vetoriais. Em particular, determine se há algum elemento em $V$ que faz o papel de ``vetor nulo'' (isto é, que seja neutro para a adição), e indique qual é o ``oposto'' de cada vetor (com que elemento ele deve ser somado para obter o ``vetor nulo'' encontrado):
+\begin{enumerate}
+\item $V = \R$, sendo
+$\begin{cases}
+x \oplus y
+= x + y + 1\\
+c \odot x
+= cx + c - 1
+\end{cases}$
+\item $V = \R^2$, sendo
+$\begin{cases}
+(x, y) \oplus (u,v)
+= (x+u, y+v)\\
+c \odot (x,y)
+= ( -3cx + cy, 5cx - 2cy )
+\end{cases}$
+\item $V = \R^2$, sendo
+$\begin{cases}
+(x, y) \oplus (u,v)
+ = (x + u + 1, y + v - 2)\\
+c \odot (x,y)
+ = ( cx + c - 1, cy - 2c + 2 )
+\end{cases}$
+\end{enumerate}
+
+\item \conceito Seja $V = \R^4$, o espaço vetorial das quádruplas de números reais, com as operações usuais. Mostre que os seguintes subconjuntos são subespaços vetoriais de $V$:
+\begin{enumerate}
+\item $U = \{ (a,b,c,d) \in \R^4 \mid a - b = c + d \}$.
+\item $W = \{ (a,b,c,d) \in \R^4 \mid c = d = 0 \}$.
+\end{enumerate}
+
+\item \conceito Seja $V = M_{3 \times 3}(\R)$, o espaço vetorial das matrizes quadradas de ordem $3$, com as operações usuais. Mostre que os seguintes subconjuntos são subespaços vetoriais de $V$:
+\begin{enumerate}
+\item As matrizes simétricas: $S = \{ X \in M_{3 \times 3}(\R) \mid X^T = X \}$.
+\item As matrizes antissimétricas: $A = \{ X \in M_{3 \times 3}(\R) \mid X^T = -X \}$.
+\item As matrizes que comutam com uma matriz $B$ fixada: $C = \{ X \in V \mid BX = XB \}$.
+\item $U = \{ A = (a_{ij}) \in M_{3 \times 3}(\R) \mid a_{ij} = 0 \text{ sempre que } i + j \neq 4 \}$.
+\end{enumerate}
+
+\item \conceito Seja $V = \mathcal{F}(\R)$. Mostre que os seguintes subconjuntos são subespaços vetoriais de $V$:
+\begin{enumerate}
+\item O conjunto $P_\infty$ formado por todas as funções polinomiais (de qualquer grau):
+\[
+P_\infty = \{ p(x) \in \mathcal{F}(\R) \mid p(x) = a_n x^n + \ldots + a_1 x^1 + a_0, \text{ para algum natural } n, \text{ e } a_i \in \R \}.
+\]
+\item Dado um natural $n$, o conjunto $P_n$ de todos polinômios de grau menor ou igual a $n$:
+\[
+P_n = \{ p(x) \in P_\infty \mid \operatorname{grau}(p(x)) \leq n \}.
+\]
+\item As funções pares, isto é, tais que $f(-x) = f(x)$, para todo $x \in \R$.
+\item As funções ímpares, isto é, tais que $f(-x) = -f(x)$, para todo $x \in \R$.
+\item O conjunto $C^0(\R)$ das funções contínuas
+\item O conjunto $C^1(\R)$ das funções deriváveis cuja derivada é contínua
+\end{enumerate}
+
+\item \calc Em cada item, determine se $U$ é ou não um subespaço do espaço vetorial $V$ indicado:
+\begin{enumerate}
+\item $V = \R^2$ e $U = \{ (x, y) \in \R^2 \mid y+2x = 5 \}$
+\item $V = \R^2$ e $U = \{ (x, y) \in \R^2 \mid y = -4x \}$
+\item $V = M_{3 \times 1}(\R)$, $U = \{ X \in M_{3 \times 1}(\R) \mid AX = 0 \}$, sendo $A = \begin{bmatrix}
+1 & 2 & 3 \\4 & 5 & 6
+\end{bmatrix}$.
+\item $V = M_{2 \times 2}(\R)$ e $U = \{ Z \in M_{2 \times 2}(\R) \mid Z \text{ tem zeros em sua diagonal} \}$
+\item $V = M_{2 \times 2}(\R)$ e $U = \{ B \in M_{2 \times 2}(\R) \mid \det(B) \neq 0 \}$
+\item $V = \mathcal{F}(\R)$ e $U = \{ f \in \mathcal{F}(\R) \mid f \text{ é um polinômio de grau 3} \}$
+\item $V = \mathcal{F}(\R)$ e $U = \{ f \in \mathcal{F}(\R) \mid f^\prime(-1) = f^\prime(1) = 0 \}$
+\end{enumerate}
+
+\item \calc Sejam $A = \begin{bmatrix}
+11 & 15 & -1 \\
+ 3 &  7 & 16
+\end{bmatrix}$, $B = \begin{bmatrix}
+2 & 11 & -18  \\
+1 & -8 &  1
+\end{bmatrix}$ e $C = \begin{bmatrix}
+-3 & -6 & 6\\
+-2 &  4 & 2
+\end{bmatrix}$ vetores de $M_{3 \times 2}(\R)$. Resolva a seguinte equação na variável $X \in M_{3 \times 2}(\R)$: $\displaystyle \frac{A-X}{5}-\frac{X+B}{2} = C$.
+
+\item \teoria Prove que os únicos subespaços de $\R$ (com as operações usuais) são o trivial $\{ 0 \}$ e $\R$. (dica: mostre que se $U$ é um subespaço de $\R$ e $U \neq \{0\}$ então $U = \R$)
+
+\item \teoria Seja $U$ um subespaço de um espaço vetorial $V$. Explique por que $W = \{ x \in V \mid x \not \in U \}$ não pode ser um subespaço de $V$.
+
+\item \calc Para cada um dos subespaços vetoriais $U$ e $V$ a seguir, obtenha o subespaço $U \cap V$:
+\begin{enumerate}
+\item $U = \{ ax^3 + bx^2 + cx + d \in P_3(\R) \mid 3a-b+c+d = 0 \}$ e $V = \{ p(x) \in P_3(\R) \mid p^\prime(-1) = 0 \}$
+\item $U = \{ g \in \mathcal{F}(\R) \mid g \text{ é par} \}$ e $V = \{ g \in \mathcal{F}(\R) \mid g \text{ é ímpar} \}$
+\item $U = \{ M \in M_{n \times n}(\R) \mid M \text{ é antissimétrica} \}$ e $V = \{ M \in M_{n \times n}(\R) \mid M \text{ é simétrica} \}$
+\end{enumerate}
+
+\item \teoria Seja $V$ um espaço vetorial qualquer e $U$ um subespaço de $V$. Prove que para quaisquer vetores $x,y \in V$ vale o seguinte: se $x\in U$ e $y-x \in U$ então $y \in U$. 
+
+\item \conceito Dê exemplos de subespaços vetoriais $V_1$ e $V_2$ de $\R^3$ que satisfaçam as seguintes condições (e explique porque satisfazem):
+\begin{enumerate}
+\item $V_1 \cup V_2$ não é subespaço vetorial de $\R^3$
+\item $V_1 \cup V_2$ é subespaço vetorial de $\R^3$
+\end{enumerate}
+
+\item \teoria Sejam $V_1$ e $V_2$ quaisquer subespaços de um espaço vetorial $W$ arbitrário. Prove que para $V_1 \cup V_2$ ser subespaço vetorial de $W$ é preciso que $V_1 \subseteq V_2$ ou que $V_2 \subseteq V_1$.
+
+\end{enumerate}
+
+\newpage
+\section*{Respostas}
+
+\begin{enumerate}
+\item Todos os axiomas de espaço vetorial devem ser checados individualmente. A comutatividade da adição, por exemplo, seria verificada como segue:
+\begin{enumerate}
+\item
+$(x_1, \ldots, x_n) \oplus (y_1, \ldots, y_n)
+= (x_1 + y_1, \ldots, x_n + y_n) \\
+= (y_1 + x_1, \ldots, y_n + x_n
+(y_1, \ldots, y_n) \oplus (x_1, \ldots, x_n)$.
+
+O vetor nulo é a sequência com as $n$ coordenadas iguais a zero: $0 = (0, \ldots, 0)$.
+
+\item
+$(A \oplus B)_{ij}
+= (A)_{ij} + (B)_{ij}
+= (B)_{ij} + (A)_{ij}
+= (B \oplus A)_{ij}$.
+
+O vetor nulo é a matriz nula $0 = 0_{m \times n}$ em que $0_{ij} = 0, \forall i,j$. 
+
+\item 
+$(f \oplus g)(x)
+= f(x) + g(x)
+= g(x) + f(x)
+= (g \oplus f)(x), \forall x \in \R$.
+
+O vetor nulo é a função constante igual a zero: $f(x) = 0, \forall x \in \R$.
+
+\item 
+$(a + b \ii) \oplus (c + d \ii)
+= (a + c) + (b + d) \ii
+= (c + a) + (d + b) \ii
+= (c + d \ii) \oplus (a + b \ii)$.
+
+O vetor nulo é o número complexo (e, de fato, real) $0 = 0 + 0 \ii$.
+
+\item 
+$(x_1, x_2, \ldots) \oplus (y_1, y_2, \ldots)
+= (x_1 + y_1, x_2 + y_2, \ldots) \\
+= (y_1 + x_1, y_2 + x_2, \ldots)
+= (y_1, y_2, \ldots) \oplus (x_1, x_2, \ldots)$.
+
+O vetor nulo é a sequência infinita com todas as posições iguais a zero: $0 = (0, 0, \ldots)$.
+
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+\item $\R$ é um espaço vetorial com as operações indicadas. O vetor nulo é $-1$ e $-x-2$ é o oposto do vetor $x$.
+\item $\R^2$ não é espaço vetorial com as operações indicadas, pois
+\[1 \odot(x,y) = (-3x+y,5x-2y) \neq (x,y), \text{ para vários valores de }x,y.\]
+\item $\R^2$ é um espaço vetorial com as operações indicadas. O vetor nulo é $(-1, 2)$ e o vetor oposto de $(x,y)$ é $(-x-2, -y+4)$.
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+\item Se $u = (a,b,c,d) \in U$ e $v = (p,q,r,s) \in U$, então $a-b = c+d$ e $p-q = r+s$. Assim, como $u + v = (a+p,b+q,c+r,d+s)$ tem-se
+\[
+(a+p) - (b+q)
+= (a-b) + (p+q)
+= (c+d) + (r+s)
+= (c+r) + (d+s),
+\]
+ou seja, $u + v \in \R$. Do mesmo modo, se $k \in \R$, tem-se $k u = (ka, kb, kc, kd)$ e
+\[
+ka - kb
+= k(a-b)
+= k(c+d)
+= kc+kd,
+\]
+ou seja, $ku \in \R$. Note ainda que o vetor $0 = (0,0,0,0) \in U$.
+\item $W = \{ (a,b,c,d) \in \R^4 \mid c = d = 0 \}$.
+Dados $(a,b,0,0) \in W$ e $(c,d,0,0) \in W$, tem-se
+\begin{align*}
+(a,b,0,0) + (c,d,0,0)
+& = (a+c,b+d,0+0,0+0)
+  = (a+c,b+d,0,0)
+\in W \text{ e} \\
+ k( a,  b, 0, 0)
+& = (ka, kb, k0, k0)
+  = (ka, kb, 0, 0)
+\in W
+\end{align*}
+\end{enumerate}
+\item 
+\begin{enumerate}
+\item Se $X$ e $Y$ são matrizes simétricas então $X^T = X$ e $Y^T = Y$. Consequentemente, $(X+Y)^T = X^T+Y^T = X + Y$, ou seja, $X+Y$ é simétrica. Dado $k \in \R$, $(kX)^T = k(X^T) = kX$, ou seja, $kX$ é simétrica. Note que a matriz nula também é simétrica.
+
+\item Se $X$ e $Y$ são matrizes antissimétricas então $X^T = -X$ e $Y^T = -Y$. Consequentemente, $(X+Y)^T = X^T+Y^T = -X + (-Y) = -(X+Y)$, ou seja, $X+Y$ é antissimétrica. Dado $k \in \R$, $(kX)^T = k(X^T) = k(-X) = -(kX)$, ou seja, $kX$ é antissimétrica. Note que a matriz nula também é antissimétrica.
+\item Se $X$ e $Y$ comutam com $B$, então $BX = XB$ e $BY = YB$. Consequentemente, $B(X+Y) = BX+BY = XB + YB = (X+Y)B$, ou seja, $X+Y$ comuta com $B$. Dado $k \in \R$, $B(kX) = k(BX) = k(XB) = (kX)B$, ou seja, $kX$ comuta com $B$. Note que $B0 = 0B = 0$, isto é, a matriz nula também comuta com $B$.
+
+\item
+$U = \{ A = (a_{ij}) \in M_{3 \times 3}(\R) \mid a_{ij} = 0 \text{ sempre que } i + j \neq 4 \}$.
+A condição que define o conjunto $U$ indica que para toda matriz $A \in U$ é da forma $A = \begin{bmatrix}
+     0 &      0 & a_{13}\\
+     0 & a_{22} & 0     \\
+a_{31} &      0 & 0
+\end{bmatrix}$, pois $a_{11} = a_{12} = a_{21} = a_{23} = a_{32} = a_{33} = 0$ (em particular, a matriz nula $3 \times 3$ está em $U$). Além disso, ao somar $A \in U$ com $B \in U$, as entradas $[A+B]_{ij}$ em que $i+j \neq 4$ serão iguais a zero pois
+\[[A+B]_{ij} = a_{ij} + b_{ij} = 0 + 0 = 0.\]
+Logo, $A+B \in U$, e este é um conjunto fechado para a adição. Em relação à multiplicação por um escalar $k \in \R$, tem-se:
+\[[kA]_{ij} = ka_{ij} = k0 = 0,\]
+ou seja, $kA \in U$ (a multiplicação por escalar é fechada em $U$), e conclui-se que $U$ é um subespaço de $M_{3 \times 3} (\R)$.
+\end{enumerate}
+\item 
+\begin{enumerate}
+\item
+Se $p$ e $q$ são polinômios e $c \in \R$, a soma $p+q$ e o produto $c \cdot p$ também são polinômios, logo $p + q \in P_\infty$ e $cp \in P_\infty$. Mais precisamente, se $p(x) = a_n x^n + \ldots + a_1 x^1 + a_0$ e $q(x) = b_m x^m + \ldots + b_1 x^1 + b_0$, com $m, n \in \N$ e $a_i,b_i \in \R$ então $p + q$ é dado por
+\begin{align*}
+(p + q)(x)
+= p(x)+q(x)
+& = (a_n x^n + \ldots + a_1 x^1 + a_0)
+  + (b_m x^m + \ldots + b_1 x^1 + b_0) \\
+& = (a_k + b_k) x^k + \ldots + (a_1+b_1) x^1 + (a_0+b_0) \in P_\infty,
+\end{align*}
+onde $k$ é o maior dos graus $m$ e $n$. De forma análoga,
+\begin{align*}
+(c \cdot p)(x)
+= c \cdot p(x)
+& = c(a_n x^n + \ldots + a_1 x^1 + a_0) \\
+& = (ca_n) x^n + \ldots + (ca_1) x^1 + (ca_0) \in P_\infty.
+\end{align*}
+
+Perceba que o polinômio nulo ($p(x) = 0$) é o vetor nulo neste espaço vetorial.
+
+\item Dado um natural $n$, o conjunto $P_n$ de todos polinômios de grau menor ou igual a $n$:
+\[
+P_n = \{ p(x) \in P_\infty \mid \operatorname{grau}(p(x)) \leq n \}.
+\]
+
+Pelo exercício anterior, a soma de polinômios resulta em um polinômio, e a multiplicação de um polinômio por um escalar real qualquer também é um polinômio. Levando isso em conta, para ver que $P_n$ é um subespaço vetorial de $\mathcal{F}(\R)$ basta lembrar que se $p, q \in P_n$ então:
+\begin{itemize}
+\item $\operatorname{grau}(p+q) < \operatorname{grau}(p) + \operatorname{grau}(q)$, se os termos de maior grau são opostos
+\item $\operatorname{grau}(p+q) = \operatorname{grau}(p) + \operatorname{grau}(q)$, nos demais casos
+\item $\operatorname{grau}(c \cdot p) = \operatorname{grau}(p)$ se $c \neq 0$;
+\item $\operatorname{grau}(c \cdot p) = \operatorname{grau}(0) < \operatorname{grau}(p), \text{ se } c = 0$
+\end{itemize}
+Este último item também mostra que o polinômio nulo é um elemento de $P_n$.
+\item Se $f$ e $g$ são funções pares, então para todo $x \in \R$ tem-se
+\[
+(f+g)(-x)
+= f(-x) + g(-x)
+= f(x) + g(x)
+= (f + g)(x),
+\]
+ou seja, $f+g$ também é par. Analogamente, dado qualquer $c \in \R$,
+\[
+(cf)(-x)
+= cf(-x)
+= cf(x)
+= (cf)(x),
+\]
+e portanto $cf$ também é par, e o conjunto dado é um subespaço de $\mathcal{F}(\R)$. A função constante igual a zero, que é o vetor nulo deste espaço, é uma função par.
+
+\item Se $f$ e $g$ são funções ímpares, então para todo $x \in \R$ tem-se
+\[
+(f+g)(-x)
+= f(-x) + g(-x)
+= (-f(x)) + (-g(x))
+= -(f(x) + g(x))
+= -(f + g)(x),
+\]
+ou seja, $f+g$ também é ímpar. Analogamente, dado qualquer $c \in \R$,
+\[
+(cf)(-x)
+= cf(-x)
+= c(-f(x))
+= -c(f(x))
+= -(cf)(x),
+\]
+e portanto $cf$ também é ímpar e o conjunto é fechado para ambas as operações do espaço vetorial, ou seja, é um subespaço de $\mathcal{F}(\R)$. A função constante igual a zero também é uma função ímpar.
+
+\item Como a soma de funções contínuas é contínua e a multiplicação de funções contínuas por constantes resulta em funções contínuas, conclui-se que $C^0(\R)$ é fechado para ambas as operações do espaço vetorial, e consequentemente é um subespaço de $\mathcal{F}(\R)$.
+
+\item Sejam $f,g \in C^1(\R)$ e $c \in \R$. Então:
+\begin{itemize}
+\item As funções $f$ e $g$ são deriváveis e suas derivadas são contínuas. Como a soma de funções deriváveis é uma função derivável, $f+g$ também é derivável e vale $(f+g)' = f^\prime + g^\prime$. Além disso, pelo exercício anterior $f^\prime+g^\prime$ é contínua, pois é soma de funções contínuas. Logo, $f+g$ é uma função derivável cuja derivada é contínua, ou seja, $f+g \in C^1(\R)$.
+\item Sendo $f$ derivável, a função $cf$ também é derivável e $(cf)^\prime = c (f^\prime)$. Mas $f^\prime$ é contínua, então $c (f^\prime)$ também é (pelo exercício anterior), ou seja, $cf \in C^1(\R)$.
+\end{itemize}
+Como as duas operações são fechadas, segue que $C^\prime(\R)$ é um subespaço de $\mathcal{F}(\R)$.
+\end{enumerate}
+
+\item
+\begin{enumerate}
+\item Como $(0,0)$ é o vetor nulo de $\R^2$ e $(0,0) \not\in U$, pois $0+2\cdot 0 \neq 5$, este conjunto $U$ não é um subespaço vetorial de $\R^2$ (geometricamente, é uma reta que não passa pela origem). Note que a adição e a multiplicação por escalar não são fechadas em $U$. Por exemplo, $(0,5)+(3,-1)=(3,4) \not\in U$ pois $3+2\cdot (-1) \neq 5$.
+
+\item Sejam $(a,b) \in U$, $(c,d) \in U$ e $k \in \R$. Então
+\begin{itemize}
+\item $(a,b)+(c,d) = (a+c,b+d) \in U$ pois $b+d=(-4a)+(-4c)=-4(a+c)$.
+\item $k(a,b) = (ka,kb) \in U$ pois $kb=k(-4a)=-4(ka)$.
+\end{itemize}
+Portanto, $U$ é um subespaço vetorial de $\R^2$ (é a reta que passa pela origem e tem a direção do vetor $(1,-4)$)
+
+\item $U = \{ X \in M_{3 \times 1}(\R) \mid AX = 0 \}$ é um subespaço vetorial de $V = M_{3 \times 1}(\R)$ pois
+\begin{itemize}
+\item $A0 = 0$, ou seja, a matriz nula $3 \times 1$ pertence a $U$.
+\item Se $AX_1=0$ e $AX_2=0$ então $A(X_1+X_2)=AX_1 + AX_2 = 0 + 0$.
+\item Se $AX=0$ e $t \in \R$ então $A(tX)=t(AX) = t0 = 0$.
+\end{itemize}
+Em outras palavras, $U$ é fechado para as operações do espaço vetorial $V$. 
+
+Note que as propriedades acima são válidas independentemente de quais sejam os números que aparecem na matriz $A$, então não é necessário expandir os produtos em termos das entradas das matrizes. De fato, $U = N(A)$, isto é, é o espaço nulo de $A$.
+
+\item Note que $U = \left\{ \begin{bmatrix}
+0 & z_{12}\\ z_{21} & 0
+\end{bmatrix} \mid z_{12},z_{21} \in \R \right\}$ e que para todo $X, Y \in U$ e $m \in \R$ tem-se:
+\begin{itemize}
+\item $X + Y = \begin{bmatrix}
+0 & x_{12}\\ x_{21} & 0
+\end{bmatrix} + \begin{bmatrix}
+0 & y_{12}\\ y_{21} & 0
+\end{bmatrix}
+=\begin{bmatrix}
+0 & x_{12} + y_{12}\\ x_{21}+y_{21} & 0
+\end{bmatrix} \in U$
+\item $mX = m\begin{bmatrix}
+0 & x_{12}\\ x_{21} & 0
+\end{bmatrix}
+=\begin{bmatrix}
+0 & mx_{12} \\ mx_{21} & 0
+\end{bmatrix} \in U$
+\end{itemize}
+
+Portanto, $U$ é um subespaço vetorial de $V$.
+
+\item O conjunto $U$ consiste das matrizes $2 \times 2$ que são inversíveis. Como $I$ e $-I$ são matrizes inversíveis ($\det(I) = \det(-I) = 1 \neq 0$), e sua soma $I + (-I) = 0$ não é inversível (pois $\det(0) = 0$), conclui-se que $U$ não é fechado para a adição, e como tal não é um subespaço de $V$. A multiplicação por escalar também não é fechada em $U$, pois a ao multiplicar uma matriz inversível por zero o resultado é a matriz nula, que não pertence a $U$.
+\item Os polinômios de grau 3 não formam um espalo vetorial pois, por exemplo, se $p(x) = 4x^3+5x$ e $q(x) = -4x^3$ então $p(x)+q(x) = 5x$ que  não tem grau 3.
+
+\item Sejam $f,g \in U$. Então $f^\prime(-1) = f^\prime(1) = 0$ e $g^\prime(-1) = g^\prime(1) = 0$. Consequentemente:
+\begin{itemize}
+\item $(f+g)^\prime(1) = f^\prime(1) + g^\prime(1) = 0 + 0 = 0$
+\item $(f+g)^\prime(-1) = f^\prime(-1) + g^\prime(-1) = 0 + 0 = 0$
+\end{itemize}
+Isto significa que a adição é fechada em $U$. De forma análoga, para todo $c \in \R$ vale:
+\begin{itemize}
+\item $(cf)^\prime(1) = c(f^\prime(1)) = c \cdot 0 = 0$
+\item $(cf)^\prime(-1) = c(f^\prime(-1)) = c \cdot 0 = 0$
+\end{itemize}
+Isto significa que a multiplicação por escalar também é fechada, e assim $U$ é um subespaço vetorial de $\mathcal{F}(\R)$.
+\end{enumerate}
+
+\item Sabendo que $A,B$ e $X$ são elementos do espaço vetorial $M_{3 \times 2}$, pode-se utilizar as propriedades deste espaço (associatividade, comutatividade, etc) para ``isolar a incógnita $X$'', de forma análoga ao que seria feito se $A,B$ e $X$ fossem números reais:
+\begin{align*}
+\frac{A-X}{5}-\frac{X+B}{2} = C
+& \Leftrightarrow
+10\left(\frac{A-X}{5}-\frac{X+B}{2}\right) = 10 C
+\Leftrightarrow
+2(A-X)-5(X+B) = 10 C\\
+& \Leftrightarrow
+2A - 2X - 5X - 5B = 10 C
+\Leftrightarrow
+-7X = -2A + 10C + 5B\\
+& \Leftrightarrow
+X = \frac{1}{7}(2A - 10C - 5B)
+\end{align*}
+Assim, $X = \frac{1}{7}\left(2\begin{bmatrix}
+11 & 15 & -1 \\
+ 3 &  7 & 16
+\end{bmatrix} - 10\begin{bmatrix}
+-3 & -6 & 6\\
+-2 &  4 & 2
+\end{bmatrix} - 5\begin{bmatrix}
+2 & 11 & -18  \\
+1 & -8 &  1
+\end{bmatrix}\right)
+=\begin{bmatrix}
+6 & 5 & 4  \\
+3 & 2 & 1
+\end{bmatrix}$
+
+\item Se $U$ é um subespaço de $\R$ e $U \neq \{0\}$ então $U$ tem algum elemento não nulo. Denote-o por $b$. Para ver que todo número real $x$ também tem que estar em $U$ basta escrever $x = (\frac{x}{b}) \cdot b$, pois sendo $U$ um subespaço vetorial de $\R$ ele é fechado para a multiplicação por escalar e portanto a multiplicação de $b \in U$ pelo escalar $\frac{x}{b}$ deve resultar em um elemento de $U$, isto é, $x \in U$. Portanto $U = \R$.
+
+\item O conjunto $W = \{ x \in V \mid x \not \in U \}$ não é um subespaço de $V$ pois $0 \in U$ mas $0 \not \in W$.
+
+\item
+\begin{enumerate}
+\item Primeiramente lembre-se que se $p(x) = ax^3 + bx^2 + cx + d$ então $p^\prime(x) = 3ax^2 + 2bx + c$ e $p^\prime(-1) = 3a - 2b + c$. Assim,
+\[
+U \cap V = \{ ax^3 + bx^2 + cx + d \in P_3(\R) \mid
+3a -  b + c + d = 0 \text{ e }
+3a - 2b + c     = 0 \}.
+\]
+Em outras palavras, os coeficientes de $p(x)$ são soluções do sistema linear homogêneo
+\systeme{
+3a -  b + c + d = 0,
+3a - 2b + c     = 0
+}
+
+Escalonando a matriz associada ao sistema, obtem-se:
+\begin{align*}
+&
+\begin{bmatrix}
+3 & -1 & 1 & 1\\
+3 & -2 & 1 & 0
+\end{bmatrix}
+\grstep{ \frac{1}{3} L_1 }
+\begin{bmatrix}
+1 & -1/3 & 1/3 & 1/3 \\
+3 & -2 & 1 & 0
+\end{bmatrix}
+\grstep{ L_2 - 3L_1 }
+\begin{bmatrix}
+1 & -1/3 & 1/3 & 1/3 \\
+0 & -1 & 0 & -1
+\end{bmatrix}\\
+\grstep{ -L_2 }
+&
+\begin{bmatrix}
+1 & -1/3 & 1/3 & 1/3 \\
+0 & 1 & 0 & 1
+\end{bmatrix}
+\grstep{ L_1 +\frac{1}{3}L_2 }
+\begin{bmatrix}
+1 & 0 & 1/3 & 2/3 \\
+0 & 1 & 0 & 1
+\end{bmatrix}
+\end{align*}
+ou seja, $a = \frac{1}{3} (-c-2 d)$ e $b = -d$, em que $c,d \in \R$ são variáveis livres. Assim,
+\begin{align*}
+U \cap V
+& = \left\{ ax^3 + bx^2 + cx + d \in P_3(\R) \mid
+a = \frac{-c-2 d}{3}
+\text{ e }
+b = -d, \text{ sendo } c,d \in \R \right\} \\
+& = \left\{ \left(\frac{-c-2 d}{3}\right)x^3 + (-d)x^2 + cx + d \mid c,d \in \R \right\}.
+\end{align*}
+
+\item Se $g \in U$ então para todo $x \in \R$ ocorre $g(-x) = g(x)$ e se, além disso, $g \in V$ então para todo $x \in \R$ vale $g(-x) = -g(x)$. Neste caso, para todo $x \in \R$ tem-se $g(x) = g(-x) = -g(x)$, ou seja $2g(x) = 0$ e portanto $g(x) = 0$.
+
+Assim, a única função que está simultaneamente em $U$ e em $V$ é a função constante igual a zero, que é o vetor nulo de $\mathcal{F}(\R)$, isto é, $U \cap V = \{ 0 \}$.
+
+\item Se $M \in U$ então $M^T = M$ e se, além disso, $M \in V$ então $M^T = -M$. Neste caso, tem-se $M = M^T = -M$, ou seja $2M = 0$ e portanto $M = 0$.
+
+Assim, a única matriz que é simétrica e antissimétrica é a matriz nula, ou seja, $U \cap V = \{ 0 \}$.
+\end{enumerate}
+
+
+\item Para quaisquer $x, y \in V$ tem-se $y = (y - x) + x$. Então se $x \in U$ e $y-x \in U$ e $U$ é um subespaço de $V$, então $U$ é fechado para a adição, e consequentemente $y = (y - x) + x \in U$.
+
+\item Dê exemplos de subespaços vetoriais $V_1$ e $V_2$ de $\R^3$ que satisfaçam as seguintes condições (e explique porque satisfazem):
+\begin{enumerate}
+\item Sejam
+\begin{itemize}
+\item $V_1 = \{ (x,y,z) \in \R^3 \mid z=0 \}$
+\item $V_2 = \{ (x,y,z) \in \R^3 \mid x=0 \}$
+\end{itemize}
+Então o conjunto $V_1 \cup V_2 = \{ (x,y,z) \in \R^3 \mid z=0 \text{ ou } x=0 \}$ não é um subespaço de $\R^3$ pois $(1,1,0) \in V_1 \cup V_2$ e $(0,1,1) \in V_1 \cup V_2$ mas $(1,1,0) + (0,1,1) = (1,2,1) \not \in V_1 \cup V_2$.
+
+\item Sejam
+\begin{itemize}
+\item $V_1 = \R^3$
+\item $V_2 = \{ (0,0,0) \}$
+\end{itemize}
+Então $V_1 \cup V_2 = \R^3 \cup \{ (0,0,0) \} = \R^3$, que é, naturalmente, um subespaço de $\R^3$.
+
+\end{enumerate}
+
+
+\item Suponha que $V_1$ e $V_2$ são subespaços de $W$ tais que $V_1 \cup V_2$ também é subespaço de $W$. Se $V_1$ não estiver contido em $V_2$, é porque existe algum vetor $x_1 \in V_1$ que não pertence a $V_2$, e pode-se deduzir que $V_2 \subseteq V_1$ da seguinte forma: dado um vetor $x_2 \in V_2$ arbitrário, tanto $x_1$ quanto $x_2$ são elementos de $V_1 \cup V_2$. Assumindo que esta união seja um subespaço, a soma $x_1 + x_2$ deve pertencer a $V_1 \cup V_2$. Ou seja, $x_1 + x_2$ deve ser elemento de $V_1$ ou de $V_2$:
+\begin{enumerate}
+\item Para que $x_1 + x_2$ fosse elemento de $V_2$ seria preciso que $x_1 = (x_1 + x_2) - x_2 \in V_2$ (pois $V_2$ é subespaço). Mas foi assumido que $x_1 \not \in V_2$, então só resta a outra possibilidade;
+\item Sendo $x_1 + x_2$ um elemento de $V_1$, resulta que $x_2 = (x_1 + x_2) - x_1 \in V_1$.
+\end{enumerate}
+Em outras palavras, todo elemento $x_2$ de $V_2$ tem que pertencer a $V_1$, isto é, $V_2 \subseteq V_1$.
+\end{enumerate}
+
+\end{document}
