@@ -9,12 +9,17 @@
 \usepackage{amsthm}
 \usepackage{textcomp} % \degree
 \usepackage{gensymb} % \degree
-\usepackage[usenames,svgnames,dvipsnames]{xcolor} % colors
-\usepackage[hidelinks]{hyperref}
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
 
 \newcommand{\fixme}{{\color{red}(...)}}
 \newcommand\ii{\mathrm{i}} 
@@ -60,19 +65,23 @@
                                      \begin{subarray}{l} #1 \end{subarray}}}}}}
 \newcommand{\swap}{\leftrightarrow}
 
-\author{Helder Geovane Gomes de Lima}
-\title{2ª Lista de exercícios - ALI0001/ALG2001}
+\newcommand*\tipo{2ª Lista de Exercícios}
+%\newcommand*\turma{...}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{\today}
+
+\author{\eu}
+\title{\tipo - \disciplina}
 \date{}
 
 \begin{document}
-\thispagestyle{empty}
 
 \begin{center}
-\includegraphics[width=9.0cm]{marca.jpg}
-\noindent\begin{tabular}{l c c r}
-  \textbf{2ª Lista de Exercícios} & \textbf{(ALI0001/ALG2001)}\\
-\end{tabular}
-\\ Prof. Helder Geovane Gomes de Lima
+\includegraphics[width=9.0cm]{marca.jpg} \\
+\textbf{\tipo\ (\disciplina)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
 \end{center}
 
 \section*{Legenda}
@@ -86,68 +95,70 @@
 \end{multicols}
 
 \section*{Questões}
+
 \begin{enumerate}
-\item \conceito Revise cada um dos axiomas que definem o que é um espaço vetorial $V$ sobre o corpo de escalares $\R$, certificando-se de que todas as propriedades são válidas nos seguintes conjuntos, com as operações de adição e multiplicação por escalar indicadas. Provisoriamente, a adição do espaço vetorial será denotada por $\oplus$ para diferenciá-la da adição $+$ dos escalares. Do mesmo modo, $\odot$ será usado em vez do $\cdot$ tradicional.
+\item \conceito Revise todos os axiomas da definição de espaço vetorial $V$ sobre o corpo de escalares $\R$, verificando a validade de cada um deles nos seguintes conjuntos. Em cada item, as operações de adição e multiplicação por escalar que aparecem no lado esquerdo são as do espaço vetorial que está sendo definido, e as do lado direito são operações usuais de $\R$.
+
 \begin{enumerate}
 \item $V = \R^n$, formado por todas as sequências de $n$ números reais, e
 \begin{align*}
-(x_1, \ldots, x_n) \oplus (y_1, \ldots, y_n)
+(x_1, \ldots, x_n) + (y_1, \ldots, y_n)
 & = (x_1 + y_1, \ldots, x_n + y_n)\\
-k \odot (x_1, \ldots, x_n)
+k \cdot (x_1, \ldots, x_n)
 & = (kx_1, \ldots, kx_n)
 \end{align*}
 \item $V = M_{m \times n} (\R)$, formado por todas as matrizes de ordem $m \times n$, com $m,n$ fixos e
 \begin{align*}
-(A \oplus B)_{ij}
+(A + B)_{ij}
 & = (A)_{ij} + (B)_{ij}, \text{ para } 1 \leq i \leq m \text{ e } 1 \leq j \leq n,\\
-(k \odot B)_{ij}
+(k \cdot B)_{ij}
 & = k(A_{ij}), \text{ para } 1 \leq i \leq m \text{ e } 1 \leq j \leq n
 \end{align*}
 \item $V = \mathcal{F}(\R) = \mathcal{F}(-\infty, +\infty)$, formado por todas as funções $f: \R \to \R$ e
 \begin{align*}
-(f \oplus g)(x)
-& = f(x) + g(x), \forall x \in \R\\
-(k \odot f)(x)
-& = k (f(x)), \forall x \in \R
+(f + g)(x)
+& = f(x) + g(x), \quad \forall x \in \R\\
+(k \cdot f)(x)
+& = k (f(x)), \quad \forall x \in \R
 \end{align*}
 \item $V = \C$, formado por todos os números complexos e
 \begin{align*}
-(a + b \ii) \oplus (c + d \ii)
+(a + b \ii) + (c + d \ii)
 & = (a + c) + (b + d) \ii \\
-k \odot (a + b \ii)
+k \cdot (a + b \ii)
 & = (ka) + (kb) \ii
 \end{align*}
 \item $V = \R^\infty$, formado por todas as sequências infinitas de números reais, e
 \begin{align*}
-(x_1, x_2, \ldots) \oplus (y_1, y_2, \ldots)
+(x_1, x_2, \ldots) + (y_1, y_2, \ldots)
 & = (x_1 + y_1, x_2 + y_2, \ldots)\\
-k \odot (x_1, \ldots, x_n)
+k \cdot (x_1, \ldots, x_n)
 & = (kx_1, kx_2, \ldots)
 \end{align*}
 \end{enumerate}
 
-\item \conceito Verifique se as operações definidas a seguir fazem com que os conjuntos $V$ indicados sejam espaços vetoriais. Em particular, determine se há algum elemento em $V$ que faz o papel de ``vetor nulo'' (isto é, que seja neutro para a adição), e indique qual é o ``oposto'' de cada vetor (com que elemento ele deve ser somado para obter o ``vetor nulo'' encontrado):
+\item \conceito Verifique se as operações definidas a seguir fazem com que os conjuntos $V$ indicados sejam espaços vetoriais. Em particular, determine se há algum elemento $z \in V$ que faz o papel de ``vetor nulo'', ou seja, que satisfaz $z + v = v, \forall v \in V$, e para cada vetor $v \in V$, indique qual $x \in V$ é o seu ``oposto'', no sentido de que $x + v = z$.
 \begin{enumerate}
 \item $V = \R$, sendo
 $\begin{cases}
-x \oplus y
-= x + y + 1\\
-c \odot x
-= cx + c - 1
+x + y
+= x + y + 1, \quad \forall x \in V, y \in V \\
+k \cdot x
+= k x + k - 1, \quad \forall k \in \R, \forall x \in V
 \end{cases}$
 \item $V = \R^2$, sendo
 $\begin{cases}
-(x, y) \oplus (u,v)
-= (x+u, y+v)\\
-c \odot (x,y)
-= ( -3cx + cy, 5cx - 2cy )
+(x, y) + (u,v)
+= (x+u, y+v), \quad \forall (x, y) \in V, \forall (u, v) \in V \\
+k \cdot (x,y)
+= ( -3 k x + k y, 5 k x - 2 k y ), \quad \forall k \in \R, \forall (x, y) \in V
 \end{cases}$
 \item $V = \R^2$, sendo
 $\begin{cases}
-(x, y) \oplus (u,v)
- = (x + u + 1, y + v - 2)\\
-c \odot (x,y)
- = ( cx + c - 1, cy - 2c + 2 )
+(x, y) + (u, v)
+ = (x + u + 1, y + v - 2), \quad \forall (x, y) \in V, \forall (u, v) \in V \\
+k \cdot (x,y)
+ = ( k x + k - 1, k y - 2 k + 2 ), \quad \forall k \in \R, \forall (x, y) \in V
 \end{cases}$
 \end{enumerate}
 
@@ -173,7 +184,7 @@ P_\infty = \{ p(x) \in \mathcal{F}(\R) \mid p(x) = a_n x^n + \ldots + a_1 x^1 + 
 \]
 \item Dado um natural $n$, o conjunto $P_n$ de todos polinômios de grau menor ou igual a $n$:
 \[
-P_n = \{ p(x) \in P_\infty \mid \operatorname{grau}(p(x)) \leq n \}.
+P_n = \{ q(x) \in P_\infty \mid \operatorname{grau}(q(x)) \leq n \}.
 \]
 \item As funções pares, isto é, tais que $f(-x) = f(x)$, para todo $x \in \R$.
 \item As funções ímpares, isto é, tais que $f(-x) = -f(x)$, para todo $x \in \R$.
@@ -190,7 +201,7 @@ P_n = \{ p(x) \in P_\infty \mid \operatorname{grau}(p(x)) \leq n \}.
 \end{bmatrix}$.
 \item $V = M_{2 \times 2}(\R)$ e $U = \{ Z \in M_{2 \times 2}(\R) \mid Z \text{ tem zeros em sua diagonal} \}$
 \item $V = M_{2 \times 2}(\R)$ e $U = \{ B \in M_{2 \times 2}(\R) \mid \det(B) \neq 0 \}$
-\item $V = \mathcal{F}(\R)$ e $U = \{ f \in \mathcal{F}(\R) \mid f \text{ é um polinômio de grau 3} \}$
+\item $V = \mathcal{F}(\R)$ e $U = \{ f \in \mathcal{F}(\R) \mid f \text{ é um polinômio de grau exatamente igual a 3} \}$
 \item $V = \mathcal{F}(\R)$ e $U = \{ f \in \mathcal{F}(\R) \mid f^\prime(-1) = f^\prime(1) = 0 \}$
 \end{enumerate}
 
@@ -235,42 +246,42 @@ P_n = \{ p(x) \in P_\infty \mid \operatorname{grau}(p(x)) \leq n \}.
 \item Todos os axiomas de espaço vetorial devem ser checados individualmente. A comutatividade da adição, por exemplo, seria verificada como segue:
 \begin{enumerate}
 \item
-$(x_1, \ldots, x_n) \oplus (y_1, \ldots, y_n)
+$(x_1, \ldots, x_n) + (y_1, \ldots, y_n)
 = (x_1 + y_1, \ldots, x_n + y_n) \\
-= (y_1 + x_1, \ldots, y_n + x_n
-(y_1, \ldots, y_n) \oplus (x_1, \ldots, x_n)$.
+= (y_1 + x_1, \ldots, y_n + x_n)
+= (y_1, \ldots, y_n) + (x_1, \ldots, x_n)$.
 
 O vetor nulo é a sequência com as $n$ coordenadas iguais a zero: $0 = (0, \ldots, 0)$.
 
 \item
-$(A \oplus B)_{ij}
+$(A + B)_{ij}
 = (A)_{ij} + (B)_{ij}
 = (B)_{ij} + (A)_{ij}
-= (B \oplus A)_{ij}$.
+= (B + A)_{ij}$.
 
 O vetor nulo é a matriz nula $0 = 0_{m \times n}$ em que $0_{ij} = 0, \forall i,j$. 
 
 \item 
-$(f \oplus g)(x)
+$(f + g)(x)
 = f(x) + g(x)
 = g(x) + f(x)
-= (g \oplus f)(x), \forall x \in \R$.
+= (g + f)(x), \forall x \in \R$.
 
 O vetor nulo é a função constante igual a zero: $f(x) = 0, \forall x \in \R$.
 
 \item 
-$(a + b \ii) \oplus (c + d \ii)
+$(a + b \ii)+ (c + d \ii)
 = (a + c) + (b + d) \ii
 = (c + a) + (d + b) \ii
-= (c + d \ii) \oplus (a + b \ii)$.
+= (c + d \ii) + (a + b \ii)$.
 
 O vetor nulo é o número complexo (e, de fato, real) $0 = 0 + 0 \ii$.
 
 \item 
-$(x_1, x_2, \ldots) \oplus (y_1, y_2, \ldots)
+$(x_1, x_2, \ldots) + (y_1, y_2, \ldots)
 = (x_1 + y_1, x_2 + y_2, \ldots) \\
 = (y_1 + x_1, y_2 + x_2, \ldots)
-= (y_1, y_2, \ldots) \oplus (x_1, x_2, \ldots)$.
+= (y_1, y_2, \ldots) + (x_1, x_2, \ldots)$.
 
 O vetor nulo é a sequência infinita com todas as posições iguais a zero: $0 = (0, 0, \ldots)$.
 
@@ -280,7 +291,7 @@ O vetor nulo é a sequência infinita com todas as posições iguais a zero: $0 
 \begin{enumerate}
 \item $\R$ é um espaço vetorial com as operações indicadas. O vetor nulo é $-1$ e $-x-2$ é o oposto do vetor $x$.
 \item $\R^2$ não é espaço vetorial com as operações indicadas, pois
-\[1 \odot(x,y) = (-3x+y,5x-2y) \neq (x,y), \text{ para vários valores de }x,y.\]
+\[1 \cdot(x,y) = (-3x+y,5x-2y) \neq (x,y), \text{ para vários valores de }x,y.\]
 \item $\R^2$ é um espaço vetorial com as operações indicadas. O vetor nulo é $(-1, 2)$ e o vetor oposto de $(x,y)$ é $(-x-2, -y+4)$.
 \end{enumerate}
 
@@ -289,7 +300,7 @@ O vetor nulo é a sequência infinita com todas as posições iguais a zero: $0 
 \item Se $u = (a,b,c,d) \in U$ e $v = (p,q,r,s) \in U$, então $a-b = c+d$ e $p-q = r+s$. Assim, como $u + v = (a+p,b+q,c+r,d+s)$ tem-se
 \[
 (a+p) - (b+q)
-= (a-b) + (p+q)
+= (a-b) + (p-q)
 = (c+d) + (r+s)
 = (c+r) + (d+s),
 \]

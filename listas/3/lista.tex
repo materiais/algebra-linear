@@ -9,12 +9,17 @@
 \usepackage{amsthm}
 \usepackage{textcomp} % \degree
 \usepackage{gensymb} % \degree
-\usepackage[usenames,svgnames,dvipsnames]{xcolor} % colors
-\usepackage[hidelinks]{hyperref}
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
 \usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
 
 \newcommand{\fixme}{{\color{red}(...)}}
 \newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
@@ -59,19 +64,23 @@
                                      \begin{subarray}{l} #1 \end{subarray}}}}}}
 \newcommand{\swap}{\leftrightarrow}
 
-\author{Helder Geovane Gomes de Lima}
-\title{3ª Lista de exercícios - ALI0001/ALG2001}
+\newcommand*\tipo{3ª Lista de Exercícios}
+%\newcommand*\turma{...}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{\today}
+
+\author{\eu}
+\title{\tipo - \disciplina}
 \date{}
 
 \begin{document}
-\thispagestyle{empty}
 
 \begin{center}
-\includegraphics[width=9.0cm]{marca.jpg}
-\noindent\begin{tabular}{l c c r}
-  \textbf{3ª Lista de Exercícios} & \textbf{(ALI0001/ALG2001)}\\
-\end{tabular}
-\\ Prof. Helder Geovane Gomes de Lima
+\includegraphics[width=9.0cm]{marca.jpg} \\
+\textbf{\tipo\ (\disciplina)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
 \end{center}
 
 \section*{Legenda}
@@ -85,18 +94,23 @@
 \end{multicols}
 
 \section*{Questões}
+
 \begin{enumerate}
-\item \conceito Decida quais das afirmações a seguir são verdadeiras e quais são falsas. Explique as verdadeiras, e dê contra-exemplos para as falsas.
+\item \conceito
+Explique todas as afirmações verdadeiras a seguir, e dê contra-exemplos para as demais.
 \begin{enumerate}
-\item A interseção de dois subespaços vetoriais de $V$ nunca é vazia .
+\item A interseção de dois subespaços vetoriais de $V$ nunca é vazia.
 \item Se $V= \ger{ u_1, u_2, u_3 }$ então $\{ u_1, u_2, u_3 \}$ é uma base de $V$
 \item Se $\{u, v\}$ é linearmente dependente (L.D.) então um dos vetores é múltiplo do outro.
 \item Se $u \neq 0$ então os vetores $u$ e $-u$ são linearmente independentes (L.I.).
+\item Se $\{ u, v \}$ é L.I. e $\{ v, w \}$ é L.I. então $\{ u, v, w \}$ é L.I..
+\item Se $\{ u \}$ é L.I. e $\{ v \}$ é L.I. então $\{ u, v \}$ é L.I..
+\item É possível que $u \in \ger{v,w}$ sem que ocorra $u \in \ger{v}$ nem $u \in \ger{w}$.
 \end{enumerate}
 
-\item \calc Os vetores $u=(1,-1,0,0)$, $v=(0,0,1,-1)$, $x=(0,2,1,0)$ e $z=(0,0,1,1)$ geram $\R^4$? Por que?
+\item \calc É verdade que $\R^4 = \ger{ (1,-1,0,0), (0,0,1,-1), (0,2,1,0), (0,0,1,1)}$? Por que?
 
-\item \calc Encontre um conjunto de vetores geradores para cada um dos seguintes subespaços vetoriais de $M_{3 \times 3}(\R)$:
+\item \calc Encontre um conjunto de vetores geradores de um dos seguintes subespaços de $M_{3 \times 3}(\R)$:
 \begin{enumerate}
 \item $D = \{ X \in M_{3 \times 3}(\R) \mid X \text{ é diagonal } \}$
 \item $W = \{ A \in M_{3 \times 3}(\R) \mid A \text{ é antissimétrica } \}$
@@ -135,7 +149,6 @@ a & b & c \\p & q & r
 \item $V = P_5 = \{ p(x) \in \mathcal{F}(\R) \mid p(x) \text{ é um polinômio de grau} \leq 5 \}$.
 \end{enumerate}
 
-\newpage
 \item \calc Encontre uma base e a dimensão do subespaço $W$ de $V$ nos seguintes casos:
 \begin{enumerate}
 \item $V = \R^3$ e $W = \{ (x,y,z) \mid z = 0 \}$ (o plano horizontal que passa pela origem).
@@ -152,7 +165,7 @@ a & b & c \\p & q & r
 
 \item \teoria Prove que se $S_1 = \{ u_1, u_2, u_3 \}$ é um conjunto de vetores linearmente independentes, então $S_2 = \{ u_1, u_2 \}$ também é um conjunto de vetores linearmente independentes.
 
-\item \calc Encontre uma base e a dimensão do espaço linha $L(A)$, do espaço coluna $C(A)$ e do núcleo $N(A)$ das seguintes matrizes:
+\item \calc Dada uma matriz $A$, denote por $L(A)$ o espaço linha (subespaço gerado pelas linhas de $A$), por $C(A)$ o espaço coluna (subespaço gerado pelas colunas de $A$) e por $N(A)$ o núcleo de $A$ (o espaço das matrizes coluna $X$ que satisfazem $AX = 0$). Encontre uma base e a dimensão de $L(A)$, $C(A)$ e $N(A)$ para as seguintes matrizes:
 \begin{enumerate}
 \begin{multicols}{2}
 \item $A = \begin{bmatrix}
@@ -170,12 +183,10 @@ a & b & c \\p & q & r
 \end{bmatrix}$
 
 \item $A = \begin{bmatrix}
-1 & 2\\
-0 & 0\\
-2 & 4\\
-0 & 0\\
-3 & 6
-\end{bmatrix}$
+1 & 0 & 2 & 0 & 3 \\
+2 & 0 & 4 & 0 & 6
+\end{bmatrix}^T$
+
 \end{multicols}
 \end{enumerate}
 
@@ -213,11 +224,15 @@ Encontre $U+V$ para os seguintes subespaços $U$ e $V$ e verifique se é uma som
 \begin{enumerate}
 \item 
 \begin{enumerate}
-\item Como todo subespaço vetorial deve conter o vetor nulo, a interseção de dois subespaços vetoriais quaisquer tem pelo menos um elemento, ou seja, não é vazia.
-\item Mesmo que $V$ seja o espaço gerado por ${ u_1, u_2, u_3 }$, pode ser que um destes vetores seja combinação linear dos demais. Neste caso, os vetores são linearmente dependentes, e não são uma base de $V$. Por exemplo: $\R^2 = \ger{(1,0),(0,1),(2,3)}$, mas $(1,1) = 2(1,0)+3(0,1)$, ou seja, estes três vetores geram $\R^2$ mas não são uma base.
-\item Se $\{u, v\}$ é linearmente dependente, então existem $a,b \in \R$ tais que $au+bv = 0$, sem que ambos os coeficientes precisem ser nulos. Se, por exemplo, $a \neq 0$, então pode-se escrever $u = (-\frac{b}{a}) v$. E se $b \neq 0$, então $v = (-\frac{a}{b}) u$. Em ambos os casos, um dos vetores pode ser visto como um múltiplo do outro.
+\item \textbf{Verdadeira}. Como todo subespaço vetorial deve conter o vetor nulo, a interseção de dois subespaços vetoriais quaisquer tem pelo menos um elemento, ou seja, não é vazia.
+\item \textbf{Falsa}. Mesmo que $V$ seja o espaço gerado por ${ u_1, u_2, u_3 }$, pode ser que um destes vetores seja combinação linear dos demais. Neste caso, os vetores são linearmente dependentes, e não são uma base de $V$. Por exemplo: $\R^2 = \ger{(1,0),(0,1),(2,3)}$, mas $(1,1) = 2(1,0)+3(0,1)$, ou seja, estes três vetores geram $\R^2$ mas não são uma base.
+\item \textbf{Verdadeira}. Se $\{u, v\}$ é linearmente dependente, então existem $a,b \in \R$ tais que $au+bv = 0$, sem que ambos os coeficientes precisem ser nulos. Se, por exemplo, $a \neq 0$, então pode-se escrever $u = (-\frac{b}{a}) v$. E se $b \neq 0$, então $v = (-\frac{a}{b}) u$. Em ambos os casos, um dos vetores pode ser visto como um múltiplo do outro.
 
-\item Os vetores $u$ e $-u$ nunca são linearmente independentes, pois um deles é múltiplo do outro, e pode-se escrever $au + b(-u) = 0$ com os escalares não nulos $a=1$ e $b=1$.
+\item \textbf{Falso}. Os vetores $u$ e $-u$ nunca são linearmente independentes, pois um deles é múltiplo do outro, e pode-se escrever $au + b(-u) = 0$ com os escalares não nulos $a=1$ e $b=1$.
+
+\item \textbf{Falso}. Mesmo que $\{u, v\}$ sejam L.I. e que $\{ v, w \}$ seja L.I., pode acontecer de $\{u, v, w \}$ ser L.D.. Por exemplo, em $\R^2$, se $u = (1,0)$, $v = (0,1)$ e $w = (1, 1)$ então $w = u + v$, ou seja, há uma combinação linear $1u+1v+(-1)w$ que resulta no vetor nulo sem que todos os coeficientes sejam nulos.
+\item \textbf{Falsa}. Apesar de, separadamente, os vetores serem L.I., pode ocorrer que o conjunto contendo ambos seja L.D. Por exemplo, em $\R^3$, o conjunto $\{ (1,0,0) \}$ é linearmente independente, e o conjunto $\{ (5,0,0) \}$ também. No entanto, como $(5,0,0) = 5 (1,0,0)$, o conjunto $\{ (1,0,0), (5,0,0) \}$ é linearmente dependente.
+\item \textbf{Verdadeira}. Em $\R^2$, considerando-se $u=(2,3)$, $v = (1,0)$ e $w = (0,1)$, observa-se que $u = 2(1,0)+3(0,1) = 2u+3v \in \ger{v,w}$, mas $u \not \in \ger{v}$ e $u \not \in \ger{w}$.
 \end{enumerate}
 
 \item Para que $\R^4 = \ger{u,v,x,z}$, com $u=(1,-1,0,0)$, $v=(0,0,1,-1)$, $x=(0,2,1,0)$ e $z=(0,0,1,1)$ é necessário e suficiente que qualquer $(a,b,c,d)$ possa ser escrito como uma combinação linear dos vetores $u,v,x,z$, isto é, que dado $(a,b,c,d) \in \R^4$ exista alguma solução para a equação
@@ -741,7 +756,7 @@ Portanto $B$ é uma base para $W$ e $\dim(W) = 1$.
 
 \item \calc Encontre um subconjunto de $S = \{ (1,1,1), (1,1,0), (1,0,1), (0,1,1) \}$ que seja base de $\R^3$.
 
-Como $(1,1,1) = \frac{1}{2} \left( (1,1,0) + (1,0,1) + (0,1,1) \right)$, pode-se dizer que $S$ é L.D. (pois um dos vetores é combinação linear dos demais, ou porque o sistema linear associado soluções não nulas) e portanto não forma uma base de $\R^3$. No entanto, se forem considerados apenas os vetors $v_1 = (1,1,0)$, $v_2 = (1,0,1)$ e $v_3 = (0,1,1)$, então o subconjunto $B = \{ v_1, v_2, v_3 \}$ será uma base de $\R^3$ pois $R^3 = \ger{ v_1, v_2, v_3 }$ e estes três vetores são L.I. De fato, qualquer $(a,b,c) \in \R^3$ pode ser escrito como combinação linear de $v_1, v_2$ e $v_3$ pois
+Como $(1,1,1) = \frac{1}{2} \left( (1,1,0) + (1,0,1) + (0,1,1) \right)$, pode-se dizer que $S$ é L.D. (pois um dos vetores é combinação linear dos demais, ou porque o sistema linear associado tem soluções não nulas) e portanto não forma uma base de $\R^3$. No entanto, se forem considerados apenas os vetores $v_1 = (1,1,0)$, $v_2 = (1,0,1)$ e $v_3 = (0,1,1)$, então o subconjunto $B = \{ v_1, v_2, v_3 \}$ será uma base de $\R^3$ pois $R^3 = \ger{ v_1, v_2, v_3 }$ e estes três vetores são L.I. De fato, qualquer $(a,b,c) \in \R^3$ pode ser escrito como combinação linear de $v_1, v_2$ e $v_3$ pois
 \begin{align*}
 & (a,b,c) = x(1,1,0) + y(1,0,1) + z(0,1,1)
 \Leftrightarrow
@@ -969,12 +984,8 @@ $C(A) = \ger{ \begin{bmatrix}
 \end{bmatrix} }$ e $\dim(L(A)) = 1$.
 \end{enumerate}
 
-
-
-
 \end{enumerate}
 \item \fixme
-
 \item \fixme
 \item Suponha que $a(u+v) + b(u-v) + c(u-w) = 0$. Então $(a+b+c)u+(a-b)v + (-c)w = 0$ e como $u,v,w$ são L.I. esta combinação linear só resulta no vetor nulo se os três coeficientes forem zero, isto é, se
 \[
