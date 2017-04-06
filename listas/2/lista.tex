@@ -22,6 +22,7 @@
 }
 
 \newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
 \newcommand\ii{\mathrm{i}} 
 
 \newcommand*\N{\mathbb{N}}
@@ -236,6 +237,126 @@ P_n = \{ q(x) \in P_\infty \mid \operatorname{grau}(q(x)) \leq n \}.
 \end{enumerate}
 
 \item \teoria Sejam $V_1$ e $V_2$ quaisquer subespaços de um espaço vetorial $W$ arbitrário. Prove que para $V_1 \cup V_2$ ser subespaço vetorial de $W$ é preciso que $V_1 \subseteq V_2$ ou que $V_2 \subseteq V_1$.
+
+\item \conceito
+Explique todas as afirmações verdadeiras a seguir, e dê contra-exemplos para as demais.
+\begin{enumerate}
+\item A interseção de dois subespaços vetoriais de $V$ nunca é vazia.
+\item Se $V= \ger{ u_1, u_2, u_3 }$ então $\{ u_1, u_2, u_3 \}$ é uma base de $V$
+\item Se $\{u, v\}$ é linearmente dependente (L.D.) então um dos vetores é múltiplo do outro.
+\item Se $u \neq 0$ então os vetores $u$ e $-u$ são linearmente independentes (L.I.).
+\item Se $\{ u, v \}$ é L.I. e $\{ v, w \}$ é L.I. então $\{ u, v, w \}$ é L.I..
+\item Se $\{ u \}$ é L.I. e $\{ v \}$ é L.I. então $\{ u, v \}$ é L.I..
+\item É possível que $u \in \ger{v,w}$ sem que ocorra $u \in \ger{v}$ nem $u \in \ger{w}$.
+\end{enumerate}
+
+\item \calc É verdade que $\R^4 = \ger{ (1,-1,0,0), (0,0,1,-1), (0,2,1,0), (0,0,1,1)}$? Por que?
+
+\item \calc Encontre um conjunto de vetores geradores de um dos seguintes subespaços de $M_{3 \times 3}(\R)$:
+\begin{enumerate}
+\item $D = \{ X \in M_{3 \times 3}(\R) \mid X \text{ é diagonal } \}$
+\item $W = \{ A \in M_{3 \times 3}(\R) \mid A \text{ é antissimétrica } \}$
+\item $U = \{ B \in M_{3 \times 3}(\R) \mid B \text{ é simétrica } \}$
+\end{enumerate}
+
+\item \calc Verifique se os conjuntos $\{v_1, \ldots, v_n \}$ a seguir são formados por vetores linearmente independentes (L. I.) ou linearmente dependentes (L. D.):
+\begin{enumerate}
+\item $v_1=(0,3,-9)$, $v_2=(1,4,-10)$, $v_3=(2,5,-11)$ em $\R^3$.
+\item $v_1=(0,3,-9)$, $v_2=(1,4,-10)$ em $\R^3$.
+\item $v_1 = \begin{bmatrix}
+0 & 2 \\
+2 & 0
+\end{bmatrix}$, $v_2 = \begin{bmatrix}
+1 & 0 \\
+0 & 4
+\end{bmatrix}$, $v_3 = \begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}$, $v_4 = \begin{bmatrix}
+0 & 1 \\
+0 & 0
+\end{bmatrix}$, $v_5 = \begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}$ em $M_{2\times 2}(\R)$.
+\item $v_1 = x^3 + x^2 + x + 1$, $v_2 = x^2 + x + 1$, $v_3 = x + 1$, $v_4 = 1$ no espaço de polinômios $P_4$.
+\end{enumerate}
+
+\item \calc Encontre uma base e a dimensão de cada um dos seguintes espaços vetoriais:
+\begin{enumerate}
+\item $V = \R^4 = \{ (x,y,z,w) \mid x \in \R, y \in \R, z \in \R, w \in \R \}$.
+\item $V = M_{2 \times 3}(\R) = \left\{ \begin{bmatrix}
+a & b & c \\p & q & r
+\end{bmatrix} \mid a \in \R, b \in \R, c \in \R, p \in \R, q \in \R, r \in \R \right\}$.
+\item $V = P_5 = \{ p(x) \in \mathcal{F}(\R) \mid p(x) \text{ é um polinômio de grau} \leq 5 \}$.
+\end{enumerate}
+
+\item \calc Encontre uma base e a dimensão do subespaço $W$ de $V$ nos seguintes casos:
+\begin{enumerate}
+\item $V = \R^3$ e $W = \{ (x,y,z) \mid z = 0 \}$ (o plano horizontal que passa pela origem).
+\item $V = M_{2 \times 2}(\R)$ e $W = \{ S \in V \mid S^T = S \}$ (as matrizes simétricas $2 \times 2$)
+\item $V = \mathcal{F}(\R)$ e $W = \{ p(x) = ax^2+bx+c \in P_2 \mid p^\prime(6) = 0 \}$ (geometricamente, estas funções correspondem a parábolas com vértice em $(6, f(6))$).
+\item $V = \R^4$ e $W = \{ (x,y,z,w) \mid x + 2w = 0, -y = -2w, w=z/2 \}$.
+\end{enumerate}
+
+\item \calc Encontre um subconjunto de $S = \{ (1,1,1), (1,1,0), (1,0,1), (0,1,1) \}$ que seja base de $\R^3$.
+
+\item \teoria Mostre que $\{ 0, v_1, \ldots, v_n \}$ é um conjunto de vetores linearmente dependente, isto é, todo conjunto de vetores contendo o vetor nulo é linearmente dependente.
+
+\item \teoria Prove que se $W = \ger{ v_1, \ldots, v_n}$ e $z \in W$ então $W = \ger{ v_1, \ldots, v_n, z }$.
+
+\item \teoria Prove que se $S_1 = \{ u_1, u_2, u_3 \}$ é um conjunto de vetores linearmente independentes, então $S_2 = \{ u_1, u_2 \}$ também é um conjunto de vetores linearmente independentes.
+
+\item \calc Dada uma matriz $A$, denote por $L(A)$ o espaço linha (subespaço gerado pelas linhas de $A$), por $C(A)$ o espaço coluna (subespaço gerado pelas colunas de $A$) e por $N(A)$ o núcleo de $A$ (o espaço das matrizes coluna $X$ que satisfazem $AX = 0$). Encontre uma base e a dimensão de $L(A)$, $C(A)$ e $N(A)$ para as seguintes matrizes:
+\begin{enumerate}
+\begin{multicols}{2}
+\item $A = \begin{bmatrix}
+1 & -1 \\
+1 & 1
+\end{bmatrix}$
+
+\item $A = \begin{bmatrix}
+1 & 2 & 3 & 4
+\end{bmatrix}$
+
+\item $A = \begin{bmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & -1
+\end{bmatrix}$
+
+\item $A = \begin{bmatrix}
+1 & 0 & 2 & 0 & 3 \\
+2 & 0 & 4 & 0 & 6
+\end{bmatrix}^T$
+
+\end{multicols}
+\end{enumerate}
+
+\item \calc Se $U$ e $V$ são subespaços de um espaço vetorial $W$, denota-se o conjunto de todas as somas de elementos de $U$ com elementos de $V$ por $ U + V = \{ x + y \in W \mid x \in U \text{ e } y \in V \}$.
+Esta soma é chamada de \textbf{soma direta}, e denotada por $U \oplus V$, se ocorrer $U \cap V = \{ 0 \}$.
+
+Encontre $U+V$ para os seguintes subespaços $U$ e $V$ e verifique se é uma soma direta:
+\begin{enumerate}
+\item Em $W = \R^4$, os subespaços $U = \{ (x,y,z,w) \in \R^4 \mid x + y = 0 = z + w \}$ e $V = \{ (a,b,c,d) \in \R^4 \mid b = 2c \}$.
+
+\item Os subespaços $U = \{ M \in M_{3 \times 3}(\R) \mid M^T = -M \}$ das matrizes antissimétricas e $V = \{ N \in M_{3 \times 3}(\R) \mid N^T = N \}$ das matrizes simétricas de $W = M_{3 \times 3} (\R)$.
+
+\item Os subespaços $U = \{ q(x)=b_0 + b_1x+b_2x^2+b_3x^3 \mid q(-x) = -q(x), \forall x \in \R \}$ e $V = \{ p(x)=a_0 + a_1x+a_2x^2+a_3x^3 \mid p(-x) = p(x), \forall x \in \R \}$ do espaço vetorial $P_3$.
+\end{enumerate}
+
+\item \calc Encontre uma base e a dimensão de cada uma das somas $U+V$ do exercício anterior.
+
+\item \teoria Mostre que se $u$, $v$ e $w$ são vetores L. I. então os vetores $u+v$, $u-v$ e $u-w$ são L. I.
+
+\item \teoria Mostre que se $B = \{u, v\}$ é uma base de $V$ então $V = \ger{u} \oplus \ger{v}$.
+
+\item \calc Sejam $U = \ger{ (1,0,0), (2,1,1) }$ e $V = \ger{ (0,-1,0), (0,0,1) }$ subespaços de $\R^3$.
+\begin{enumerate}
+\item Encontre uma base e a dimensão de $U \cap V$.
+\item Verifique se $\R^3 = U + V$ e se $\R^3 = U \oplus V$.
+\end{enumerate}
+
+\item \teoria Mostre que se $B = \{u, v\}$ é uma base de $V$ então $B^\prime = \{ u+v, u-v \}$ também é base.
 
 \end{enumerate}
 
@@ -604,6 +725,791 @@ Então $V_1 \cup V_2 = \R^3 \cup \{ (0,0,0) \} = \R^3$, que é, naturalmente, um
 \item Sendo $x_1 + x_2$ um elemento de $V_1$, resulta que $x_2 = (x_1 + x_2) - x_1 \in V_1$.
 \end{enumerate}
 Em outras palavras, todo elemento $x_2$ de $V_2$ tem que pertencer a $V_1$, isto é, $V_2 \subseteq V_1$.
+
+%ANTIGA LISTA 3, DE 2016
+
+\item 
+\begin{enumerate}
+\item \textbf{Verdadeira}. Como todo subespaço vetorial deve conter o vetor nulo, a interseção de dois subespaços vetoriais quaisquer tem pelo menos um elemento, ou seja, não é vazia.
+\item \textbf{Falsa}. Mesmo que $V$ seja o espaço gerado por ${ u_1, u_2, u_3 }$, pode ser que um destes vetores seja combinação linear dos demais. Neste caso, os vetores são linearmente dependentes, e não são uma base de $V$. Por exemplo: $\R^2 = \ger{(1,0),(0,1),(2,3)}$, mas $(1,1) = 2(1,0)+3(0,1)$, ou seja, estes três vetores geram $\R^2$ mas não são uma base.
+\item \textbf{Verdadeira}. Se $\{u, v\}$ é linearmente dependente, então existem $a,b \in \R$ tais que $au+bv = 0$, sem que ambos os coeficientes precisem ser nulos. Se, por exemplo, $a \neq 0$, então pode-se escrever $u = (-\frac{b}{a}) v$. E se $b \neq 0$, então $v = (-\frac{a}{b}) u$. Em ambos os casos, um dos vetores pode ser visto como um múltiplo do outro.
+
+\item \textbf{Falso}. Os vetores $u$ e $-u$ nunca são linearmente independentes, pois um deles é múltiplo do outro, e pode-se escrever $au + b(-u) = 0$ com os escalares não nulos $a=1$ e $b=1$.
+
+\item \textbf{Falso}. Mesmo que $\{u, v\}$ sejam L.I. e que $\{ v, w \}$ seja L.I., pode acontecer de $\{u, v, w \}$ ser L.D.. Por exemplo, em $\R^2$, se $u = (1,0)$, $v = (0,1)$ e $w = (1, 1)$ então $w = u + v$, ou seja, há uma combinação linear $1u+1v+(-1)w$ que resulta no vetor nulo sem que todos os coeficientes sejam nulos.
+\item \textbf{Falsa}. Apesar de, separadamente, os vetores serem L.I., pode ocorrer que o conjunto contendo ambos seja L.D. Por exemplo, em $\R^3$, o conjunto $\{ (1,0,0) \}$ é linearmente independente, e o conjunto $\{ (5,0,0) \}$ também. No entanto, como $(5,0,0) = 5 (1,0,0)$, o conjunto $\{ (1,0,0), (5,0,0) \}$ é linearmente dependente.
+\item \textbf{Verdadeira}. Em $\R^2$, considerando-se $u=(2,3)$, $v = (1,0)$ e $w = (0,1)$, observa-se que $u = 2(1,0)+3(0,1) = 2u+3v \in \ger{v,w}$, mas $u \not \in \ger{v}$ e $u \not \in \ger{w}$.
+\end{enumerate}
+
+\item Para que $\R^4 = \ger{u,v,x,z}$, com $u=(1,-1,0,0)$, $v=(0,0,1,-1)$, $x=(0,2,1,0)$ e $z=(0,0,1,1)$ é necessário e suficiente que qualquer $(a,b,c,d)$ possa ser escrito como uma combinação linear dos vetores $u,v,x,z$, isto é, que dado $(a,b,c,d) \in \R^4$ exista alguma solução para a equação
+\[
+(a,b,c,d) = t_1 (1,-1,0,0) + t_2 (0,0,1,-1)+ t_3 (0,2,1,0)+ t_4 (0,0,1,1),
+\]
+que é equivalente a um sistema linear nas variáveis $t_1, t_2, t_3$ e $t_4$:
+
+\systeme[t_1,t_2,t_3,t_4]{
+ t_1                    = a,
+-t_1       + 2t_3       = b,
+       t_2 +  t_3 + t_4 = c,
+      -t_2        + t_4 = d
+}
+
+ou ainda, à equação matricial
+\[
+\begin{bmatrix}
+ 1 &  0 & 0 & 0 \\
+-1 &  0 & 2 & 0 \\
+ 0 &  1 & 1 & 1 \\
+ 0 & -1 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+t_1 \\
+t_2 \\
+t_3 \\
+t_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+a \\
+b \\
+c \\
+d
+\end{bmatrix}.
+\]
+Note que esta matriz poderia ser construída diretamente a partir dos vetores, copiando-se as coordenadas de $u$, $v$, $x$ e $z$ para as colunas da matriz. Como a matriz é quadrada, o sistema terá solução se, e somente se, ela for inversível, o que será verdade se o determinante da matriz for diferente de zero. Calculando-o pela primeira linha, obtém-se:
+\[
+\begin{vmatrix}
+ 1 &  0 & 0 & 0 \\
+-1 &  0 & 2 & 0 \\
+ 0 &  1 & 1 & 1 \\
+ 0 & -1 & 0 & 1
+\end{vmatrix}
+=
+1 \cdot
+\begin{vmatrix}
+ 0 & 2 & 0 \\
+ 1 & 1 & 1 \\
+-1 & 0 & 1
+\end{vmatrix}
+=
+-2 \cdot
+\begin{vmatrix}
+ 1 & 1 \\
+-1 & 1
+\end{vmatrix}
+= -2(1 \cdot 1 - (-1) \cdot 1)
+=-4 \neq 0.
+\]
+Então, de fato, qualquer $(a,b,c,d)$ é combinação linear dos quatro vetores dados, isto é, $R^4 = \ger{u,v,x,z}$.
+\item
+\begin{enumerate}
+\item Para toda matriz diagonal $X \in M_{3 \times 3}(\R)$ tem-se
+\[
+X
+= \begin{bmatrix}
+a & 0 & 0 \\
+0 & b & 0 \\
+0 & 0 & c
+\end{bmatrix}
+=
+a
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix}
++b
+\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{bmatrix}
++c
+\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & c
+\end{bmatrix},
+\]
+com $a,b,c \in \R$. Então estas três matrizes geram $D$.
+
+\item Para toda matriz antissimétrica $A \in M_{3 \times 3}(\R)$ tem-se
+\[
+A
+= \begin{bmatrix}
+ 0 & a & b \\
+-a & 0 & c \\
+-b & c & 0
+\end{bmatrix}
+=
+a
+\begin{bmatrix}
+ 0 & 1 & 0 \\
+-1 & 0 & 0 \\
+ 0 & 0 & 0
+\end{bmatrix}
++b
+\begin{bmatrix}
+ 0 & 0 & 1 \\
+ 0 & 0 & 0 \\
+-1 & 0 & 0
+\end{bmatrix}
++c
+\begin{bmatrix}
+0 &  0 & 0 \\
+0 &  0 & 1 \\
+0 & -1 & 0
+\end{bmatrix},
+\]
+com $a,b,c \in \R$. Então estas três matrizes geram $W$.
+
+\item Para toda matriz simétrica $B \in M_{3 \times 3}(\R)$ tem-se
+\begin{align*}
+B
+= \begin{bmatrix}
+a & b & c \\
+b & d & e \\
+c & e & f
+\end{bmatrix}
+&=
+a
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix}
++b
+\begin{bmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix}
++c
+\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+1 & 0 & 0
+\end{bmatrix}
++d
+\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 0
+\end{bmatrix}\\
+&+e
+\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 0 & 1 \\
+0 & 1 & 0
+\end{bmatrix}
++f
+\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix},
+\end{align*}
+com $a,b,c,d,e,f \in \R$. Então estas 6 matrizes geram $U$.
+\end{enumerate}
+
+\item 
+\begin{enumerate}
+\item $v_1=(0,3,-9)$, $v_2=(1,4,-10)$, $v_3=(2,5,-11)$ em $\R^3$.
+
+Suponha que $c_1$, $c_2$ e $c_3$ sejam escalares tais que $c_1v_1 + c_2v_2 + c_3v_3 = 0$, isto é, que
+\[
+c_1(0,3,-9) + c_2(1,4,-10) + c_3 (2,5,-11)
+= (0, 0, 0)
+\]
+ou ainda,
+\[(c_2 + 2c_3, 3c_1 + 4c_2 + 5c_3, -9c_1 - 10c_2 - 11c_3)
+= (0, 0, 0)
+\]
+Então $c_1, c_2, c_3$ são soluções do sistema linear homogêneo
+\systeme{
+c_2 + 2c_3 =0,
+3c_1 + 4c_2 + 5c_3=0,
+-9c_1 - 10c_2 - 11c_3=0
+}
+Como o número de equações é o mesmo do número de incógnitas, pode-se determinar se $c_1=c_2=c_3=0$ é ou não a única solução calculando o determinante da matriz associada ao sistema:
+\[
+\begin{vmatrix}
+ 0 &   1 &   2 \\
+ 3 &   4 &   5 \\
+-9 & -10 & -11
+\end{vmatrix}
+=
+(-1)
+\begin{vmatrix}
+ 3 &   5 \\
+-9 & -11
+\end{vmatrix}
++2
+\begin{vmatrix}
+ 3 &   4 \\
+-9 & -10
+\end{vmatrix}
+= 
+(-1) \cdot 12
++2 \cdot 6
+= 0
+\]
+Como o determinante é zero, existem infinitas soluções não triviais e os vetores dados  são linearmente dependentes.
+
+
+
+
+\item $v_1=(0,3,-9)$, $v_2=(1,4,-10)$ em $\R^3$.
+Pelo exercício 1, se $v_1$ e $v_2$ fossem linearmente dependentes, um deles seria múltiplo do outro. Mas estes dois vetores não são múltiplos, logo, só podem ser linearmente independentes.
+
+
+\item A condição $c_1 v_1 + c_2 v_2 + c_3 v_3 + c_4 v_4 + c_5 v_5 = 0$ equivale às seguintes condições:
+\begin{align*}
+& c_1
+\begin{bmatrix}
+0 & 2 \\
+2 & 0
+\end{bmatrix}
+c_2
+\begin{bmatrix}
+1 & 0 \\
+0 & 4
+\end{bmatrix}
+c_3
+\begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}
+c_4
+\begin{bmatrix}
+0 & 1 \\
+0 & 0
+\end{bmatrix}
+c_5
+\begin{bmatrix}
+1 & 2 \\
+3 & 4
+\end{bmatrix}
+=\begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix} \\
+&
+\Leftrightarrow
+\systeme{
+c_2+c_3+c_5=0,
+2c_1+c_4+2c_5=0,
+2c_1+3c_5=0,
+4c_2+4c_5=0
+}
+\Leftrightarrow
+\begin{bmatrix}
+0 & 1 & 1 & 0 & 1 \\
+2 & 0 & 0 & 1 & 2 \\
+2 & 0 & 0 & 0 & 3 \\
+0 & 4 & 0 & 0 & 4
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+c_1\\
+c_2\\
+c_3\\
+c_4\\
+c_5
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+0\\
+0\\
+0\\
+0
+\end{bmatrix}
+\end{align*}
+Escalonando a matriz deste sistema (ou encontrando as suas soluções por qualquer outro método) obtém-se:
+\begin{align*}
+& \begin{bmatrix}
+0 & 1 & 1 & 0 & 1 \\
+2 & 0 & 0 & 1 & 2 \\
+2 & 0 & 0 & 0 & 3 \\
+0 & 4 & 0 & 0 & 4
+\end{bmatrix}
+\grstep{ L_1 \swap L_2 }
+\begin{bmatrix}
+2 & 0 & 0 & 1 & 2 \\
+0 & 1 & 1 & 0 & 1 \\
+2 & 0 & 0 & 0 & 3 \\
+0 & 4 & 0 & 0 & 4
+\end{bmatrix}
+\grstep[ \frac{1}{4}L_4 ]{ \frac{1}{2}L_1 }
+\begin{bmatrix}
+1 & 0 & 0 & 1/2 & 1 \\
+0 & 1 & 1 & 0 & 1 \\
+2 & 0 & 0 & 0 & 3 \\
+0 & 1 & 0 & 0 & 1
+\end{bmatrix}\\
+\grstep[ L_4 - L_2 ]{ L_3 - 2L_1 }
+& \begin{bmatrix}
+1 & 0 & 0 & 1/2 & 1 \\
+0 & 1 & 1 &  0 & 1 \\
+0 & 0 & 0 & -1 & 1 \\
+0 & 0 & -1 & 0 & 0
+\end{bmatrix}
+\grstep{ L_3 \swap L_4 }
+\begin{bmatrix}
+1 & 0 & 0 & 1/2 & 1 \\
+0 & 1 & 1 &  0 & 1 \\
+0 & 0 & -1 & 0 & 0 \\
+0 & 0 & 0 & -1 & 1
+\end{bmatrix}
+\grstep[ -L_4 ]{ -L_3 }
+\begin{bmatrix}
+1 & 0 & 0 & 1/2 & 1 \\
+0 & 1 & 1 &  0 & 1 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & -1
+\end{bmatrix}\\
+\grstep[ L_1-\frac{1}{2}L_4 ]{ L_2-L_3 }
+&\begin{bmatrix}
+1 & 0 & 0 & 0 & 3/2 \\
+0 & 1 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & -1
+\end{bmatrix}
+\Rightarrow
+\begin{cases}
+c_1 =-c_5/2\\
+c_2 = -c_5\\
+c_3 = 0\\
+c_4 = c_5
+\end{cases}
+\end{align*}
+Como o sistema tem $c_5$ como uma variável livre, é possível obter o vetor nulo como combinação linear das matrizes $v_1,\ldots,v_5$ sem que todos os coeficientes sejam nulos (exemplo: $-1v_1 - 2v_2 + 0v_3 + 5v_4 + 5v_5 = 0$). Isto significa que estes vetores são linearmente dependentes.
+
+\item A condição $a v_1 + b v_2 + c v_3 + d v_4 = 0$ equivale às seguintes condições:
+\begin{align*}
+& a ( x^3 + x^2 + x + 1 ) + b ( x^2 + x + 1 ) + c (x + 1) + d 
+= 0 x^3 + 0 x^2 + 0 x + 0 \\
+& \Leftrightarrow
+a x^3 + (a+b) x^2 + (a+b+c)x + (a+b+c+d) = 0 x^3 + 0 x^2 + 0 x + 0 \\
+\Leftrightarrow
+& 
+\systeme{
+a=0,
+a+b=0,
+a+b+c=0,
+a+b+c+d=0
+}
+\Leftrightarrow
+\begin{cases}
+a=0\\
+b=0\\
+c=0\\
+d=0
+\end{cases}
+\end{align*}
+\end{enumerate}
+Como a única forma de obter o vetor nulo como combinação linear dos polinômios dados é usar todos os coeficientes iguais a zero, resulta que eles são linearmente independentes.
+
+
+\item
+\begin{enumerate}
+\item Pode-se verificar que $B = \{ (1,0,0,0), (0,1,0,0), (0,0,1,0), (0,0,0,1) \}$ é uma base de $\R^4$ e disto resulta que $\dim( \R^4 ) = 4$.
+\item $B = \left\{
+\begin{bmatrix}
+1 & 0 & 0 \\0 & 0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 & 0 \\0 & 0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 1 \\0 & 0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0 \\1 & 0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0 \\0 & 1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0 \\0 & 0 & 1
+\end{bmatrix}
+\right\}$ é uma base de $M_{2 \times 3}(\R)$ (por que?) e consequentemente $\dim( M_{2 \times 3}(\R) ) = 6$.
+
+\item $B = \left\{1,x,x^2,x^3,x^4,x^5 \right\}$ é uma base de $P_5$ (verifique!) e portanto $\dim( P_5 ) = 6$.
+\end{enumerate}
+
+\item
+\begin{enumerate}
+\item Tem-se $u \in W$ se e somente se $u = (x,y,0)$, para algm $x,y, \in \R$. Neste caso, $u = x(1,0,0) + y(0,1,0)$. Portanto os vetores $v_1 = (1,0,0)$ e $v_2 = (0,1,0)$ geram $W$. Mas estes vetores são linearmente independentes, pois se $k_1 v_1 + k_2 v_2 = 0$ então
+\[
+k_1(1,0,0) + k_2(1,0,0) = (k_1,k_1,0) = (0,0,0)
+\]
+o que significa que $k_1 = k_2 = 0$. Em outras palavras, o vetor nulo só pode ser obtido como combinação linear de $v_1$ e $v_2$ se todos os coeficientes forem nulos. Portanto, $B = \{(1,0,0),(0,1,0)\}$ é uma base de $W$, e conclui-se que $\dim(W)=2$.
+
+\item Um vetor $u \in V$ pertence a $W$ se, e somente se
+\[
+u
+=
+\begin{bmatrix}
+a & b \\ b & c
+\end{bmatrix}
+=
+a\begin{bmatrix}
+1 & 0 \\ 0 & 0
+\end{bmatrix}
++b\begin{bmatrix}
+0 & 1 \\ 1 & 0
+\end{bmatrix}
++c\begin{bmatrix}
+0 & 0 \\ 0 & 1
+\end{bmatrix},
+= a v_1 + bv_2 + cv_3
+\]
+em que $v_1
+=
+\begin{bmatrix}
+1 & 0 \\ 0 & 0
+\end{bmatrix}$,
+$v_2=
+\begin{bmatrix}
+0 & 1 \\ 1 & 0
+\end{bmatrix}$
+e
+$v_3=
+\begin{bmatrix}
+0 & 0 \\ 0 & 1
+\end{bmatrix}$ e $a,b,c \in \R$. Isto significa que $W = \ger{v_1,v_2,v_3}$. Além disso, se $m_1 v_1 + m_2 v_2 + m_3v_3 = 0$, tem-se
+\[
+m_1
+\begin{bmatrix}
+1 & 0 \\ 0 & 0
+\end{bmatrix}
++m_2
+\begin{bmatrix}
+0 & 1 \\ 1 & 0
+\end{bmatrix}
++m_3
+\begin{bmatrix}
+0 & 0 \\ 0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+m_1 & m_2 \\ m_2 & m_3
+\end{bmatrix}
+=\begin{bmatrix}
+0 & 0 \\ 0 & 0
+\end{bmatrix},
+\]
+isto é, cada $m_i = 0$, o que significa que os vetores $v_1, v_2, v_3$ são  L.I. e $B = \{v_1, v_2, v_3\}$ é uma base de $W$. Consequentemente, $\dim(W) = 3$.
+
+\item $V = \mathcal{F}(\R)$ e $W = \{ p(x) = ax^2+bx+c \in P_2 \mid p^\prime(6) = 0 \}$ (geometricamente, estas funções correspondem a parábolas com vértice em $(6, f(6))$).
+
+Dado $p(x) = ax^2+bx+c \in P_2$ tem-se $p^\prime(x) = 2ax + b$. Então $p(x) \in W$ se, e somente se $2a(6) + b = 0$, ou seja, $b = -12a$. Assim, todo elemento de $W$ é da forma
+\[
+p(x)
+= ax^2 + (-12a)x + c
+= a \cdot (x^2 -12x) + c \cdot 1,
+\]
+com $a,c \in \R$. Em outras palavras, os polinômios $q_1 = x^2 -12x$ e $q_2 = 1$ geram $W$. Estes vetores também são linearmente independentes pois
+
+$
+c_1(x^2 -12x) + c_2(1) = 0
+\Leftrightarrow
+c_1x^2 -12 c_1 x + c_2 = 0
+\Leftrightarrow
+\begin{cases}
+    c_1 = 0\\
+-12 c_1 = 0\\
+    c_2 = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+c_1 = 0\\
+c_2 = 0
+\end{cases}
+$
+Portanto, $B = \ger{1, x^2 - 12x}$ é uma base de $W$ e $\dim(W) = 2$.
+
+\item Como
+\[
+\begin{cases}
+x +  2w = 0\\
+  -y    = -2w\\
+      w = z/2
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+x = -2w\\
+y = 2w\\
+z = 2w
+\end{cases}
+\]
+resulta que $u \in W$ se, e somente se, $u = (-2w,2w,2w,w) = w (-2,2,2,1)$, com $w \in \R$. Em outras palavras, $W = \ger{ (-2,2,2,1) }$. Como este vetor é diferente de zero, $B = \{ (-2,2,2,1) \}$ é L.I. pois
+\[
+k (-2,2,2,1) = (0,0,0,0)
+\Rightarrow
+\begin{cases}
+-2k = 0\\
+2k = 0\\
+2k = 0\\
+k = 0
+\end{cases}
+\Rightarrow k = 0.
+\]
+Portanto $B$ é uma base para $W$ e $\dim(W) = 1$.
+\end{enumerate}
+
+\item \calc Encontre um subconjunto de $S = \{ (1,1,1), (1,1,0), (1,0,1), (0,1,1) \}$ que seja base de $\R^3$.
+
+Como $(1,1,1) = \frac{1}{2} \left( (1,1,0) + (1,0,1) + (0,1,1) \right)$, pode-se dizer que $S$ é L.D. (pois um dos vetores é combinação linear dos demais, ou porque o sistema linear associado tem soluções não nulas) e portanto não forma uma base de $\R^3$. No entanto, se forem considerados apenas os vetores $v_1 = (1,1,0)$, $v_2 = (1,0,1)$ e $v_3 = (0,1,1)$, então o subconjunto $B = \{ v_1, v_2, v_3 \}$ será uma base de $\R^3$ pois $R^3 = \ger{ v_1, v_2, v_3 }$ e estes três vetores são L.I. De fato, qualquer $(a,b,c) \in \R^3$ pode ser escrito como combinação linear de $v_1, v_2$ e $v_3$ pois
+\begin{align*}
+& (a,b,c) = x(1,1,0) + y(1,0,1) + z(0,1,1)
+\Leftrightarrow
+\begin{cases}
+x+y=a\\
+x+z=b\\
+y+z=c\\
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+x=\frac{1}{2}( a+b-c)\\
+y=\frac{1}{2}( a-b+c)\\
+z=\frac{1}{2}(-a+b+c)
+\end{cases}
+%\\
+%& \Leftrightarrow
+%(a,b,c) =
+%  \left(\frac{1}{2}( a+b-c)\right)(1,1,0)
+%+ \left(\frac{1}{2}( a-b+c)\right)(1,0,1)
+%+ \left(\frac{1}{2}(-a+b+c)\right)(0,1,1)
+\end{align*}
+Além disso, com base no cálculo acima, o único modo de obter $(a,b,c) = (0,0,0)$ como combinação linear de $v_1$, $v_2$ e $v_3$ é considerando todos os coeficientes $x=y=z=0$.
+
+\item Para que um conjunto de vetores seja L.D. deve ser possível expressar o vetor nulo como combinação linear deles sem que todos os coeficientes desta combinação linear sejam zero. No caso dos vetores $0, v_1, \ldots, v_n$, pode-se usar, por exemplo, os escalares $c_0 =7, c_1 = 0, c_2 = 0, \ldots, c_n = 0$ pois $7 \cdot 0 + 0 \cdot v_1 + \ldots + 0 \cdot v_n = 0$. Como pelo menos o escalar $c_0 \neq 0$, conclui-se que os vetores são linearmente dependentes.
+
+\item Sejam $W = \ger{ v_1, \ldots, v_n }$ e $z \in W$, isto é, $z = k_1 v_1 + \ldots + k_n v_n$, com $k_1, \ldots, k_n \in \R$. Sendo $U = \ger{ v_1, \ldots, v_n, z }$, pode-se dizer que os conjuntos $U$ e $W$ são iguais se for explicado por que todo elemento de $W$ pertence a $U$ e vice-versa ($W \subseteq U$ e $U \subseteq W$).
+\begin{itemize}
+\item 
+Se $u \in W$, então $u$ é uma combinação linear dos vetores $v_i$, isto é, $u = c_1 v_1 + \ldots + c_n v_n$. Mas então é claro que $u$ também é combinação linear dos vetores $v_i$ e de $z$ pois basta considerar um coeficiente zero para $z$, como em $u = c_1 v_1 + \ldots + c_n v_n + 0 \cdot z$. Isto quer dizer que $z \in \ger{ v_1, \ldots, v_n, z } = U$, ou seja, que $W \subseteq U$.
+\item Por outro lado, todo $u \in W$ é combinação linear de $v_1, \ldots, v_n, z$, isto é,
+\begin{align*}
+u
+& = d_1 v_1 + \ldots + d_n v_n + d_{n+1} z \\
+& = d_1 v_1 + \ldots + d_n v_n + d_{n+1}(k_1 v_1 + \ldots + k_n v_n) \\
+& = (d_1 + d_{n+1}k_1) v_1 + \ldots + ( d_n + d_{n+1}k_n) v_n.
+\end{align*}
+Portanto $u$ é uma combinação linear dos vetores $v_1, \ldots, v_n$, o que quer dizer que $u \in \ger{ v_1, \ldots, v_n } = W$, ou seja, que $U \subseteq W$.
+\end{itemize}
+Em resumo, ao adicionar a uma lista de vetores $v_i$ um vetor $z$ que já esteja no espaço gerado por eles, o espaço gerado por todos estes vetores continuará sendo o mesmo.
+
+\item Suponha que $a u_1 + bu_2 = 0$. Então $a u_1 + b u_2 + 0 u_3= 0$, ou seja, tem-se uma combinação de $u_1, u_2, u_3$ que resulta no vetor nulo. Mas por hipótese, $u_1, u_2, u_3$ são L.I., então esta combinação linear precisa ter todos os coeficientes iguais a zero, isto é, $a=b=0$. Assim, mostrou-se que não há outra forma de obter o vetor nulo como combinação linear de $u_1$ e $u_2$, isto é, $u_1$ e $u_2$ são L.I.
+
+\item
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item Como o espaço linha da matriz $A$ e o espaço linha de sua forma escalonada reduzida são os mesmos, pode-se utilizar as linhas não nulas da forma reduzida como vetores geradores de $L(A)$. Para a matriz dada, o escalonamento consistirá destes passos:
+\begin{align*}
+\begin{bmatrix}
+1 & -1 \\
+1 & 1
+\end{bmatrix}
+\grstep{ L_2 - L_1 }
+\begin{bmatrix}
+1 & -1 \\
+0 & 2
+\end{bmatrix}
+\grstep{ \frac{1}{2}L_2 }
+\begin{bmatrix}
+1 & -1 \\
+0 & 1
+\end{bmatrix}
+\grstep{ L_1 + L_2 }
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+\end{align*}
+Então $L(A) = \ger{
+\begin{bmatrix}
+1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1
+\end{bmatrix}
+} = \{ 
+\begin{bmatrix}
+a & b
+\end{bmatrix} \mid a,b, \in \R
+\} = M_{1 \times 2} (\R)$. Além disso, é claro que estes dois vetores linha são L.I. pois $a
+\begin{bmatrix}
+1 & 0
+\end{bmatrix}
++b
+\begin{bmatrix}
+0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+a & b
+\end{bmatrix}$ só pode ser igual a $
+\begin{bmatrix}
+0 & 0
+\end{bmatrix}$ se $a$ e $b$ forem ambos nulos. Em outras palavras, estes dois vetores formam uma base de $L(A)$, que portanto é um espaço vetorial de dimensão dois.
+
+\item 
+Para o espaço coluna de $A$, pode-se usar como geradores as colunas de $A$ que correspondem às posições dos pivôs da forma reduzida. Especificamente, tem-se $C(A)
+= \ger{\begin{bmatrix}
+1\\
+1
+\end{bmatrix},
+\begin{bmatrix}
+-1\\
+1
+\end{bmatrix}}$. Estes dois vetores coluna são $L.I.$ pois nenhum deles é múltiplo do outro. Então eles formam uma base de $C(A)$ e $\dim(C(A)) = 2$.
+\item O núcleo $N(A)$ consiste dos vetores $\begin{bmatrix}
+x\\y
+\end{bmatrix}$ tais que $\begin{bmatrix}
+1 & -1\\
+1 & 1
+\end{bmatrix}\begin{bmatrix}
+x\\
+y
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+0
+\end{bmatrix}$, isto é, as coordenadas $x,y$ são soluções do sistema linear
+\systeme{
+x-y=0,
+x+y=0.
+}
+
+Isto implica que $x=y=0$ e que $N(A) = \left\{ \begin{bmatrix}
+0\\
+0
+\end{bmatrix} \right\}$. Portanto, o conjunto vazio $\emptyset$ é uma base de $N(A)$. Perceba que não faria sentido que a base tivesse algum vetor não nulo, pois senão ela geraria um espaço maior do que o espaço nulo; e também não faz sentido considerar apenas o vetor nulo como uma base, já que ele não seria L.I.. Logo a dimensão de $N(A)$ é zero (não há vetores na base).
+\end{enumerate}
+
+\item Note que $A = \begin{bmatrix}
+1 & 2 & 3 & 4
+\end{bmatrix}$ está na forma escalonada reduzida por linhas, então:
+\begin{enumerate}
+\item $L(A) = \ger{ \begin{bmatrix}
+1 & 2 & 3 & 4
+\end{bmatrix} }$ e como este conjunto é L.I., $\dim(L(A)) = 1$
+
+\item
+$C(A) = \ger{ \begin{bmatrix}
+1
+\end{bmatrix} }$ e como o conjunto é L.I. $\dim(C(A)) = 1$
+
+\item $N(A) = \left\{ \begin{bmatrix}
+-2y-3z-4w\\y\\z\\w
+\end{bmatrix} \mid y,z,w\in \R
+\right\}
+=
+\ger{ \begin{bmatrix}
+-2\\1\\0\\0
+\end{bmatrix},
+\begin{bmatrix}
+-3\\0\\1\\0
+\end{bmatrix},
+\begin{bmatrix}
+-4\\0\\0\\1
+\end{bmatrix}  }$ e como os três vetores são L.I., $\dim(L(A)) = 3$
+
+\end{enumerate}
+
+\item A matriz $A = \begin{bmatrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & -1
+\end{bmatrix}$ está na forma escalonada reduzida então:
+\begin{enumerate}
+\item $L(A) = \ger{ \begin{bmatrix}
+1 & 0 & 1 & 0
+\end{bmatrix}, \begin{bmatrix}
+0 & 1 & 0 & -1
+\end{bmatrix} }$ e $\dim(L(A)) = 2$ (os vetores são L.I.)
+
+\item $C(A) = \ger{ \begin{bmatrix}
+1 \\ 0
+\end{bmatrix}, \begin{bmatrix}
+0 \\ 1
+\end{bmatrix} }$ e $\dim(C(A)) = 2$.
+
+\item $N(A) = \left\{ \begin{bmatrix}
+-z\\w\\z\\w
+\end{bmatrix} \mid y,z,w\in \R
+\right\}
+=
+\ger{ \begin{bmatrix}
+-1\\0\\1\\0
+\end{bmatrix},
+\begin{bmatrix}
+0\\1\\0\\1
+\end{bmatrix} }$ e $\dim(L(A)) = 2$.
+\end{enumerate}
+
+
+\item A forma escalonada reduzida de $A = \begin{bmatrix}
+1 & 2\\
+0 & 0\\
+2 & 4\\
+0 & 0\\
+3 & 6
+\end{bmatrix}$ é $\begin{bmatrix}
+1 & 2\\
+0 & 0\\
+0 & 0\\
+0 & 0\\
+0 & 0
+\end{bmatrix}$, então
+\begin{enumerate}
+\item $L(A) = \ger{ \begin{bmatrix}
+1 & 2
+\end{bmatrix} }$ e $\dim(L(A)) = 1$.
+
+\item $C(A) = \ger{ \begin{bmatrix}
+1\\
+0\\
+0\\
+0\\
+0
+\end{bmatrix} }$ e $\dim(C(A)) = 1$.
+
+\item $N(A) = \left\{ \begin{bmatrix}
+-2y\\y
+\end{bmatrix} \mid y\in \R
+\right\}
+=
+\ger{ \begin{bmatrix}
+-2\\1
+\end{bmatrix} }$ e $\dim(L(A)) = 1$.
+\end{enumerate}
+
+\end{enumerate}
+\item \fixme
+
+\item \fixme
+\item Suponha que $a(u+v) + b(u-v) + c(u-w) = 0$. Então $(a+b+c)u+(a-b)v + (-c)w = 0$ e como $u,v,w$ são L.I. esta combinação linear só resulta no vetor nulo se os três coeficientes forem zero, isto é, se
+\[
+\begin{cases}
+a+b+c=0\\
+a-b=0\\
+-c=0\\
+\end{cases}
+\]
+Mas a única solução deste sistema é $a=b=c=0$, o que implica que vetores $u+v$, $u-v$ e $u-w$ são L.I..
+
+
+\item \fixme
+\item \fixme
+\item \fixme
+
+
 \end{enumerate}
 
 \end{document}
