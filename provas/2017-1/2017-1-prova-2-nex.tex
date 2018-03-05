@@ -1,0 +1,157 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{NEX171-C}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{25/04/2017}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Resolva (integralmente) apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Seja $V = \{ (x,y) \in \R^2 \ |\ y > 0 \}$.
+\begin{enumerate}
+\item Exemplifique por que $V$ não é um subespaço de $\R^2$ (com as operações usuais).
+\item Apesar do que ocorre com as operações usuais, o conjunto $V$ passa a ser um espaço vetorial se forem usadas as operações (não usuais) a seguir:
+\begin{align*}
+(a,b) + (c,d)  & = (a+c, bd), \forall (a, b) \in V, \forall (c, d) \in V, \\
+k \cdot (p, q) & = (kp, q^k), \forall (p, q) \in V, \forall k \in \R.
+\end{align*}
+\begin{itemize}
+\item Identifique que elemento de $V$ faz o papel de vetor nulo deste espaço vetorial.
+\item Para cada vetor $w = (x,y) \in V$, obtenha o vetor $-w$ (oposto em relação à adição)
+\end{itemize}
+\end{enumerate}
+\Answer \fixme
+
+\Exercise[title={2,5}] Seja $P_2$ o espaço vetorial formado por todos os polinômios da forma $q(x) = ax^2 + bx + c$, com $a,b,c \in \R$.
+Verifique se $W = \{ q(x) \in P_2\ |\ q(-1) = -q(1) \}$ é um subespaço de $P_2$. Em caso afirmativo, obtenha uma base de $W$. Caso contrário, obtenha o subespaço $G(W)$, gerado pelos vetores de $W$. Justifique todas as suas afirmações e conclusões.
+\Answer \fixme
+
+\Exercise[title={2,5}] Considere os seguintes subespaços de $\R^4$:
+\begin{align*}
+W_1 & = \{ (a-b,b-c,c-a,a+b-c) \in \R^4\ |\ a, b, c \in \R \} \\
+W_2 & = \{ (r,s,t,u) \in \R^4\ |\ r = 0, s = t, u \in \R \}.
+\end{align*}
+Encontre uma base e a dimensão de $W_1 \cap W_2$.
+\Answer \fixme
+
+\Exercise[title={2,5}] Mostre que se $B_1 = \{ v, w \}$ é uma base de um espaço vetorial $V$ então o conjunto $B_2 = \{v + w, w - v \}$ também satisfaz todas as condições para ser base de $V$.
+\Answer \fixme
+
+
+\Exercise[title={2,5}] Uma matriz $X$ é simétrica se $X^T = X$ e é antissimétrica se $X^T = -X$. Mostre que o espaço vetorial $M_{n\times n}$ de todas as matrizes de ordem $n\times n$ é uma soma direta do subespaço $S$ formado pelas matrizes simétricas com o subespaço $A$ formado pelas matrizes antissimétricas. (Dica: dada $X \in M_{n \times n}$, analize as matrizes $Y = \frac{X + X^T}{2}$ e $Z = \frac{X - X^T}{2}$)
+\Answer \fixme
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+%\newpage
+%\restoregeometry
+%\section*{Respostas}
+%\shipoutAnswer
+\end{document}

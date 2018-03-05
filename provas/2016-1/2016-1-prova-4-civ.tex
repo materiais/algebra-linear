@@ -1,0 +1,509 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand{\norm}[1]{\left|\left|{#1}\right|\right|}
+\newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
+\newcommand*\proj{\operatorname{proj}}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova IV}
+\newcommand*\turma{CIV122-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{27/06/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 5 questões (apenas 4 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Seja $T: P_3 \to P_3$ o operador derivação, $T(a+bx+cx^2+dx^3) = b+2cx+3dx^2$.
+\begin{enumerate}
+\item (1,3) Obtenha os autovalores e autovetores de $T$.
+\item (1,2) A matriz do operador $T$ em relação à base canônica é diagonalizável? Explique.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item  Os autovalores de $T$ podem ser obtidos calculando-se as raízes do polinômio característico da matriz de $T$ em relação à qualquer base de $P_3$. Se $A$ é a matriz de $T$ em relação à base canônica $C = \{1, x, x^2, x^3 \}$, então $A = \begin{bmatrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 2 & 0 \\
+0 & 0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\end{bmatrix}.$
+
+Consequentemente, o seu polinômio característico é
+\[
+p_A(x) = \det{(xI - A)} = \begin{vmatrix}
+x & -1 & 0 & 0 \\
+0 & x & -2 & 0 \\
+0 & 0 & x & -3 \\
+0 & 0 & 0 & x
+\end{vmatrix}
+=x^4.
+\]
+Como este polinômio $c = 0$ é a única raiz deste polinômio, o operador $T$ só possui um autovalor. Os autovetores de $T$ associados ao autovalor $c = 0$ são aqueles polinômios $q(x) = a+bx+cx^2+dx^3$ tais que $T(q) = 0 \cdot q$, isto é, tais que $b+2cx+3dx^2 = 0 + 0x + 0x^2 + 0x^3$. Isto implica que $b=c=d = 0$ e portanto os autovetores são os polinômios do tipo $q(x) = a$, ou seja, os polinômios de grau zero (funções constantes).
+
+\item Para que $A$ fosse diagonalizável, seria preciso que a multiplicidade geométrica de $c = 0$ fosse igual a sua multiplicidade algébrica. Mas isso não ocorre, pois a multiplicidade algébrica do autovalor encontrado é 4, enquanto que sua multiplicidade geométrica é 1 (o autoespaço associado tem dimensão 1). Logo, $A$ não é diagonalizável.
+\end{enumerate}
+
+
+
+\Exercise[title={2,5}] Considere a matriz $A =
+\begin{bmatrix}
+-3 & 4 & -8\\
+-2 & 3 & -4\\
+ 0 & 0 &  1
+\end{bmatrix}$ e obtenha:
+\begin{enumerate}
+\item (0,5) O polinômio característico de $A$.
+\item (1,0) Uma matriz $P$ que diagonaliza $A$.
+\item (0,5) Uma matriz diagonal semelhante à matriz $A$.
+\item (0,5) A matriz $A^{123}$, utilizando os dados anteriores.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item $p_A(x) = \det{(xI - A)} =
+\begin{vmatrix}
+x+3 &  -4 & 8 \\
+  2 & x-3 & 4 \\
+  0 &   0 & x-1
+\end{vmatrix}
+=(x-1)
+\begin{vmatrix}
+x+3 &  -4\\
+  2 & x-3
+\end{vmatrix}
+=(x-1)[(x+3)(x-3) + 8]
+=(x-1)[x^2 - 1]
+= (x-1)^2(x+1)
+= x^3-x^2-x+1$.
+\item As colunas de $P$ são formadas pelas coordenadas dos autovetores de $A$. Como os autovalores de $A$ são $c_1 = c_2 = 1$ e $c_3 = -1$, os autovetores correspondentes são as soluções dos sistemas lineares homogêneos $(I-A)X = 0$ e $(-I-A)X = 0$, respectivamente, ou seja:
+\begin{align*}
+\begin{bmatrix}
+4 & -4 & 8\\
+2 & -2 & 4\\
+0 &  0 & 0
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+0\\
+0
+\end{bmatrix}
+\Leftrightarrow
+\begin{cases}
+4x-4y+8z&=0\\
+2x-2y+4z&=0\\
+0&=0
+\end{cases}
+\Leftrightarrow
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+y-2z\\
+y\\
+z
+\end{bmatrix}
+=
+y
+\begin{bmatrix}
+1\\
+1\\
+0
+\end{bmatrix}
++z
+\begin{bmatrix}
+-2\\
+ 0\\
+ 1
+\end{bmatrix}.
+\end{align*}
+e
+\begin{align*}
+\begin{bmatrix}
+2 & -4 &  8\\
+2 & -4 &  4\\
+0 &  0 & -2
+\end{bmatrix}
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\
+0\\
+0
+\end{bmatrix}
+\Leftrightarrow
+\systeme{
+2x-4y+8z=0,
+2x-4y+4z=0,
+     -2z=0
+}
+\Leftrightarrow
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+2y\\
+y\\
+0
+\end{bmatrix}
+=
+y
+\begin{bmatrix}
+2\\
+1\\
+0
+\end{bmatrix}.
+\end{align*}
+Assim, $P =
+\begin{bmatrix}
+1 & -2 & 2\\
+1 &  0 & 1\\
+0 &  1 & 0
+\end{bmatrix}$ é uma matriz que diagonaliza $A$.
+
+\textbf{Observação}: Poderiam ser obtidas outras soluções colocando $y$ em função de $x$ no primeiro sistema, ou ainda, fazendo uma escolha diferente para a ordem dos autovetores (e permutando as colunas de $P$ adequadamente), ou até mesmo escolhendo múltiplos (não nulos) destes autovetores.
+\item Como a matriz $P$ do item anterior diagonaliza a matriz $A$, pode-se obter a matriz $D$ por meio da relação $D = P^{-1} A P$. A matriz $P^{-1}$ é obtida escalonando a matriz $[P | I]$, assim:
+\begin{align*}
+\begin{bmatrix}
+1 & -2 & 2 & 1 & 0 & 0\\
+1 &  0 & 1 & 0 & 1 & 0\\
+0 &  1 & 0 & 0 & 0 & 1
+\end{bmatrix}
+& \rightarrow
+\begin{bmatrix}
+1 &  0 & 1 & 0 & 1 & 0\\
+0 &  1 & 0 & 0 & 0 & 1\\
+1 & -2 & 2 & 1 & 0 & 0
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+1 &  0 & 1 & 0 &  1 & 0\\
+0 &  1 & 0 & 0 &  0 & 1\\
+0 & -2 & 1 & 1 & -1 & 0
+\end{bmatrix}\\
+&\rightarrow
+\begin{bmatrix}
+1 & 0 & 1 & 0 &  1 & 0\\
+0 & 1 & 0 & 0 &  0 & 1\\
+0 & 0 & 1 & 1 & -1 & 2
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+1 & 0 & 0 & -1 &  2 & -2\\
+0 & 1 & 0 &  0 &  0 &  1\\
+0 & 0 & 1 &  1 & -1 &  2
+\end{bmatrix}
+\end{align*}
+Portanto $P^{-1} =
+\begin{bmatrix}
+-1 &  2 & -2\\
+ 0 &  0 &  1\\
+ 1 & -1 &  2
+\end{bmatrix}$
+e $A$ é semelhante à matriz $D$ dada por
+\[
+D
+=
+\begin{bmatrix}
+-1 &  2 & -2\\
+ 0 &  0 &  1\\
+ 1 & -1 &  2
+\end{bmatrix}
+\begin{bmatrix}
+-3 & 4 & -8\\
+-2 & 3 & -4\\
+ 0 & 0 &  1
+\end{bmatrix}
+\begin{bmatrix}
+1 & -2 & 2\\
+1 &  0 & 1\\
+0 &  1 & 0
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & -1
+\end{bmatrix}
+\]
+Note que a diagonal de $D$ é formada justamente pelos autovalores de $A$.
+\item Como $D = P^{-1} A P$, conclui-se que $A = P D P^{-1}$ e que $A^{123}= P D^{123} P^{-1}$. Mas
+\[
+D^{123}
+=
+\begin{bmatrix}
+1^{123} & 0 & 0\\
+0 & 1^{123} & 0\\
+0 & 0 & (-1)^{123}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & -1
+\end{bmatrix}
+= D,
+\]
+então $A^{123} = P D^{123} P^{-1} = P D P^{-1} = A =
+\begin{bmatrix}
+-3 & 4 & -8\\
+-2 & 3 & -4\\
+ 0 & 0 &  1
+\end{bmatrix}$.
+\end{enumerate}
+
+
+\Exercise[title={2,5}] Identifique e justifique as afirmações a seguir que forem verdadeiras. Para as demais, forneça um simples contra-exemplo:
+\begin{enumerate}
+\item (1,2) Toda matriz $n \times n$ possui $n$ autovalores distintos.
+\item (1,3) Nos espaços com produto interno, sempre que um vetor $u$ é ortogonal aos vetores $v$ e $w$, pode-se concluir que $u$ também é ortogonal a qualquer combinação linear $\alpha v + \beta w$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item \textbf{Falsa}. Por exemplo, a matriz $A = \begin{bmatrix}
+3 & 0 \\ 0 & 3
+\end{bmatrix}$ só tem um autovalor (igual a $3$).
+\item \textbf{Verdadeira}. Se $u$ é ortogonal a $v$ e a $w$, então $\langle u, v \rangle = 0 = \langle u, w \rangle$. Consequentemente, pelas propriedades do produto interno,
+\[
+  \langle u, \alpha v + \beta w \rangle
+= \langle u, \alpha v + \beta w \rangle
+= \langle u, \alpha v \rangle + \langle \beta w \rangle
+= \alpha \langle u, v \rangle + \beta \langle u,w \rangle
+= \alpha 0 + \beta 0
+= 0.
+\]
+ou seja, $u$ é ortogonal a qualquer combinação linear $\alpha u + \beta w$.
+\end{enumerate}
+
+
+\Exercise[title={2,5}] Nos itens a seguir, considere o espaço vetorial $\R^2$ com o produto interno definido por $\langle (a, b), (c, d) \rangle = 17ac + 3ad + 3bc + 9bd$. Utilizando esta definição:
+\begin{enumerate}
+\item (0,5) Calcule a norma do vetor $u=(-1,3)$.
+\item (1,0) Obtenha o complemento ortogonal de $W = \ger{ (-1,3) }$.
+\item (1,0) Calcule as projeções de $v = (-5,5)$ sobre $W$ e sobre $W^\perp$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item Usando o produto interno dado, tem-se
+\[
+\norm{(a,b)}
+= \sqrt{ \langle (a, b), (a, b) \rangle }
+= \sqrt{ 17 a^2 + 6ab + 9b^2 }.
+\]
+Em particular,
+\[
+\norm{(-1,3)}
+= \sqrt{ 17 (-1)^2 + 6 \cdot (-1) \cdot 3 + 9 \cdot 3^2 }
+= \sqrt{ 17 - 18 + 81 }
+= \sqrt{80}.
+\]
+\item
+Um vetor $v = (x,y)$ pertence a $W^\perp$ se, e somente se, $\langle v, w\rangle = 0$ para todo $w \in W$. Em particular, deve ocorrer que
+\[
+\langle (x, y), (-1, 3) \rangle = -17x + 9x -3y + 27y = -8x+24y = 0,
+\]
+isto é, $x=24y/8 = 3y$ e $v = (3y,y) = y(3,1)$. Portanto, $W^\perp = \ger{ (3,1) }$.
+\item As projeções de $v = (-5,5)$ sobre $W$ e sobre $W^\perp$ são, respectivamente:
+\[
+\proj_W v
+= \frac{\langle (-5,5), (-1,3) \rangle}{\norm{(-1,3)}^2}(-1,3)
+= \frac{160}{80}(-1,3)
+= (-2,6)
+\]
+e
+\[
+\proj_{W^\perp} v
+= v - \proj_W v
+= (-5,5) - (-2,6)
+= (-3,-1).
+\]
+\end{enumerate}
+
+\textbf{Observação}: o vetor $\proj_{W^\perp} v$ também poderia ser calculado usando a base do item anterior:
+\[
+\proj_{W^\perp} v
+= \frac{\langle (-5,5), (3,1) \rangle}{\norm{(3,1)}^2}(3,1)
+= \frac{-180}{180}(3,1)
+= (-3,-1).
+\]
+
+
+\Exercise[title={2,5}] Considere o espaço $\R^4$ com o produto interno usual e seja $W$ o subespaço vetorial gerado pela base $B = \{ v_1, v_2, v_3\}$, em que $v_1 = (0,3,0,0)$, $v_2 = (1,0,0,1)$ e $v_3 = (0,-4,3,0)$. Obtenha:
+\begin{enumerate}
+\item (1,0) Uma base para o complemento ortogonal $W^\perp$ do subespaço $W$.
+\item (1,5) Uma base ortonormal para $W$.
+\end{enumerate}
+\Answer
+
+\begin{enumerate}
+\item Todo vetor $u = (x,y,z,w) \in W^\perp$ é ortogonal aos elementos de $B$. Mas
+\begin{align*}
+\begin{cases}
+\langle u, v_1\rangle = 0\\
+\langle u, v_2\rangle = 0\\
+\langle u, v_3\rangle = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+\langle (x,y,z,w), (0,3,0,0)\rangle = 0\\
+\langle (x,y,z,w), (1,0,0,1)\rangle = 0\\
+\langle (x,y,z,w), (0,-4,3,0)\rangle = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+3y = 0\\
+x + w = 0\\
+- 4y + 3z = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+y = 0 \\
+x = - w\\
+z = 0
+\end{cases}
+\end{align*}
+
+Assim, $v = (-w,0,0,w) = w(-1,0,0,1)$ e $B_1 = \{ (-1,0,0,1) \}$ é uma base de $W^\perp$.
+
+\item Observe que $v_1$ não é ortogonal a $v_3$ pois $\langle v_1, v_3 \rangle = -12 \neq 0$. Para obter uma base ortogonal para o mesmo espaço, pode-se utilizar o processo de ortogonalização de Gram–Schmidt:
+\begin{itemize}
+\item $w_1
+= v_1
+= (0,3,0,0)$
+\item $w_2
+= v_2 - \frac{\langle v_2, w_1 \rangle}{\norm{w_1}^2}w_1
+= (1,0,0,1) - \frac{0}{9}(0,3,0,0)
+= (1,0,0,1)$
+\item $w_2
+= v_3 - \frac{\langle v_3, w_1 \rangle}{\norm{w_1}^2}w_1
+      - \frac{\langle v_3, w_2 \rangle}{\norm{w_2}^2}w_2
+= (0,-4,3,0) - \frac{-12}{9}(0,3,0,0)
+             - \frac{0}{2}(1,0,0,1)
+= (0,0,3,0)$
+\end{itemize}
+O conjunto $C = \{ w_1, w_2, w_3 \} = \{ (0,3,0,0), (1,0,0,1), (0,0,3,0) \}$ é uma base de $W$, mas como seus vetores não têm norma um, é preciso normaliza-los para obter a base ortonormal $D = \left\{ \frac{w_1}{\norm{w_1}}, \frac{w_2}{\norm{w_2}}, \frac{w_3}{\norm{w_3}} \right\} = \left\{ (0,1,0,0), (\frac{\sqrt{2}}{2},0,0,\frac{\sqrt{2}}{2}), (0,0,1,0) \right\}$.
+\end{enumerate}
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

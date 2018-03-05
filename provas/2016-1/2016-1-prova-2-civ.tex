@@ -1,0 +1,429 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{CIV122-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{25/04/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 5 questões (apenas 4 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}]
+Analise as afirmações a seguir e decida quais são verdadeiras.
+\begin{itemize}
+\item Se for \textbf{verdadeira}, explique-a com um argumento lógico convincente, e os devidos cálculos.
+\item Se for \textbf{falsa}, forneça um exemplo simples que mostre por que é falsa.
+\end{itemize}
+\begin{enumerate}
+\item (0,8) As matrizes inversíveis de tamanho $2 \times 2$ formam um subespaço vetorial de $M_{2 \times 2}(\R)$.
+\item (0,8) Se $A = \begin{bmatrix}
+1 & 2 & 3 & -4
+\end{bmatrix}$ e $B = \begin{bmatrix}
+-2 & 1 & 4 & 3
+\end{bmatrix} \in M_{1 \times 4} (\R)$ então $\det(A^T B) = \det(B A^T)$.
+\item (0,9) Toda matriz inversível $A$ que satisfaz $A^2 = A$ tem determinante igual a $1$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item \textbf{Falsa}. Para que um conjunto seja um subespaço, é preciso (entre outras coisas) que ele contenha o vetor nulo. No entanto, a matriz nula $2 \times 2$ não é inversível, logo as matrizes inversíveis não formam um subespaço vetorial. Outras exigências também não são satisfeitas: a soma de matrizes inversíveis não é necessariamente uma matriz inversível, e o produto de uma matriz inversível por um escalar só será uma matriz inversível se o escalar for diferente de zero.
+
+\item \textbf{Verdadeira}. Sendo $A = \begin{bmatrix}
+1 & 2 & 3 & -4
+\end{bmatrix}$ e $B = \begin{bmatrix}
+-2 & 1 & 4 & 3
+\end{bmatrix}$, tem-se
+\[
+A^TB = \begin{bmatrix}
+1 \\ 2 \\ 3 \\ -4
+\end{bmatrix} \cdot
+\begin{bmatrix}
+-2 & 1 & 4 & 3
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2 &  1 &   4 &   3 \\
+-4 &  2 &   8 &   6 \\
+-6 &  3 &  12 &   9 \\
+ 8 & -4 & -16 & -12
+\end{bmatrix}
+\]
+e
+\[
+BA^T = \begin{bmatrix}
+-2 & 1 & 4 & 3
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+1 \\ 2 \\ 3 \\ -4
+\end{bmatrix}
+=
+\begin{bmatrix}
+0
+\end{bmatrix}.
+\]
+Então $\det(A^T B) = 0$, pois todas as linhas de $A^T B$ são múltiplas da primeira linha (e com isso apareceriam linhas nulas ao escalonar a matriz). Além disso, também ocorre que $\det(B A^T) = 0$, logo $\det{A^T B} = \det{BA^T}$.
+
+\item \textbf{Verdadeira}. Se $A^2 = A$ então $\det{A} = \det{(A^2)} = (\det{A})^2$. Consequentemente, se $A$ é inversível, ou seja, se $\det{A} \neq 0$, pode-se dividir ambos os membros por $\det{A}$ para concluir que $\det{A} = 1$.
+\end{enumerate}
+
+
+\Exercise[title={2,5}]
+Explique por que $W$ é ou não é subespaço do espaço vetorial $V$ nos casos a seguir:
+\begin{enumerate}
+\item (1,2) $W = \{ (x,y) \in \R^2 \mid 5x \geq 7y \}$, sendo $V = \R^2$.
+\item (1,3) $W = \{ p(x) = ax^2+bx+c \in P_2 \mid p^\prime(9) = 0 \}$, sendo $V = P_2$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item O conjunto $W = \{ (x,y) \in \R^2 \mid 5x \geq 7y \}$ \textbf{não é um subespaço} vetorial de $\R^2$ pois nem todo múltiplo escalar de um vetor de $W$ pertence a $W$. Por exemplo, $v = (1,0) \in W$ (pois $5 \cdot 1 \geq 7 \cdot 0$) mas o seu oposto $(-1)v = (-1,0) \not \in W$ (pois $5 \cdot (-1) < 7 \cdot 0$).
+
+Em geral, se $u = (x,y) \in W$, isto é, se $5x \geq 7y$, não se pode concluir que
+para todo $\alpha \in \R$ tem-se $\alpha u = (\alpha x, \alpha y) \in W$, pois para isso deveria ocorrer que $\alpha (5x) \geq \alpha (7y)$, mas só se pode garantir isso para $\alpha \geq 0$, uma vez que a desigualdade se inverteria ao multiplicar ambos os membros por um número negativo.
+
+\item O conjunto $W = \{ p(x) = ax^2+bx+c \in P_2 \mid p^\prime(9) = 0 \}$ é um subespaço de $P_2$, pois é fechado para as operações de adição e de multiplicação por escalar. De fato, se $p,q \in W$ então $p^\prime(9) = q^\prime(9) = 0$, e portanto
+\[
+(p+q)^\prime(9) = p^\prime(9) + q^\prime(9) = 0 + 0 = 0,
+\]
+ou seja, $p+q \in W$. Além disso, para qualquer $\alpha \in \R$, tem-se
+\[
+(\alpha p)^\prime(9) = \alpha (p^\prime(9)) = \alpha 0 = 0.
+\]
+Logo, $\alpha p \in W$.
+\end{enumerate}
+
+\Exercise[title={2,5}] Sejam $U = \left\{ \begin{bmatrix}
+a & b & c\\
+d & e & f
+\end{bmatrix} \mid a - d = b - e = 0 \right\}$ e $W = \left\{ \begin{bmatrix}
+a & b & c\\
+d & e & f
+\end{bmatrix} \mid a+b+c = e+f \right\}$.
+\begin{enumerate}
+\item (1,2) Encontre um conjunto de vetores que gera o espaço $U \cap W$.
+\item (1,3) Obtenha uma base e a dimensão de $U \cap W$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item Se $M = \begin{bmatrix}
+a & b & c\\
+d & e & f
+\end{bmatrix}$ então $M \in U \cap W$ se, e somente se,
+\[
+\begin{cases}
+a - d &= 0,\\
+b - e &= 0,\\
+a + b + c &= e + f
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+a = d ,\\
+b = e ,\\
+c = e + f - a - b
+  = f - d
+\end{cases}
+\]
+Assim, pode-se escrever $M
+= \begin{bmatrix}
+d & e & f-d\\
+d & e & f
+\end{bmatrix}
+= d
+\begin{bmatrix}
+1 & 0 & -1\\
+1 & 0 & 0
+\end{bmatrix}
++ e
+\begin{bmatrix}
+0 & 1 & 0\\
+0 & 1 & 0
+\end{bmatrix}
++ f
+\begin{bmatrix}
+0 & 0 & 1\\
+0 & 0 & 1
+\end{bmatrix}$, o que significa que o conjunto $B = \left\{
+\begin{bmatrix}
+1 & 0 & -1\\
+1 & 0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 & 0\\
+0 & 1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 1\\
+0 & 0 & 1
+\end{bmatrix}
+\right\}$ gera $U \cap W$.
+\item As três matrizes encontradas no item anterior são linearmente independentes, pois se
+\[
+\alpha_1
+\begin{bmatrix}
+1 & 0 & -1\\
+1 & 0 & 0
+\end{bmatrix}
++ \alpha_2
+\begin{bmatrix}
+0 & 1 & 0\\
+0 & 1 & 0
+\end{bmatrix}
++ \alpha_3
+\begin{bmatrix}
+0 & 0 & 1\\
+0 & 0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+\alpha_1 & \alpha_2 & \alpha_3-\alpha_1\\
+\alpha_1 & \alpha_2 & \alpha_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+\]
+então $\alpha_1 = \alpha_2 = 0$ e $\alpha_3 -\alpha_1= 0$, ou seja, $\alpha_3 = 0$. Logo, $B$ é uma base de $U \cap W$ e $\dim{U \cap W} = 3$.
+
+\end{enumerate}
+
+\Exercise[title={2,5}] Seja $A = \begin{bmatrix}
+1 & 3 &  2 & -2 \\
+1 & 2 & -1 &  0\\
+1 & 0 & -7 &  4
+\end{bmatrix} \in M_{3\times 4}(\R)$. Encontre uma base e a dimensão de $V$ se:
+\begin{enumerate}
+\item (1,3) $V$ é o espaço linha de $A$.
+\item (1,2) $V$ é o espaço coluna de $A$.
+\end{enumerate}
+
+\Answer
+\begin{enumerate}
+\item A forma escalonada reduzida de $A$ é obtida como segue:
+\[
+\begin{bmatrix}
+1 & 3 &  2 & -2 \\
+1 & 2 & -1 &  0\\
+1 & 0 & -7 &  4
+\end{bmatrix}
+\grstep[L_3-L_1]{ L_2 - L_1 }
+\begin{bmatrix}
+1 & 3 &  2 & -2 \\
+0 & -1 & -3 & 2\\
+0 & -3 & -9 & 6
+\end{bmatrix}
+\grstep[L_3-3L_2]{ -L_2 }
+\begin{bmatrix}
+1 & 3 &  2 & -2 \\
+0 & 1 & 3 & -2\\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\grstep{ L_1-3L_2 }
+\begin{bmatrix}
+1 & 0 & -7 &  4 \\
+0 & 1 &  3 & -2\\
+0 & 0 &  0 &  0
+\end{bmatrix}
+\]
+
+Logo, o espaço linha de $A$ é gerado por $l_1 = \begin{bmatrix}
+1 & 0 & -7 & 4
+\end{bmatrix}$ e $l_2 = \begin{bmatrix}
+0 & 1 & 3 & -2
+\end{bmatrix}$. Como os vetores linha $l_1$ e $l_2$ não são múltiplos uns dos outros, $B_1=\{ l_1, l_2 \}$ é linearmente independente, e portanto é uma base de $L(A)$. Assim, $\dim{L(A)} = 2$
+
+\item (1,2) Com base na forma escalonada reduzida por linhas de $A$, obtida no item anterior, pode-se perceber que as colunas
+$c_1 = \begin{bmatrix}
+1\\1\\1
+\end{bmatrix}$,
+$c_2 = \begin{bmatrix}
+3\\2\\0
+\end{bmatrix}$,
+$c_3 = \begin{bmatrix}
+2\\-1\\-7
+\end{bmatrix}$,
+$c_4 = \begin{bmatrix}
+-2\\0\\4
+\end{bmatrix}$ de $A$ são linearmente dependentes, pois $c_3 = -7c_1 + 3c_2$ e $c_4 = 4c_1 -2c_2$. Assim, $B_2 = \{ c_1, c_2 \}$ gera $C(A)$. Como $c_1$ e $c_2$ não são múltiplos um do outro, $B_2$ é linearmente independente e portanto é uma base para o espaço coluna de $A$. Deste modo, $\dim{C(A)} = 2$.
+\end{enumerate}
+
+\Exercise[title={2,5}] Seja $C = \{ p, q, r, s \} \subset P_2$ e $p(x) = x^2 - x$, $q(x) = x^2 + x$, $r(x) = x + 1$ e $s(x) = 2x - 2$.
+\begin{enumerate}
+\item Mostre que $C$ é L.D. e escreva um dos vetores como combinação linear dos demais.
+\item Encontre um subconjunto de $C$ que seja uma base do espaço $W = \ger{p,q,r,s}$.
+\item Determine se $u(x) = x^2 + x + 1$ pertence ao espaço $W = \ger{p,q,r,s}$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item Os vetores $p$, $q$, $r$ e $s$ são linearmente dependentes se, e somente se, existe uma combinação linear não nula destes vetores que resulta no vetor nulo. Observe que
+\begin{align*}
+a(x^2 - x) +b(x^2 + x) + c(x + 1) + d(2x - 2)
+&= 0 + 0x + 0x^2 \\
+\Leftrightarrow
+(a+b)x^2 + (-a+b+c+2d)x + (c-2d)
+& = 0 + 0x + 0x^2 \\
+\Leftrightarrow
+\begin{cases}
+ a+b      = 0\\
+-a+b+c+2d = 0\\
+     c-2d = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+a =  2d\\
+b = -2d\\
+c =  2d
+\end{cases}
+\end{align*}
+Logo, para qualquer $d \in \R$ é possível escrever
+\[
+(2d) p(x) + (-2d) q(x) + (2d) r(x) + d s(x) = 0
+\]
+Por exemplo, se $d=1$, tem-se $2p(x) - 2q(x) + 2r(x) + s(x) = 0$, isto é, $s(x) = -2p(x) + 2q(x) - 2r(x)$, ou seja, $s$ é uma combinação linear dos demais vetores.
+
+\item Como $s$ é combinação linear de $p,q,r$, tem-se $W = \ger{p,q,r,s} = \ger{p,q,r}$. Além disso, $B = \{ p, q, r \}$ é linearmente independente pois
+\[
+a(x^2 - x) +b(x^2 + x) + c(x + 1)
+= (a+b)x^2 + (-a+b+c)x + c
+= 0 + 0x + 0x^2
+\]
+é possível se, e somente se,
+\[
+\begin{cases}
+ a+b   = 0\\
+-a+b+c = 0\\
+     c = 0,
+\end{cases}
+\]
+isto é, se $a=b=c=0$.
+
+\item Como $W = \ger{p,q,r,s} = \ger{p,q,r}$, basta que existam $a,b,c$ tais que
+\[
+x^2 + x + 1
+= a(x^2 - x) +b(x^2 + x) + c(x + 1)
+= (a+b)x^2 + (-a+b+c)x + c
+\]
+\end{enumerate}
+isto é, tais que
+\[
+\begin{cases}
+ a+b   = 1\\
+-a+b+c = 1\\
+     c = 1.
+\end{cases}
+\]
+Resolvendo o sistema, obtém-se $a=1/2$, $b=1/2$ e $c=1$. Logo, $u \in W$.
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

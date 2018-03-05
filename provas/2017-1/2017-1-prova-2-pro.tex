@@ -1,0 +1,152 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{PRO112-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{24/04/2017}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Resolva (integralmente) apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Seja $V = \{ (x,y) \in \R^2 \ |\ x > 0 \}$ e considere as seguintes definições:
+\begin{align*}
+(a,b) + (c,d)  & = (ac, b + d), \forall (a, b) \in V, \forall (c, d) \in V, \\
+k \cdot (p, q) & = (p^k, kq), \forall (p, q) \in V, \forall k \in \R.
+\end{align*}
+Pode-se mostrar que, com essas definições de $+$ e $\cdot$, o conjunto $V$ cumpre todas as exigências para ser considerado um espaço vetorial.
+\begin{enumerate}
+\item Verifique, de forma rigorosa, que a adição é comutativa.
+\item Identifique que elemento de $V$ faz o papel de vetor nulo deste espaço vetorial.
+\item Para cada vetor $w = (x,y) \in V$, obtenha o vetor $-w$ (oposto em relação à adição)
+\end{enumerate}
+\Answer \fixme
+
+\Exercise[title={2,5}] Seja $S$ o espaço vetorial formado por todas as matrizes simétricas de ordem $3 \times 3$. Dê um exemplo de um conjunto $A$ de vetores de $S$ que sejam linearmente independentes mas que não gerem $S$ e um exemplo de um conjunto $B$ de vetores que geram $S$ mas que não sejam linearmente independentes. Justifique todas as suas afirmações.
+\Answer \fixme
+
+\Exercise[title={2,5}] Sejam $W_1= \{ (a,b,c,d) \in \R^4\ |\ a = d\}$ e $W_2= \{ (u+v,u+w,v+w, 0) \in \R^4 | u,v,w \in \R \}$. Encontre uma base de $W_1 \cap W_2$, mostre que realmente é uma base, e determine sua dimensão.
+\Answer \fixme
+
+\Exercise[title={2,5}] Prove que, dada qualquer matriz $A$ de ordem $m \times n$, o conjunto $N(A)$ formado por todas as matrizes $X$ de ordem $n \times 1$ para as quais $A X = 0_{m\times 1}$, é um subespaço vetorial de $M_{n \times 1}$. Exiba uma base e a dimensão de $N(A)$ no caso particular em que $A = \begin{bmatrix}
+2 & -4 & 6 & -8
+\end{bmatrix}$, juntamente com os cálculos e argumentos que garantem que encontrou uma base de $N(A)$.
+\Answer \fixme
+
+\Exercise[title={2,5}] Uma função $f: \R \to \R$ é denominada \textbf{par} quando $f(-x) = f(x), \forall x \in \R$, e \textbf{ímpar} quando $f(-x) = -f(x), \forall x \in \R$. Mostre que o espaço vetorial $F$ de todas as funções $f: \R \to \R$ é uma soma direta do subespaço $Fp$ formado pelas funções pares com o subespaço $Fi$ formado pelas funções ímpares.
+
+(Dica: dada $f \in F$, analize as funções $g(x) = \frac{f(x) + f(-x)}{2}$ e $h(x) = \frac{f(x) - f(-x)}{2}$)
+\Answer \fixme
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+%\newpage
+%\restoregeometry
+%\section*{Respostas}
+%\shipoutAnswer
+\end{document}

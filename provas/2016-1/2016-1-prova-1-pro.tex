@@ -1,0 +1,509 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newtheorem*{note}{Observação}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{PRO112-02A}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{23/03/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 6 questões (apenas 5 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+
+
+\Exercise[title={1,8}] Determine as soluções do sistema linear
+$
+\systeme[xyzw]{
+3x+9y+3w=36,
+-x-3y+z-w=-1,
+2x+6y+6w=44
+}
+$
+\Answer A eliminação de Gauss-Jordan para a matriz aumentada associada ao sistema consiste dos seguintes passos:
+\begin{align*}
+&
+\begin{amatrix}{4}
+3 & 9 & 0 & 3 & 36 \\
+-1 & -3 & 1 & -1& -1\\
+2 & 6 & 0 & 6 & 44
+\end{amatrix}
+\grstep{ \frac{1}{3}L_1 }
+\begin{amatrix}{4}
+1 & 3 & 0 & 1 & 12 \\
+-1 & -3 & 1 & -1& -1\\
+2 & 6 & 0 & 6 & 44
+\end{amatrix}
+\grstep{ L_2 + L_1 }
+\begin{amatrix}{4}
+1 & 3 & 0 & 1 & 12 \\
+0 & 0 & 1 & 0 & 11\\
+2 & 6 & 0 & 6 & 44
+\end{amatrix}\\
+&
+\grstep{ L_3 - 2 L_1 }
+\begin{amatrix}{4}
+1 & 3 & 0 & 1 & 12 \\
+0 & 0 & 1 & 0 & 11\\
+0 & 0 & 0 & 4 & 20
+\end{amatrix}
+\grstep{ \frac{1}{4} L_3 }
+\begin{amatrix}{4}
+1 & 3 & 0 & 1 & 12 \\
+0 & 0 & 1 & 0 & 11\\
+0 & 0 & 0 & 1 & 5
+\end{amatrix}
+\grstep{ L_1-L_3 }
+\begin{amatrix}{4}
+1 & 3 & 0 & 0 & 7 \\
+0 & 0 & 1 & 0 & 11\\
+0 & 0 & 0 & 1 & 5
+\end{amatrix}
+\end{align*}
+Disto conclui-se que o sistema original é equivalente a
+\[
+\systeme[xyzw]{
+x+3y=7,
+z=11,
+w=5
+}
+\]
+cujas soluções são da forma $(x,y,z,w) = (7-3y,y,11,5)$, com $y$ arbitrário.
+
+
+\Exercise[title={1,8}] Considere a matriz quadrada $A = \begin{bmatrix}
+-1 & 5 & 5\\
+3 & -17 & -18\\
+-3 & 18 & 19
+\end{bmatrix}$, $X=\begin{bmatrix}x\\y\\z\end{bmatrix}$ e $B=\begin{bmatrix}-1\\1\\-1\end{bmatrix}$.
+Calcule $A^{-1}$ e utilize-a para determinar os valores de $X$ para que $AX = B$.
+\Answer O cálculo da inversa é feito pelo método de Gauss-Jordan:
+\begin{align*}
+[ A | I] =
+& \begin{bmatrix}
+-1 &   5 &   5 & 1 & 0 & 0 \\
+ 3 & -17 & -18 & 0 & 1 & 0 \\
+-3 &  18 &  19 & 0 & 0 & 1
+\end{bmatrix}
+\grstep{ -L_1 }
+\begin{bmatrix}
+ 1 &  -5 &  -5 & -1 & 0 & 0 \\
+ 3 & -17 & -18 &  0 & 1 & 0 \\
+-3 &  18 &  19 &  0 & 0 & 1
+\end{bmatrix} \\
+\grstep{ L_2 - 3L_1 }
+& \begin{bmatrix}
+ 1 &  -5 & -5 & -1 & 0 & 0 \\
+ 0 &  -2 & -3 &  3 & 1 & 0 \\
+-3 &  18 & 19 &  0 & 0 & 1
+\end{bmatrix}
+\grstep{ L_3 + 3L_1 }
+\begin{bmatrix}
+1 & -5 & -5 & -1 & 0 & 0 \\
+0 & -2 & -3 &  3 & 1 & 0 \\
+0 &  3 &  4 & -3 & 0 & 1
+\end{bmatrix}\\
+\grstep{ -\frac{1}{2} L_2 }
+& \begin{bmatrix}
+1 & -5 & -5 & -1 & 0 & 0 \\
+0 &  1 & 3/2 & -3/2 & -1/2 & 0 \\
+0 &  3 &  4 & -3 & 0 & 1
+\end{bmatrix}
+\grstep{ L_3 - 3L_2 }
+\begin{bmatrix}
+1 & -5 & -5 & -1 & 0 & 0 \\
+0 &  1 & 3/2 & -3/2 & -1/2 & 0 \\
+0 &  0 & -1/2 & 3/2 & 3/2 & 1
+\end{bmatrix}\\
+\grstep{ -2 L_3}
+& \begin{bmatrix}
+1 & -5 & -5 & -1 & 0 & 0 \\
+0 &  1 & 3/2 & -3/2 & -1/2 & 0 \\
+0 &  0 &  1 & -3 & -3 & -2
+\end{bmatrix}
+\grstep{ L_2 - \frac{3}{2} L_3 }
+\begin{bmatrix}
+1 & -5 & -5 & -1 & 0 & 0 \\
+0 &  1 &  0 &  3 & 4 & 3 \\
+0 &  0 &  1 & -3 & -3 & -2
+\end{bmatrix}\\
+\grstep{ L_1 + 5 L_3 }
+& \begin{bmatrix}
+1 & -5 & 0 & -16 & -15 & -10 \\
+0 & 1 & 0 &  3 & 4 & 3 \\
+0 & 0 & 1 & -3 & -3 & -2
+\end{bmatrix}
+\grstep{ L_1 + 5 L_2 }
+\begin{bmatrix}
+1 & 0 & 0 & -1 &  5 &  5 \\
+0 & 1 & 0 &  3 &  4 &  3 \\
+0 & 0 & 1 & -3 & -3 & -2
+\end{bmatrix}
+=[I|A^{-1}].
+\end{align*}
+Assim, $A^{-1}=
+\begin{bmatrix}
+-1 &  5 & 5 \\
+ 3 &  4 & 3 \\
+-3 & -3 & -2
+\end{bmatrix}$. Sendo $AX = B$, e $A$ uma matriz inversível, segue do item anterior que
+\[
+X = A^{-1}B =
+\begin{bmatrix}
+-1 &  5 & 5 \\
+ 3 &  4 & 3 \\
+-3 & -3 & -2
+\end{bmatrix}
+\cdot
+\begin{bmatrix}-1\\1\\-1\end{bmatrix}
+=\begin{bmatrix}1\\-2\\2\end{bmatrix}.
+\]
+
+
+\Exercise[title={1,8}] Seja $W =
+\begin{bmatrix}
+1 & -1 & 0 \\
+0 & -1 & -1 \\
+0 & 0 & 1
+\end{bmatrix}$. Verifique que $W \cdot W^T$ é uma matriz simétrica e inversível.
+\Answer A simetria de $W \cdot W^T$ é uma consequência imediata das propriedades da transposição e da multiplicação de matrizes:
+\[
+(W \cdot W^T)^T = (W^T)^T \cdot W = W \cdot W^T.
+\]
+Quanto à inversibilidade de $W \cdot W^T$, há duas opções:
+\begin{enumerate}
+\item Fazer o produto $W \cdot W^T$ e depois calcular a sua inversa explicitamente, por Gauss-Jordan.
+\item Verificar que a forma escalonada reduzida de $W$ (que já tem alguns zeros em posições convenientes) é igual à identidade (pois isso é equivalente a $W$ ser inversível), e lembrar que o produto de matrizes inversíveis é inversível, e que a inversa da transposta é a transposta da inversa.
+\end{enumerate}
+Os detalhes de cada abordagem são como segue:
+\begin{enumerate}
+\item $W \cdot W^T
+= \begin{bmatrix}
+1 & -1 & 0 \\
+0 & -1 & -1 \\
+0 & 0 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+ 1 & 0 & 0 \\
+-1 & -1 & 0 \\
+ 0 & -1 & 1
+\end{bmatrix}
+= \begin{bmatrix}
+2 & 1 & 0 \\
+1 &  2 & -1 \\
+0 & -1 &  1
+\end{bmatrix}$ então
+\begin{align*}
+[ W \cdot W^T | I ] =
+& \begin{bmatrix}
+2 &  1 &  0 & 1 & 0 & 0 \\
+1 &  2 & -1 & 0 & 1 & 0 \\
+0 & -1 &  1 & 0 & 0 & 1
+\end{bmatrix}
+\grstep{ \frac{1}{2} L_1 }
+\begin{bmatrix}
+1 &  1/2 &  0 & 1/2 & 0 & 0 \\
+1 &  2 & -1 & 0 & 1 & 0 \\
+0 & -1 &  1 & 0 & 0 & 1
+\end{bmatrix}\\
+\grstep{ L_2 - L_1 }
+&
+\begin{bmatrix}
+1 &  1/2 &  0 &  1/2 & 0 & 0 \\
+0 &  3/2 & -1 & -1/2 & 1 & 0 \\
+0 & -1 &  1 & 0 & 0 & 1
+\end{bmatrix}
+\grstep{ \frac{2}{3}L_2 }
+\begin{bmatrix}
+1 &  1/2 &  0 &  1/2 & 0 & 0 \\
+0 &  1 & -2/3 & -1/3 & 2/3 & 0 \\
+0 & -1 &  1 & 0 & 0 & 1
+\end{bmatrix}\\
+\grstep{ L_3 + L_2 }
+&
+\begin{bmatrix}
+1 & 1/2 &  0 &  1/2 & 0 & 0 \\
+0 & 1 & -2/3 & -1/3 & 2/3 & 0 \\
+0 & 0 &  1/3 & -1/3 & 2/3 & 1
+\end{bmatrix}
+\grstep{ 3L_3 }
+\begin{bmatrix}
+1 & 1/2 &  0 &  1/2 & 0 & 0 \\
+0 & 1 & -2/3 & -1/3 & 2/3 & 0 \\
+0 & 0 &  1 & -1 & 2 & 3
+\end{bmatrix}\\
+\grstep{ L_2+\frac{2}{3}L_3 }
+&
+\begin{bmatrix}
+1 & 1/2 & 0 & 1/2 & 0 & 0 \\
+0 &   1 & 0 &  -1 & 2 & 2 \\
+0 &   0 & 1 &  -1 & 2 & 3
+\end{bmatrix}
+\grstep{ L_1 - \frac{1}{2}L_2 }
+\begin{bmatrix}
+1 & 0 & 0 &  1 & -1 & -1 \\
+0 & 1 & 0 & -1 & 2 & 2 \\
+0 & 0 & 1 & -1 & 2 & 3
+\end{bmatrix}
+\end{align*}
+Portanto existe $(W \cdot W^T)^{-1} = \begin{bmatrix}
+1 & -1 & -1 \\
+-1 & 2 & 2 \\
+-1 & 2 & 3
+\end{bmatrix}$ e $W \cdot W^T$ é, de fato, inversível.
+\item A forma escalonada reduzida por linhas da matriz $W$ é obtida assim:
+\begin{align*}
+W=\begin{bmatrix}
+1 & -1 & 0 \\
+0 & -1 & -1 \\
+0 & 0 & 1
+\end{bmatrix}
+\grstep{ -L_2 }
+\begin{bmatrix}
+1 & -1 & 0 \\
+0 & 1 & 1 \\
+0 & 0 & 1
+\end{bmatrix}
+\grstep{ L_2 - L_3 }
+\begin{bmatrix}
+1 & -1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\grstep{ L_1 + L_2 }
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\end{align*}
+Como foi obtida a matriz identidade, conclui-se que a matriz $W$ é inversível. De fato, a inversa poderia ser calculada por Gauss-Jordan, e o resultado seria $W^{-1} = \begin{bmatrix}
+1 & -1 & -1 \\
+0 & -1 & -1 \\
+0 &  0 &  1
+\end{bmatrix}$
+Como $W$ é inversível, resulta que $W^T$ também é inversível, e o produto destas matrizes inversíveis será inversível. A inversa pode ser obtida por
+{\footnotesize
+\[
+  (W \cdot W^T)^{-1}
+= (W^T)^{-1} \cdot W^{-1}
+= (W^{-1})^T \cdot W^{-1}
+= \begin{bmatrix}
+ 1 &  0 & 0 \\
+-1 & -1 & 0 \\
+-1 & -1 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+1 & -1 & -1 \\
+0 & -1 & -1 \\
+0 &  0 &  1
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & -1 & -1 \\
+-1 & 2 & 2 \\
+-1 & 2 & 3
+\end{bmatrix}.
+\]
+}
+
+\end{enumerate}
+
+
+\Exercise[title={1,8}] Mostre que se $A$, $B$ e $A+B$ são inversíveis, então $A(A^{-1}+B^{-1})B(A+B)^{-1} = I$.
+
+\Answer Para mostrar que a igualdade é sempre válida, independentemente de quais sejam as matrizes inversíveis $A$, $B$ e $A+B$, basta usar as propriedades das operações com matrizes, como segue:
+\begin{align*}
+A(A^{-1}+B^{-1})B(A+B)^{-1}
+& = (AA^{-1} + AB^{-1})B(A+B)^{-1}
+  = (I + AB^{-1})B(A+B)^{-1}\\
+& = (IB+AI)(A+B)^{-1}
+  = (B+A)(A+B)^{-1}
+  = I
+\end{align*}
+\textbf{Nota:} cuidado para não escrever que $(A+B)^{-1} = A^{-1} + B^{-1}$, pois em geral isto não é verdade, tal como ocorre para números reais: $(2 + 3)^{-1} = \frac{1}{5}$ enquanto que  $2^{-1} + 3^{-1} = \frac{5}{6}$.
+
+
+\Exercise[title={1,8}] Decida quais das afirmações são verdadeiras para todas as matrizes inversíveis $A$ e $B$ (prove-as) e quais são falsas para algumas matrizes (neste caso, dê um exemplo de que é falsa).
+
+\begin{multicols}{2}
+\begin{enumerate}
+\item $3B^2$ também é inversível
+\item $A-B$ também é inversível
+\item Se $A$ é simétrica, $A^{-1}$ também é
+\item Se $A$ é antissimétrica, $A^{-1}$ também é
+\end{enumerate}
+\end{multicols}
+
+\Answer
+\begin{enumerate}
+\item \textbf{Verdadeiro}. Se $A$ é inversível então
+\[
+(3B^2)(\frac{1}{3}(B^{-1})^2)
+= 3 \frac{1}{3} (B^2(B^{-1})^2)
+= (BB^{-1})^2
+= I^2 = I,
+\]
+o que significa que $3B^2$ é inversível, e sua inversa é $\frac{1}{3}(B^{-1})^2$.
+\item \textbf{Falso}. Se $A$ é qualquer matriz inversível (por exemplo $A=I$), e $B = A$ então $A-B = A-A = 0$, que não é uma matriz inversível.
+\item \textbf{Verdadeiro}. Se $A$ é simétrica, então $A^T = A$ e resulta que
+\[
+(A^{-1})^T = (A^T)^{-1} = A^{-1}
+\]
+Logo, $A^{-1}$ também é simétrica.
+\item \textbf{Verdadeiro}. Se $A$ é antissimétrica, então $A^T = -A$ e resulta que
+\[
+(A^{-1})^T = (A^T)^{-1} = (-A)^{-1} = -(A^{-1})
+\]
+Logo, $A^{-1}$ também é antissimétrica.
+\end{enumerate}
+
+
+\Exercise[title={1,8}] Considere o conjunto $M_{3 \times 3} (\R)$ das matrizes $3 \times 3$ com entradas em $\R$.
+\begin{enumerate}
+\item Dê um exemplo de uma matriz $A \in M_{3 \times 3} (\R)$ tal que $A = A^{-1}$.
+\item Encontre mais um exemplo $B \neq A$ que satisfaça $B = B^{-1}$.
+\item Calcule $C^2$, sendo $C = \frac{1}{2}(B + I)$ e $B = B^{-1}$ como acima.
+\end{enumerate}
+
+\Answer
+\begin{enumerate}
+\item
+Se $A = \begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}$ então $A^2 = I$, e consequentemente $A = A^{-1}$.
+\item Se $B = \begin{bmatrix}
+0 & 1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 1
+\end{bmatrix}$ então $B^2 = I$ e $B = B^{-1}$.
+\item $C^2 = \left( \frac{1}{2}(B+I) \right)^2
+= \frac{1}{4}(B^2 + BI + IB + I^2)
+= \frac{1}{4}(2B + 2I)
+= \frac{1}{2}(B + I) = C$
+\end{enumerate}
+\end{ExerciseList}
+
+\medskip
+\begin{note}
+As questões anteriores passam a valer 2,0 pontos caso:
+\begin{enumerate}
+\item \textbf{(0,1) Organize} respostas legíveis para \textbf{tudo} o que foi perguntado
+\item \textbf{(0,1) Explique} a resolução por escrito, mostrando onde usou a teoria estudada
+\end{enumerate}
+\end{note}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

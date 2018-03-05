@@ -1,0 +1,196 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\im[1]{\operatorname{Im}\left(#1\right)}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova III}
+\newcommand*\turma{MAT102-03U/LEF102-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{31/05/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 5 questões (apenas 4 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Sejam $B = \left\{ \begin{bmatrix}
+0 & 0\\ 0 & -1
+\end{bmatrix}, \begin{bmatrix}
+0 & 0\\ 4 & 2
+\end{bmatrix}, \begin{bmatrix}
+2 & 0\\ 2 & -1
+\end{bmatrix}\right\}$ e $C = \left\{ \begin{bmatrix}
+0 & 0\\ 0 & 1
+\end{bmatrix}, \begin{bmatrix}
+0 & 0\\ 1 & 1
+\end{bmatrix}, \begin{bmatrix}
+1 & 0\\ 1 & 1
+\end{bmatrix}\right\}$ bases do espaço vetorial $V$ das matrizes triangulares inferiores $2 \times 2$, isto é, $V = \left\{ \begin{bmatrix}
+a & 0\\ b & c
+\end{bmatrix} \mid a,b,c \in \R \right\}$.
+\begin{enumerate}
+\item (2,0) Determine as matrizes de mudança de base de $B$ para $C$ e de $C$ para $B$.
+\item (0,5) Se $v \in V$ é o vetor cujas coordenadas na base $B$ são dadas por $[v]_B =
+\begin{bmatrix}
+3 \\
+1 \\
+4
+\end{bmatrix}$, utilize o item anterior para encontrar as coordenadas de $v$ em relação à base $C$, ou seja, $[v]_C$.
+\end{enumerate}
+\Answer \fixme
+
+\Exercise[title={2,5}]
+Classifique como verdadeiro (e demonstre) ou falso (e dê um contraexemplo):
+\begin{enumerate}
+\item (1,2) Se $\dim{U} = \dim{V}$ então toda transformação linear $T: U \to V$ é um isomorfismo.
+\item (1,3) Se a transformação linear $T: U \to V$ é um isomorfismo então $\dim{U} = \dim{V}$.
+\end{enumerate}
+\Answer \fixme
+
+\Exercise[title={2,5}] Decida (e justifique) quais das seguintes funções são transformações lineares:
+\begin{enumerate}
+\item (1,2) $L_1: \R^3 \to \R$, definida por $L_1(a,b,c) = 2a(b-c)$.
+\item (1,3) $L_2: M_{2 \times 2} \to M_{2 \times 2}$, definida por $L_2(X) = X^T + 3X$.
+\end{enumerate}
+\Answer \fixme
+
+
+\Exercise[title={2,5}] Considere a função $L: P_2 \to \R^3$ definida por $L(a + bx +cx^2) = (2b, -4a+c, 0)$.
+\begin{enumerate}
+\item (1,0) Mostre que $L$ é uma transformação linear.
+\item (1,5) Calcule as dimensões do núcleo e da imagem de $L$, isto é, $\dim(N(L))$ e $\dim(\im{L})$.
+\end{enumerate}
+\Answer \fixme
+
+
+
+\Exercise[title={2,5}] Se $S_{2\times 2}$ é o espaço das matrizes simétricas e a transformação linear $T:S_{2\times 2} \to \R^3$ satisfaz
+$
+T\left( \begin{bmatrix}
+1 & 0\\
+0 & 0
+\end{bmatrix} \right) = (1,1,1),
+T\left( \begin{bmatrix}
+0 & 1\\
+1 & 0
+\end{bmatrix} \right) = (0,1,1) \text{ e }
+T\left( \begin{bmatrix}
+0 & 0\\
+0 & 1
+\end{bmatrix} \right) = (0,1,0)$:
+\begin{enumerate}
+\item (0,5) Obtenha uma fórmula explicita da transformação linear $T$.
+\item (1,0) Mostre que $T$ é um isomorfismo.
+\item (1,0) Obtenha uma fórmula explícita para o isomorfismo inverso $T^{-1}: \R^3 \to S_{2 \times 2}$.
+\end{enumerate}
+
+\end{ExerciseList}
+
+%\begin{center}
+%BOA PROVA!
+%\end{center}
+
+%\newpage
+%\restoregeometry
+%\section*{Respostas}
+%\shipoutAnswer
+\end{document}
