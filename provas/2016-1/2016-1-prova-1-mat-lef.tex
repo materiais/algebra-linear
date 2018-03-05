@@ -1,0 +1,664 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newtheorem*{note}{Observação}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+\newcommand{\swap}{\leftrightarrow}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{MAT102-03U/LEF102-02U}
+\newcommand*\disciplina{ALI0001/ALG2001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{22/03/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 6 questões (apenas 5 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={1,8}] Dar exemplos de matrizes quadradas $A \neq B$ tais que:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $A$, $B$ e $AB$ são matrizes simétricas.
+\item $A$, $B$ e $AB$ são matrizes antissimétricas.
+\item $A$ e $B$ são simétricas mas $AB$ não.
+\item $A$ e $B$ são antissimétricas mas $AB$ não.
+\end{enumerate}
+\end{multicols}
+\Answer
+\begin{enumerate}
+\item Se $A = \begin{bmatrix}
+1 & 0 \\
+0 & 2
+\end{bmatrix}$ e $B = \begin{bmatrix}
+3 & 0 \\
+0 & 4
+\end{bmatrix}$ então $AB
+= \begin{bmatrix}
+1 & 0 \\
+0 & 2
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+3 & 0 \\
+0 & 4
+\end{bmatrix}
+=
+\begin{bmatrix}
+3 & 0 \\
+0 & 8
+\end{bmatrix}$. Assim, o produto é uma matriz simétrica, pois $(AB)^T
+=\begin{bmatrix}
+3 & 0 \\
+0 & 8
+\end{bmatrix}
+= AB$.
+
+\textbf{Outra alternativa}: se $A = I$ e $B = 0$, então $AB = 0 = 0^T = (AB)^T$.
+
+\item Se $A = \begin{bmatrix}
+0 & 1 \\
+-1 & 0
+\end{bmatrix}$ e $B = \begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}$ então $AB
+= \begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+= -(AB)^T$. Assim, o produto é uma matriz antissimétrica, pois $(AB)^T = -AB$.
+
+\textbf{Outra alternativa}: se $A = 0$ e $B = \begin{bmatrix}
+0 & 1 \\
+-1 & 0
+\end{bmatrix}$ então $(AB)^T = 0^T = 0 = -0 = -AB$.
+
+\item Se $A = \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}$ e $B = \begin{bmatrix}
+1 & 2 \\
+2 & 3
+\end{bmatrix}$ então $AB
+= \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+1 & 2 \\
+2 & 3
+\end{bmatrix}
+=
+\begin{bmatrix}
+2 & 3 \\
+1 & 2
+\end{bmatrix}$. Neste caso, o produto não é uma matriz simétrica, já que $(AB)^T
+=\begin{bmatrix}
+2 & 1 \\
+3 & 2
+\end{bmatrix}
+\neq AB$.
+\item Se $A = \begin{bmatrix}
+0 & 1 \\
+-1 & 0
+\end{bmatrix}$ e $B = \begin{bmatrix}
+0 & 2 \\
+-2 & 0
+\end{bmatrix}$ então $AB
+= \begin{bmatrix}
+-2 & 0 \\
+0 & -2
+\end{bmatrix}
+\neq \begin{bmatrix}
+2 & 0 \\
+0 & 2
+\end{bmatrix}
+= -(AB)^T$. Assim, o produto não é uma matriz antissimétrica, pois $(AB)^T \neq -AB$.
+\end{enumerate}
+
+
+\Exercise[title={1,8}] Denote por $0$ a matriz nula $3 \times 3$ e por $I$ a matriz identidade $3 \times 3$.
+\begin{enumerate}
+\item Dê um exemplo de uma matriz $A \neq 0$, tal que $A^3 = 0$.
+\item Verifique que $(I-A)$ é a inversa de $(I + A + A^2)$, sendo $A$ a matriz obtida no item anterior
+\end{enumerate}
+
+\Answer
+\begin{enumerate}
+\item Se $A = \begin{bmatrix}
+0 &0 &4\\
+0 &0 &0\\
+0 &0 &0
+\end{bmatrix}$ então
+\[
+A^3 =\left(
+\begin{bmatrix}
+0 &0 &4\\
+0 &0 &0\\
+0 &0 &0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+0 &0 &4\\
+0 &0 &0\\
+0 &0 &0
+\end{bmatrix}\right)
+\cdot
+\begin{bmatrix}
+0 &0 &4\\
+0 &0 &0\\
+0 &0 &0
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 &0 &0\\
+0 &0 &0\\
+0 &0 &0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+0 &0 &4\\
+0 &0 &0\\
+0 &0 &0
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 &0 &0\\
+0 &0 &0\\
+0 &0 &0
+\end{bmatrix}.
+\]
+
+\textbf{(outras soluções)} há infinitas matrizes não nulas que elevadas ao cubo resultam em $0$:
+\[
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 1 & 1\\
+0 &-1 &-1
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 & 0\\
+1 & 0 & 1\\
+0 & 0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 & 0\\
+6 & 0 & -2\\
+0 & 3 & 0
+\end{bmatrix},
+\ldots
+\]
+
+\item \textbf{(solução 1)} Qualquer matriz $A$ escolhida para o item anterior satisfaz $A^3=0$, então:
+\[
+(I - A)(I + A + A^2)
+= I(I + A + A^2)
+ -A(I + A + A^2)
+= I + A + A^2
+ -A - A^2 - A^3
+= I.
+\]
+Logo, $(I - A)$ é a inversa de $(I + A + A^2)$, ou seja, $(I + A + A^2)^{-1} = I - A$.
+
+\textbf{(solução 2)} Outra opção é calcular explicitamente a inversa de
+\[
+I + A + A^2 =
+\begin{bmatrix}
+1 &0 &4\\
+0 &1 &0\\
+0 &0 &1\\
+\end{bmatrix},
+\]
+por Gauss-Jordan (se fez uma boa escolha para $A$, não serão necessários muitos passos):
+\[
+[ I + A + A^2 | I] =
+\begin{bmatrix}
+1 &0 &4& 1& 0& 0\\
+0 &1 & 0& 0& 1& 0\\
+0 &0 & 1& 0& 0& 1
+\end{bmatrix}
+\grstep{ L_1 - 4L_3 }
+\begin{bmatrix}
+1 &0 & 0& 1& 0& -4\\
+0 &1 & 0& 0& 1& 0\\
+0 &0 & 1& 0& 0& 1
+\end{bmatrix}
+=[I| (I + A + A^2)^{-1}].
+\]
+Logo, $(I + A + A^2)^{-1} = \begin{bmatrix}
+1 &0 &-4\\
+0 &1 &0\\
+0 &0 &1\\
+\end{bmatrix}
+= I - A$.
+\end{enumerate}
+
+
+\Exercise[title={1,8}] Sejam $T = \begin{bmatrix}
+-5&-12&-18\\
+ 2&  5&  6\\
+ 1&  2&  4
+\end{bmatrix}$, $I$ a matriz identidade $3 \times 3$, $X = \begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}$ e $0 = \begin{bmatrix}
+0\\
+0\\
+0
+\end{bmatrix}$. Expresse as equações a seguir como sistemas lineares homogêneos e determine suas soluções:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $(T - I)X = 0$
+\item $(T - 2I)X = 0$
+\end{enumerate}
+\end{multicols}
+\Answer Observe que $T - I = \begin{bmatrix}
+-6&-12&-18\\
+ 2&  4&  6\\
+ 1&  2&  3
+\end{bmatrix}$ e $T - 2I = \begin{bmatrix}
+-7&-12&-18\\
+ 2&  3&  6\\
+ 1&  2&  2
+\end{bmatrix}$.
+
+Para resolver os sistemas lineares homogêneos associados a estas matrizes, basta usar a eliminação de Gauss-Jordan:
+\begin{enumerate}
+
+\item
+\begin{align*}
+& \begin{amatrix}{3}
+-6&-12&-18& 0\\
+ 2&  4&  6& 0\\
+ 1&  2&  3& 0
+\end{amatrix}
+\grstep{ -\frac{1}{6}L_1 }
+\begin{amatrix}{3}
+ 1&  2&  3& 0\\
+ 2&  4&  6& 0\\
+ 1&  2&  3& 0
+\end{amatrix}
+\grstep{ L_2 - 2 L_1 }
+\begin{amatrix}{3}
+ 1&  2&  3& 0\\
+ 0&  0&  0& 0\\
+ 1&  2&  3& 0
+\end{amatrix}
+\grstep{ L_3 - L_1 }
+\begin{amatrix}{3}
+ 1&  2&  3& 0\\
+ 0&  0&  0& 0\\
+ 0&  0&  0& 0
+\end{amatrix}
+\end{align*}
+Assim, o sistema homogêneo é equivalente à equação $x + 2y + 3z = 0$, que é satisfeita por qualquer $(x,y,z)$ em que $x = -2y - 3z$, isto é, $(-2y - 3z, y, z)$, com $y,z$ arbitrários.
+\item
+\begin{align*}
+& \begin{amatrix}{3}
+-7&-12&-18& 0\\
+ 2&  3&  6& 0\\
+ 1&  2&  2& 0
+\end{amatrix}
+\grstep{ -\frac{1}{7}L_1 }
+\begin{amatrix}{3}
+ 1&12/7&18/7& 0\\
+ 2&  3&  6& 0\\
+ 1&  2&  2& 0
+\end{amatrix}
+\grstep{ L_2 - 2 L_1 }
+\begin{amatrix}{3}
+ 1&12/7&18/7& 0\\
+ 0& -3/7 & 6/7 & 0\\
+ 1&  2&  2& 0
+\end{amatrix}\\
+\grstep{ L_3 - L_1 }
+&
+\begin{amatrix}{3}
+ 1&12/7&18/7& 0\\
+ 0& -3/7 & 6/7 & 0\\
+ 0&  2/7& -4/7& 0
+\end{amatrix}
+\grstep{ -\frac{7}{3} L_2 }
+\begin{amatrix}{3}
+ 1&12/7&18/7& 0\\
+ 0& 1 & -2 & 0\\
+ 0&  2/7& -4/7& 0
+\end{amatrix}
+\grstep{ L_3 - \frac{2}{7} L_2 }
+\begin{amatrix}{3}
+ 1&12/7&18/7& 0\\
+ 0& 1 & -2 & 0\\
+ 0& 0 & 0& 0
+\end{amatrix}\\
+\grstep{ L_1 - \frac{12}{7} L_2 }
+&
+\begin{amatrix}{3}
+ 1& 0 & 6 & 0\\
+ 0& 1 & -2 & 0\\
+ 0& 0 & 0& 0
+\end{amatrix}
+\end{align*}
+Assim, o sistema homogêneo é equivalente a
+\[
+\systeme{
+x + 6 z = 0,
+y - 2 z = 0
+}
+\]
+que é satisfeito por qualquer $(x, y, z)$ em que $x = -6z$ e $y = 2z$, ou seja, qualquer $(-6z, 2z, z)$, com $z$ arbitrário.
+\end{enumerate}
+
+
+
+\Exercise[title={1,8}] Se $A = \begin{bmatrix}
+1 & 2\\3&4\\0&5
+\end{bmatrix}$, determine se existe $X = \begin{bmatrix}
+x&z&u\\y&w&v
+\end{bmatrix}$ tal que $A \cdot X = I \in M_{3 \times 3} (\R)$ (em outras palavras, verifique se alguma matriz $X$ pode ser \emph{``inversa à direita''} de $A$).
+
+\Answer Sejam $A = \begin{bmatrix}
+1 & 2\\
+3 & 4\\
+0 & 5
+\end{bmatrix}$ e $X = \begin{bmatrix}
+x & z & u\\
+y & w & v
+\end{bmatrix}$ tais que $AX = I$, isto é,
+\[
+\begin{bmatrix}
+1 & 2\\
+3 & 4\\
+0 & 5
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x & z & u\\
+y & w & v
+\end{bmatrix}
+=\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}.
+\]
+Então as colunas de $X$ são soluções dos sistemas
+\[
+\begin{cases}
+x+2y = 1\\
+3x+4y = 0\\
+5y = 0,
+\end{cases}
+\begin{cases}
+z+2w = 1\\
+3z+4w = 0\\
+5w = 0
+\end{cases}
+\text{ e }
+\begin{cases}
+u+2v = 1\\
+3u+4v = 0\\
+5v = 0.
+\end{cases}
+\]
+Como todos têm a mesma matriz de coeficientes, pode-se fazer um único escalonamento:
+\begin{align*}
+\begin{bmatrix}
+1 & 2 & 1 & 0 & 0 \\
+3 & 4 & 0 & 1 & 0 \\
+0 & 5 & 0 & 0 & 1
+\end{bmatrix}
+& \grstep{ L_2 - 3 L_1 }
+\begin{bmatrix}
+1 & 2 & 1 & 0 & 0 \\
+0 & -2 & -3 & 1 & 0 \\
+0 & 5 & 0 & 0 & 1
+\end{bmatrix}
+\grstep{ -\frac{1}{2} L_2 }
+\begin{bmatrix}
+1 & 2 & 1 & 0 & 0 \\
+0 & 1 & 3/2 & -1/2 & 0 \\
+0 & 5 & 0 & 0 & 1
+\end{bmatrix} \\
+& \grstep{ L_3 - 5 L_2 }
+\begin{bmatrix}
+1 & 2 & 1 & 0 & 0 \\
+0 & 1 & 3/2 & -1/2 & 0 \\
+0 & 0 & -15/2 & 5/2 & 1
+\end{bmatrix}
+\grstep{ L_1 - 2 L_2 }
+\begin{bmatrix}
+1 & 0 & -2 & 1 & 0 \\
+0 & 1 & 3/2 & -1/2 & 0 \\
+0 & 0 & -15/2 & 5/2 & 1
+\end{bmatrix}
+\end{align*}
+A última linha indica que $x,y,z,w,u,v$ precisariam satisfazer $0x + 0y = -15/2$, $0z + 0w = 5/2$ e $0u + 0v = 1$, o que é impossível. Logo não existe $X \in M_{2 \times 3} (\R)$ tal que $AX = I$.
+
+
+\Exercise[title={1,8}] Uma matriz quadrada $Q$ que satisfaz $Q^2 = Q$ é chamada de \emph{matriz idempotente}.
+Mostre que se $A$ for uma matriz $n \times n$ idempotente, então:
+\begin{enumerate}
+\item $I-A$ também é idempotente
+\item $(2A-I)^{-1} = 2A - I$
+\end{enumerate}
+
+\Answer
+\begin{enumerate}
+
+\item Se $A$ é idempotente então
+\[
+(I - A)^2
+= (I - A)(I - A)
+= I^2 - IA - AI + A^2
+= I - A - A + A
+= I - A,
+\]
+ou seja, $I-A$ também é idempotente.
+
+\item Se $A$ é idempotente então:
+\[
+(2A - I) (2A - I)
+= 4A^2 - (2A)I - I(2A) + I^2
+= 4A - 2A - 2A + I
+= I,
+\]
+Isto significa que $(2A-I)^{-1} = 2A - I$
+\end{enumerate}
+
+
+\Exercise[title={1,8}] Para que valores de $m$ o sistema $\begin{cases}
+ -x    -4z =-6 \\
+ 2x    +9z =13 \\
+     y -3z =-1 \\
+-5x-3y-11z =m-30 \\
+\end{cases}$ \textbf{não} tem solução?
+\Answer Aplicando-se o método de Gauss-Jordan à matriz aumentada, resulta:
+\begin{align*}
+&
+\begin{amatrix}{3}
+-1 &  0 & -4  & -6 \\
+ 2 &  0 &  9  & 13 \\
+ 0 &  1 & -3  & -1 \\
+-5 & -3 & -11 & m-30
+\end{amatrix}
+\grstep{ -L_1 }
+\begin{amatrix}{3}
+ 1 &  0 &  4  &  6 \\
+ 2 &  0 &  9  & 13 \\
+ 0 &  1 & -3  & -1 \\
+-5 & -3 & -11 & m-30
+\end{amatrix}
+\grstep{ L_2 - 2 L_1 }
+\begin{amatrix}{3}
+ 1 &  0 &   4 &  6 \\
+ 0 &  0 &   1 &  1 \\
+ 0 &  1 &  -3 & -1 \\
+-5 & -3 & -11 & m-30
+\end{amatrix}\\
+\grstep{ L_4 +5 L_1 }
+&
+\begin{amatrix}{3}
+1 &  0 &  4 &  6 \\
+0 &  0 &  1 &  1 \\
+0 &  1 & -3 & -1 \\
+0 & -3 &  9 &  m
+\end{amatrix}
+\grstep{ L_2 \swap L_3 }
+\begin{amatrix}{3}
+1 &  0 &  4 &  6 \\
+0 &  1 & -3 & -1 \\
+0 &  0 &  1 &  1 \\
+0 & -3 &  9 &  m
+\end{amatrix}
+\grstep{ L_4 +3 L_2 }
+\begin{amatrix}{3}
+1 & 0 &  4 &  6 \\
+0 & 1 & -3 & -1 \\
+0 & 0 &  1 &  1 \\
+0 & 0 &  0 &  m-3
+\end{amatrix}\\
+\grstep{ L_2 +3 L_3 }
+&
+\begin{amatrix}{3}
+1 & 0 & 4 &  6 \\
+0 & 1 & 0 &  2 \\
+0 & 0 & 1 &  1 \\
+0 & 0 & 0 &  m-3
+\end{amatrix}
+\grstep{ L_1 -4 L_3 }
+\begin{amatrix}{3}
+1 & 0 & 0 &  2 \\
+0 & 1 & 0 &  2 \\
+0 & 0 & 1 &  1 \\
+0 & 0 & 0 &  m-3
+\end{amatrix}.
+\end{align*}
+e é equivalente por linhas a
+\[
+\begin{amatrix}{3}
+1 & 0 & 0 & 2 \\
+0 & 1 & 0 & 2 \\
+0 & 0 & 1 & 1 \\
+0 & 0 & 0 & m-3
+\end{amatrix}.
+\]
+Então para que não existam soluções, é preciso que $m-3 \neq 0$, isto é, que $m \neq 3$.
+\end{ExerciseList}
+
+\medskip
+\begin{note}
+As questões anteriores passam a valer 2,0 pontos caso:
+\begin{enumerate}
+\item \textbf{(0,1) Organize} respostas legíveis para \textbf{tudo} o que foi perguntado
+\item \textbf{(0,1) Explique} a resolução por escrito, mostrando onde usou a teoria estudada
+\end{enumerate}
+\end{note}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

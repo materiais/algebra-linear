@@ -1,0 +1,345 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova III}
+\newcommand*\turma{PRO112-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{06/11/2017}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Resolva (integralmente) apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Suponha que
+$\alpha = \left\{ (1,1), (-1,1)\right\}$
+e
+$\beta = \{ (3,1), (1,0) \}$ são bases de $\R^2$ e que $v, w \in \R^2$. Utilize matrizes de mudança de base para:
+\begin{multicols}{2}
+\begin{enumerate}
+\item Obter $[v]_{\beta}$, sabendo que
+$[v]_{\alpha} =
+\begin{bmatrix}
+2\\1
+\end{bmatrix}$.
+\item Obter $[w]_{\alpha}$, sabendo que
+$[w]_{\beta} =
+\begin{bmatrix}
+-3\\8
+\end{bmatrix}$.
+\end{enumerate}
+\end{multicols}
+\Answer
+\begin{enumerate}
+\item \label{it:ab}A matriz que faz a mudança da base $\alpha$ para a base $\beta$ é construída com as coordenadas de cada vetor de $\alpha$ na base $\beta$. Como
+\[
+( 1, 1) = 1 \cdot (3,1) + (-2) \cdot (1,0)
+\quad \text{ e } \quad
+(-1, 1) = 1 \cdot (3,1) + (-4) \cdot (1,0)
+\]
+tem-se $[I]_{\beta}^{\alpha} =
+\begin{bmatrix}
+1 & 1 \\ -2 & -4
+\end{bmatrix}$ e consequentemente
+$[v]_{\beta}
+= [I]_{\beta}^{\alpha} \cdot [v]_{\alpha}
+=
+\begin{bmatrix}
+1 & 1 \\ -2 & -4
+\end{bmatrix}
+\begin{bmatrix}
+2\\1
+\end{bmatrix}
+=
+\begin{bmatrix}
+3\\-8
+\end{bmatrix}
+$.
+\item Comparando com  \eqref{it:ab}, nota-se que $[v]_{\beta} = - [w]_{\beta}$ então
+\[
+  [w]_{\alpha}
+= [I]_{\alpha}^{\beta} \cdot [w]_{\beta}
+= [I]_{\alpha}^{\beta} \cdot ( -[w]_{\beta} )
+= - ([I]_{\alpha}^{\beta} \cdot [w]_{\beta})
+= - ([w]_{\alpha})
+= - \begin{bmatrix}
+2\\1
+\end{bmatrix}
+= \begin{bmatrix}
+-2\\-1
+\end{bmatrix}.
+\]
+\textbf{Solução 2}: Pode-se construir a matriz $[I]_{\alpha}^{\beta}$ como em \eqref{it:ab}, e então calcular $[w]_{\alpha}
+= [I]_{\alpha}^{\beta} \cdot [w]_{\beta}$.
+
+\textbf{Solução 3}: Também é possível usar o fato de que
+\[
+[I]_{\alpha}^{\beta}
+= ( [I]_{\beta}^{\alpha} )^{-1}
+= \begin{bmatrix}
+1 & 1 \\ -2 & -4
+\end{bmatrix}^{-1}
+= \frac{1}{-2}\begin{bmatrix}
+-4 & -1 \\ 2 & 1
+\end{bmatrix}
+= \begin{bmatrix}
+2 & 1/2 \\ -1 & -1/2
+\end{bmatrix}
+.
+\]
+Assim,
+$[w]_{\alpha}
+= [I]_{\alpha}^{\beta} \cdot [w]_{\beta}
+=
+\begin{bmatrix}
+2 & 1/2 \\ -1 & -1/2
+\end{bmatrix}
+\begin{bmatrix}
+-3\\8
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2\\-1
+\end{bmatrix}
+$.
+\end{enumerate}
+
+\Exercise[title={2,5}] Seja $T: \R^3 \to \R$ uma função tal que
+$T(1,0,0) = 1$,
+$T(2,1,0) = 3$ e
+$T(0,0,1) = 5$. Supondo que $T$ seja uma transformação linear, verifique se $T$ é injetora. Justifique sua resposta.
+\Answer Como $T$ é uma transformação linear, $\operatorname{Im}T$ é um subespaço vetorial de $\R$, e consequentemente $\dim{\operatorname{Im}T} \leq \dim{\R} = 1$. Então, como $\dim{N(T)} + \dim{\operatorname{Im}T} = \dim{\operatorname{Dom}T}$, tem-se
+$\dim{N(T)} = 3 - \dim{\operatorname{Im}T} \geq 3 - 1 = 2$, ou seja, $N(T) \neq \{ \vec{0} \}$ e $T$ não é injetora. Este argumento é válido para qualquer transformação linear $T: \R^3 \to \R$, independentemente de sua regra.
+
+\textbf{Solução 2}: Dado um vetor qualquer $(x,y,z) \in \R^3$, se
+\[
+(x,y,z) = k_1 (1,0,0) + k_2 (2,1,0) + k_3 (0,0,1) = (k_1+2k_2,k_2, k_3)
+\]
+então $k_1 = x-2y$, $k_2 = y$ e $k_3 = z$. Disto, pode-se deduzir que $T$ é dada por
+\begin{align*}
+T(x,y,z)
+&= T( (x-2y) (1,0,0) + y (2,1,0) + z (0,0,1) )\\
+&= (x-2y)T(1,0,0) + y T(2,1,0) + z T(0,0,1)
+= (x-2y) + 3y + 5z
+= x + y + 5z.
+\end{align*}
+Em particular, o núcleo de $T$ é o conjunto dos $(x,y,z) \in \R^3$ tais que $T(x,y,z) = x + y + 5z = 0$, isto é, um plano que passa pela origem. Portanto, como $N(T) \neq \{ \vec{0} \}$, $T$ não é injetora.
+
+
+\Exercise[title={2,5}] Dê um exemplo de um isomorfismo entre $\R^3$ e o espaço vetorial $V$ formado pelas matrizes triangulares superiores de ordem $2 \times 2$. Sua resposta deve explicitar a regra/fórmula desse isomorfismo, e justificar a injetividade e a sobrejetividade da transformação linear escolhida.
+\Answer Uma forma bastante natural de definir um isomorfismo $T: \R^3 \to V$ é considerar $T(x,y,z) = \begin{bmatrix}
+x & y\\0 & z
+\end{bmatrix}$. Tal função é linear pois
+\begin{align*}
+&T( \alpha(x_1,y_1,z_1) + \beta(x_2,y_2,z_2) )\\
+& = T( \alpha x_1+\beta x_2, \alpha y_1+\beta y_2, \alpha z_1+\beta z_2)
+=
+\begin{bmatrix}
+\alpha x_1+\beta x_2 & \alpha y_1+\beta y_2 \\0 & \alpha z_1+\beta z_2
+\end{bmatrix}\\
+& =
+\alpha
+\begin{bmatrix}
+x_1 & y_1\\0&z_1
+\end{bmatrix}
++\alpha
+\begin{bmatrix}
+x_2 & y_2\\0&z_2
+\end{bmatrix}
+=T(x_1,y_1,z_1)+T(x_2,y_2,z_2).
+\end{align*}
+
+Além disso, $T$ é injetiva pois $T(x,y,z) = \begin{bmatrix}
+0& 0\\0&0
+\end{bmatrix}$ só ocorre se $x=y=z=0$. Logo, como $\dim{ \R^3 } = 3 = \dim{ V }$, $T$ também é sobrejetora e, portanto, um isomorfismo.
+\Exercise[title={2,5}] Mostre que se $T: P_3 \to P_3$ é definida por $T(a+bx+cx^2+dx^3) = (a-c)x^2+(2c)$, então $T$ é uma transformação linear. Exiba uma base para $N(T)$ e uma base para $\operatorname{Im}(T)$.
+\Answer  Dados $q_1(x) = a_1+b_1x+c_1x^2+d_1x^3$ e $q_2(x) = a_2+b_2x+c_2x^2+d_2x^3$, e $\alpha \in \R$, tem-se:
+\begin{align*}
+T(\alpha q_1)
+&= T((\alpha a_1)+(\alpha b_1)x+(\alpha c_1)x^2+(\alpha d_1)x^3)\\
+&= (\alpha a_1- \alpha c_1)x^2+(2 \alpha c_1)
+= \alpha [(a_1- c_1)x^2+(2 c_1)]
+=\alpha T(q_1)
+\end{align*}
+e
+\begin{align*}
+T(q_1+q_2)
+&= T((a_1 + a_2)+(b_1+b_2)x+(c_1+c_2)x^2+(d_1+d_2)x^3)\\
+&= (a_1+a_2 - (c_1+c_2))x^2+(2 (c_1+c_2))\\
+& = [(a_1- c_1)x^2+(2 c_1)] + [(a_2- c_2)x^2+(2 c_2)]
+ = T(q_1)+ T(q_2).
+\end{align*}
+
+Um polinômio $q(x) = a+bx+cx^2+dx^3$ está no núcleo de $T$ se, e somente se,
+\[
+T(a+bx+cx^2+dx^3) = (a-c)x^2+(2c) = 0+0x+0x^2+0x^3,
+\]
+Mas isso ocorre quando $a-c = 0$ e $c=0$, isto é, $a=c=0$, para quaisquer $b\in \R$ e $d\in \R$. Logo,
+$N(T) = \{ bx+dx^3 \in P_3 \mid b,d \in \R \}
+= \operatorname{ger}\{x, x^3\}$. Como $q(x) = x^3$ não é um múltiplo (constante) de $r(x) = x$, tais vetores são L.I., e formam uma base de $N(T)$.
+
+Por outro lado, como $T(a+bx+cx^2+dx^3) = (a-c)x^2+(2c)$, tem-se $\operatorname{Im}(T) = \operatorname{ger}\{ x^2, 1 \}$. Como os vetores deste conjunto não são múltiplos um do outro, formam uma base de $\operatorname{Im}(T)$.
+
+
+\Exercise[title={2,5}] Seja $R: \R^2 \to \R^2$ a transformação linear que rotaciona os vetores de $\R^2$ em torno da origem segundo um ângulo $\pi/2$ no sentido anti-horário. Considere também a transformação linear $T: \R^2 \to \R^2$, definida por $T(x,y) = (2x,x+y)$. Obtenha a matriz $[ T \circ R ]_\alpha^\alpha$ que representa a transformação linear $T(R(x,y))$ em relação à base $\alpha = \{ (1,0), (0,1) \}$ de $\R^2$.
+\Answer Para construir a matriz de $T \circ R$ basta saber o resultado de aplicá-la a cada vetor da base $\alpha$. Conforme a definição de $R$, pode-se dizer que $R(1,0) = (0,1)$ e $R(0,1)=(-1,0)$. Então, a composição $T \circ R$ satisfaz
+\[
+\begin{cases}
+T(R(1,0)) & =\ T(0,1) = (0,1) = \mathbf{0}(1,0) + \mathbf{1}(0,1)\\
+T(R(0,1)) & =\ T(-1,0) = (-2,-1) = \mathbf{(-2)}(1,0) + \mathbf{(-1)}(0,1)
+\end{cases}
+\]
+Portanto,
+$[ T \circ R ]_\alpha^\alpha
+=
+\begin{bmatrix}
+0 & -2\\
+1	 & -1
+\end{bmatrix}$.
+
+\textbf{Solução 2}: Sabe-se que
+$[ T \circ R ]_\alpha^\alpha
+=[ T ]_\alpha^\alpha \cdot [ R ]_\alpha^\alpha$. Então basta obter ambas as matrizes e calcular o seu produto.
+
+Como $R(1,0) = (0,1)$ e $R(0,1)=(-1,0)$, tem-se
+$[ R ]_\alpha^\alpha
+=
+\begin{bmatrix}
+0 & -1\\
+1 &  0
+\end{bmatrix}$.
+
+Por outro lado, $T(1,0) = (2,1)$ e $T(0,1)=(0,1)$, então $[ T ]_\alpha^\alpha
+=
+\begin{bmatrix}
+2 & 0\\
+1 & 1
+\end{bmatrix}$.
+
+Portanto,
+$
+[ T \circ R ]_\alpha^\alpha =
+\begin{bmatrix}
+2 & 0\\
+1 & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+0 & -1\\
+1 &  0
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & -2\\
+1 & -1
+\end{bmatrix}$.
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

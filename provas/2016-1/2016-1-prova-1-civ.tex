@@ -1,0 +1,574 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newtheorem*{note}{Observação}
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+\newcommand{\swap}{\leftrightarrow}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{CIV122-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{30/08/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 6 questões (apenas 5 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={1,8}]
+Para $A$ e $B$ inversíveis, prove o que for verdadeiro e dê contra-exemplos para as demais:
+
+\begin{multicols}{2}
+\begin{enumerate}
+\item $AB$ é inversível
+\item $A+B$ é inversível
+\item $A^T$ é inversível
+\item $A$ não pode ser antissimétrica
+\end{enumerate}
+\end{multicols}
+\Answer
+\begin{enumerate}
+\item \textbf{Verdadeiro}. Se $A$ e $B$ são quaisquer matrizes inversíveis então
+\[(AB)(B^{-1}A^{-1}) = A A^{-1} = I,\]
+o que significa que $AB$ é inversível, e sua inversa é $B^{-1}A^{-1}$.
+\item \textbf{Falso}. Se $A$ é qualquer matriz inversível (por exemplo $A=I$), e $B = -A$ então $B$ também é inversível e $A + B = A+(-A) = 0$, que não é uma matriz inversível.
+\item \textbf{Verdadeiro}. Se $M$ é uma matriz inversível, então
+\[
+M^T \cdot (M^{-1})^T
+= (M^{-1} \cdot M)^T
+= I^T
+= I.
+\]
+Logo, $M^T$ também é inversível, e tem inversa $(A^{-1})^T$.
+\item \textbf{Falso}. A matriz $A = \begin{bmatrix}
+0 & 3\\
+-3 & 0
+\end{bmatrix}$ é antissimétrica e inversível, e sua inversa também é antissimétrica: $A^{-1} = \begin{bmatrix}
+0 & -1/3 \\1/3 & 0
+\end{bmatrix}$.
+\end{enumerate}
+
+
+
+\Exercise[title={1,8}] Seja $D=\begin{bmatrix}
+3 & 0\\
+0 & 2\\
+\end{bmatrix}$ e $Q=\begin{bmatrix}
+3 & 1\\
+5 & 2
+\end{bmatrix}$. Calcule e verifique se são simétricas as matrizes:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $A = Q D Q^{-1}$
+\item $B = Q D^2 - A^2 Q$
+\end{enumerate}
+\end{multicols}
+\Answer Primeiramente, deve ser encontrada a inversa de $Q$, e isso pode ser feito usando a eliminação de Gauss-Jordan:
+\begin{align*}
+\begin{bmatrix}
+3 & 1 & 1 & 0 \\
+5 & 2 & 0 & 1
+\end{bmatrix}
+& \grstep{ \frac{1}{3}L_1 }
+\begin{bmatrix}
+1 & 1/3 & 1/3 & 0 \\
+5 & 2 & 0 & 1
+\end{bmatrix}
+\grstep{ L_2 - 5 L_1 }
+\begin{bmatrix}
+1 & 1/3 & 1/3 & 0 \\
+0 & 1/3 & -5/3 & 1
+\end{bmatrix} \\
+&
+\grstep{ 3L_2 }
+\begin{bmatrix}
+1 & 1/3 & 1/3 & 0 \\
+0 & 1 & -5 & 3
+\end{bmatrix}
+\grstep{ L_1-\frac{1}{3} L_2 }
+\begin{bmatrix}
+1 & 0 & 2 & -1 \\
+0 & 1 & -5 & 3
+\end{bmatrix}
+\Rightarrow
+Q^{-1}=
+\begin{bmatrix}
+2 & -1 \\
+-5 & 3
+\end{bmatrix}
+\end{align*}
+No entanto, no caso $2 \times 2$ é mais rápido usar a fórmula: $\displaystyle \begin{bmatrix}
+a & b\\ c & d
+\end{bmatrix}^{-1} = \frac{1}{ad-bc} \begin{bmatrix}
+d & -b\\ -c & a
+\end{bmatrix}$.
+
+\begin{enumerate}
+\item $A
+= QDQ^{-1}
+=
+\begin{bmatrix}
+3 & 1\\
+5 & 2
+\end{bmatrix}
+\begin{bmatrix}
+3 & 0\\
+0 & 2
+\end{bmatrix}
+\begin{bmatrix}
+2 & -1 \\
+-5 & 3
+\end{bmatrix}
+=
+\begin{bmatrix}
+9 & 2\\
+15 & 4
+\end{bmatrix}
+\begin{bmatrix}
+2 & -1 \\
+-5 & 3
+\end{bmatrix}
+=
+\begin{bmatrix}
+8 & -3 \\
+10 & -3
+\end{bmatrix}
+$, que não é uma matriz simétrica.
+\item Usando a definição de $A$, e as propriedades das operações com matrizes, tem-se:
+\begin{align*}
+Q D^2 - A^2 Q
+& = Q D^2 - (QDQ^{-1})^2 Q
+  = Q D^2 - (QDQ^{-1})(QDQ^{-1}) Q \\
+& = Q D^2 - QD(Q^{-1}Q)D(Q^{-1}Q)
+  = Q D^2 - QDIDI
+  = Q D^2 - QD^2
+  = 0
+\end{align*}
+O mesmo resultado pode ser obtido usando os valores numéricos de $A$, $Q$ e $D$, e fazendo um pouco mais de cálculo:
+\begin{align*}
+Q D^2 - A^2 Q
+& =
+\begin{bmatrix}
+3 & 1 \\
+5 & 2
+\end{bmatrix}
+\begin{bmatrix}
+3 & 0 \\
+0 & 2
+\end{bmatrix}^2
+-
+\begin{bmatrix}
+ 8 & -3 \\
+10 & -3
+\end{bmatrix}^2
+\begin{bmatrix}
+3 & 1 \\
+5 & 2
+\end{bmatrix}
+ =
+\begin{bmatrix}
+3 & 1 \\
+5 & 2
+\end{bmatrix}
+\begin{bmatrix}
+9 & 0 \\
+0 & 4
+\end{bmatrix}
+-
+\begin{bmatrix}
+34 & -15 \\
+50 & -21
+\end{bmatrix}
+\begin{bmatrix}
+3 & 1 \\
+5 & 2
+\end{bmatrix} \\
+& =
+\begin{bmatrix}
+27 & 4 \\
+45 & 8
+\end{bmatrix}
+-
+\begin{bmatrix}
+27 & 4 \\
+45 & 8
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+\end{align*}
+Portanto, $Q D^2 - A^2 Q = 0$, que é uma matriz simétrica.
+\end{enumerate}
+
+\Exercise[title={1,8}] Determine quais das seguintes matrizes $A = (a_{ij}) \in M_{3 \times 3} (\R)$ são simétricas ($A^T = A$), e quais são antissimétricas ($A^T = -A$). As entradas $a_{ij}$ de cada matriz são dadas por:
+\begin{multicols}{3}
+\begin{enumerate}
+\item $a_{ij} = i + 6 (i - j)^3 - j$
+\item $a_{ij} = i^3 - 3ij + 1 + j^3$
+\item $a_{ij} = i(j+1)$
+\end{enumerate}
+\end{multicols}
+\Answer
+\begin{enumerate}
+\item Se $a_{ij} = i + 6 (i - j)^3 - j$, então
+ $A = \begin{bmatrix}
+0 & -7 & -50 \\
+7 & 0 & -7\\
+50 & 7 & 0
+\end{bmatrix} = -A^T$, ou seja, $A$ é antissimétrica.
+\item Se $a_{ij} = i^3 - 3ij + 1 + j^3$, então
+$A = \begin{bmatrix}
+0 & 4 & 20\\
+4 & 5 & 18\\
+20 & 18 & 28
+\end{bmatrix} = A^T$, ou seja, $A$ é simétrica.
+\item Se $a_{ij} = i(j+1)$, então
+$A = \begin{bmatrix}
+2 & 3 & 4 \\
+4 & 6 & 8 \\
+6 & 9 & 12
+\end{bmatrix}$, ou seja, $A$ não é simétrica nem antissimétrica.
+\end{enumerate}
+
+
+\Exercise[title={1,8}] Obtenha os conjuntos de soluções dos seguintes sistemas lineares homogêneos, sendo $0$ a matriz nula $4 \times 1$, $I$ a matriz identidade $4 \times 4$ e $P = \begin{bmatrix}
+ 3 &  4 &  2 & 1\\
+ 0 &  1 &  0 & 0\\
+ 0 &  0 &  1 & 0\\
+-2 & -4 & -2 & 0
+\end{bmatrix}$.
+\begin{multicols}{2}
+\begin{enumerate}
+\item $(P - I)X = 0$
+\item $(P - 2I)X = 0$
+\end{enumerate}
+\end{multicols}
+\Answer Observe que $P - I = \begin{bmatrix}
+ 2 &  4 &  2 & 1\\
+ 0 &  0 &  0 & 0\\
+ 0 &  0 &  0 & 0\\
+-2 & -4 & -2 & -1
+\end{bmatrix}$ e $P - 2I = \begin{bmatrix}
+ 1 &  4 &  2 & 1\\
+ 0 & -1 &  0 & 0\\
+ 0 &  0 & -1 & 0\\
+-2 & -4 & -2 & -1
+\end{bmatrix}$.
+
+Para resolver os sistemas lineares homogêneos associados a estas matrizes, basta usar a eliminação de Gauss-Jordan:
+\begin{enumerate}
+
+\item
+\begin{align*}
+& \begin{amatrix}{4}
+ 2 &  4 &  2 & 1 & 0\\
+ 0 &  0 &  0 & 0 & 0\\
+ 0 &  0 &  0 & 0 & 0\\
+-2 & -4 & -2 & -1 & 0
+\end{amatrix}
+& \grstep{ \frac{1}{2}L_1 }
+\begin{amatrix}{4}
+ 1 &  2 &  1 & 1/2 & 0\\
+ 0 &  0 &  0 & 0 & 0\\
+ 0 &  0 &  0 & 0 & 0\\
+-2 & -4 & -2 & -1 & 0
+\end{amatrix}
+\grstep{ L_2 \swap L_4 }
+\begin{amatrix}{4}
+ 1 &  2 &  1 & 1/2 & 0\\
+-2 & -4 & -2 & -1 & 0\\
+ 0 &  0 &  0 & 0 & 0\\
+ 0 &  0 &  0 & 0 & 0
+\end{amatrix}\\
+& \grstep{ L_2 +2 L_1 }
+\begin{amatrix}{4}
+ 1 &  2 &  1 & 1/2 & 0\\
+ 0 &  0 &  0 & 0 & 0\\
+ 0 &  0 &  0 & 0 & 0\\
+ 0 &  0 &  0 & 0 & 0
+\end{amatrix}
+\end{align*}
+
+Assim, o sistema homogêneo é equivalente a $x_1 + 2 x_2 + x_3 + \frac{1}{2}x_4 = 0$, que é satisfeito por qualquer $(x_1, x_2, x_3, x_4)$ em que $x_1 = -2 x_2 -x_3 - \frac{1}{2}x_4$, isto é, $(-2 x_2 -x_3 - \frac{1}{2}x_4, x_2, x_3, x_4)$, com $x_2,x_3,x_4$ arbitrários.
+\item
+\begin{align*}
+& \begin{amatrix}{4}
+ 1 &  4 &  2 & 1 & 0\\
+ 0 & -1 &  0 & 0 & 0\\
+ 0 &  0 & -1 & 0 & 0\\
+-2 & -4 & -2 & -2 & 0
+\end{amatrix}
+\grstep{ L_4 + 2 L_1 }
+\begin{amatrix}{4}
+ 1 &  4 &  2 & 1 & 0\\
+ 0 & -1 &  0 & 0 & 0\\
+ 0 &  0 & -1 & 0 & 0\\
+ 0 &  4 &  2 & 0 & 0
+\end{amatrix}
+\grstep{ -L_2 }
+\begin{amatrix}{4}
+ 1 & 4 &  2 & 1 & 0\\
+ 0 & 1 &  0 & 0 & 0\\
+ 0 & 0 & -1 & 0 & 0\\
+ 0 & 4 &  2 & 0 & 0
+\end{amatrix}\\
+\grstep{ L_4 - 4 L_2 }
+& \begin{amatrix}{4}
+ 1 & 4 &  2 & 1 & 0\\
+ 0 & 1 &  0 & 0 & 0\\
+ 0 & 0 & -1 & 0 & 0\\
+ 0 & 0 &  2 & 0 & 0
+\end{amatrix}
+\grstep{ -L_3 }
+\begin{amatrix}{4}
+ 1 & 4 & 2 & 1 & 0\\
+ 0 & 1 & 0 & 0 & 0\\
+ 0 & 0 & 1 & 0 & 0\\
+ 0 & 0 & 2 & 0 & 0
+\end{amatrix}
+\grstep{ L_4-2L_3 }
+\begin{amatrix}{4}
+ 1 & 4 & 2 & 1 & 0\\
+ 0 & 1 & 0 & 0 & 0\\
+ 0 & 0 & 1 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0
+\end{amatrix} \\
+\grstep{ L_1-2L_3 }
+&\begin{amatrix}{4}
+ 1 & 4 & 0 & 1 & 0\\
+ 0 & 1 & 0 & 0 & 0\\
+ 0 & 0 & 1 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0
+\end{amatrix}
+\grstep{ L_1-4L_2 }
+\begin{amatrix}{4}
+ 1 & 0 & 0 & 1 & 0\\
+ 0 & 1 & 0 & 0 & 0\\
+ 0 & 0 & 1 & 0 & 0\\
+ 0 & 0 & 0 & 0 & 0
+\end{amatrix}
+\end{align*}
+
+Assim, o sistema homogêneo é equivalente a
+\[
+\systeme{
+x_1 + x_4 = 0,
+x_2 = 0,
+x_3 = 0
+}
+\]
+que é satisfeito por qualquer $(x_1, x_2, x_3, x_4)$ em que $x_1 = -x_4$ e os demais $x_i$'s são nulos, isto é, $(-x_4, 0, 0, x_4)$, com $x_4$ arbitrário.
+\end{enumerate}
+
+\Exercise[title={1,8}] Determine as soluções do sistema linear $\begin{cases}
+4x + 3y - z -2 w = 8\\
+5x + 4y - z -3 w = 11.
+\end{cases}
+$
+\Answer A eliminação de Gauss-Jordan consiste dos seguintes passos:
+\begin{align*}
+& \begin{amatrix}{4}
+4 & 3 & -1 & -2 &  8\\
+5 & 4 & -1 & -3 & 11\\
+\end{amatrix}
+\grstep{ \frac{1}{4}L_1 }
+\begin{amatrix}{4}
+1 & 3/4 & -1/4 & -1/2 &  2\\
+5 & 4 & -1 & -3 & 11\\
+\end{amatrix}
+\grstep{ L_2 -5 L_1 }
+\begin{amatrix}{4}
+1 & 3/4 & -1/4 & -1/2 &  2\\
+0 & 1/4 & 1/4 & -1/2 & 1\\
+\end{amatrix}\\
+&\grstep{ 4L_2 }
+\begin{amatrix}{4}
+1 & 3/4 & -1/4 & -1/2 &  2\\
+0 & 1 & 1 & -2 & 4\\
+\end{amatrix}
+\grstep{ L_1-\frac{3}{4}L_2 }
+\begin{amatrix}{4}
+1 & 0 & -1 & 1 & -1\\
+0 & 1 & 1 & -2 & 4\\
+\end{amatrix}
+\end{align*}
+Disto conclui-se que o sistema original é equivalente a
+\[
+\begin{cases}
+1x + 0y - z  + w = -1\\
+0x + 1y + z -2 w = 4.
+\end{cases}
+\]
+Assim, as soluções do sistema são da forma $(x,y,z,w)$, com $x=-1+z-w$ e $y = 4-z+2w$.
+
+\Exercise[title={1,8}] Uma matriz quadrada $Q$ com entradas em $\R$ será denominada \emph{ortogonal} se $Q^{-1} = Q^T$.
+\begin{enumerate}
+\item Liste todas as matrizes $Q$ ortogonais de tamanho $1 \times 1$.
+\item Verifique que a matriz $R =\begin{bmatrix}
+\cos(\theta)& \sen(\theta) \\
+-\sen(\theta) & \cos(\theta)
+\end{bmatrix}$ é ortogonal, qualquer que seja $\theta \in \R$.
+\item Explique porque o produto de matrizes ortogonais também é uma matriz ortogonal.
+\end{enumerate}
+
+\Answer
+\begin{enumerate}
+\item Se $A=\begin{bmatrix}a_{11}\end{bmatrix}$, então $A^{-1} = \begin{bmatrix}1/a_{11}\end{bmatrix}$ e $A^T = A$. Assim,
+\[
+A \text{ é ortogonal}
+\Leftrightarrow A^{-1} = A^T
+\Leftrightarrow a_{11} = 1/a_{11}
+\Leftrightarrow a_{11}^2 = 1
+\Leftrightarrow a_{11} = \pm 1.
+\]
+Ou seja, as únicas matrizes ortogonais de tamanho $1 \times 1$ são $A=\begin{bmatrix}1\end{bmatrix} = I$ e $A=\begin{bmatrix}-1\end{bmatrix} = -I$.
+\item Se $R =\begin{bmatrix}
+\cos(\theta)& \sen(\theta) \\
+-\sen(\theta) & \cos(\theta)
+\end{bmatrix}$
+então $R^T =\begin{bmatrix}
+\cos(\theta)& -\sen(\theta) \\
+\sen(\theta) & \cos(\theta)
+\end{bmatrix}$.
+Consequentemente,
+\[
+R \cdot R^T
+\begin{bmatrix}
+\cos^2(\theta) + \sen^2(\theta) & -\cos(\theta)\sen(\theta) + \sen(\theta)\cos(\theta) \\
+- \sen(\theta)\cos(\theta) + \cos(\theta)\sen(\theta) & \cos^2(\theta) + \sen^2(\theta)
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}
+= I
+\]
+Portanto, $R^{-1} = R^T$, ou seja, $R$ é ortogonal.
+\item Sejam $A$ e $B$ matrizes $n \times n$ ortogonais. Então $A^{-1} = A^T$ e $B^{-1} = B^T$. Logo,
+\[
+(AB)^{-1} = B^{-1} A^{-1} = B^T A^T = (AB)^T,
+\]
+ou seja, $AB$ é ortogonal.
+
+\end{enumerate}
+\end{ExerciseList}
+
+\medskip
+\begin{note}
+As questões anteriores passam a valer 2,0 pontos caso:
+\begin{enumerate}
+\item \textbf{(0,1) Organize} respostas legíveis para \textbf{tudo} o que foi perguntado
+\item \textbf{(0,1) Explique} a resolução por escrito, mostrando onde usou a teoria estudada
+\end{enumerate}
+\end{note}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

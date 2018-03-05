@@ -1,0 +1,566 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\im[1]{\operatorname{Im}\left(#1\right)}
+\newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+\newcommand{\swap}{\leftrightarrow}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova III}
+\newcommand*\turma{CIV122-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{25/05/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 5 questões (apenas 4 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+
+\Exercise[title={2,5}] Considere as bases $B = \left\{ \begin{bmatrix}
+-1 & 0\\ 0 & 0
+\end{bmatrix}, \begin{bmatrix}
+ 2 & 4\\ 0 & 0
+\end{bmatrix}, \begin{bmatrix}
+-1 & 2\\ 0 & 2
+\end{bmatrix}\right\}$ e $C = \left\{ \begin{bmatrix}
+1 & 0\\ 0 & 0
+\end{bmatrix}, \begin{bmatrix}
+1 & 1\\ 0 & 0
+\end{bmatrix}, \begin{bmatrix}
+1 & 1\\ 0 & 1
+\end{bmatrix}\right\}$ do espaço vetorial das matrizes triangulares superiores $2 \times 2$, isto é, $V = \left\{ \begin{bmatrix}
+a & b\\ 0 & c
+\end{bmatrix} \mid a,b,c \in \R \right\}$.
+\begin{enumerate}
+\item (2,0) Determine as matrizes de mudança de base de $B$ para $C$ e de $C$ para $B$.
+\item (0,5) Se $v \in V$ é o vetor cujas coordenadas na base $B$ são dadas por $[v]_B =
+\begin{bmatrix}
+3 \\
+2 \\
+1
+\end{bmatrix}$, utilize o item anterior para encontrar as coordenadas de $v$ em relação à base $C$, ou seja, $[v]_C$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item
+Para encontrar a matriz de mudança da base $B$ para a base $C$, é preciso escrever cada vetor de $B$ como combinação linear dos vetores de $C$. Assim, como
+\[
+a
+\begin{bmatrix}
+1 & 0\\ 0 & 0
+\end{bmatrix}
++ b
+\begin{bmatrix}
+1 & 1\\ 0 & 0
+\end{bmatrix}
++ c
+\begin{bmatrix}
+1 & 1\\ 0 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+a+b+c & b+c\\ 0 & c
+\end{bmatrix},\forall a,b,c \in \R,
+\]
+tem-se
+\begin{align*}
+\begin{bmatrix}
+-1 & 0\\ 0 & 0
+\end{bmatrix}
+& =
+\begin{bmatrix}
+a+b+c & b+c\\ 0 & c
+\end{bmatrix}
+\Leftrightarrow
+\systeme{
+a+b+c=-1,
+b+c=0,
+c=0
+}
+\Leftrightarrow
+\begin{cases}
+a=-1\\
+b=0\\
+c=0
+\end{cases} \\
+%--------------------------
+\begin{bmatrix}
+2 & 4\\ 0 & 0
+\end{bmatrix}
+& =
+\begin{bmatrix}
+a+b+c & b+c\\ 0 & c
+\end{bmatrix}
+\Leftrightarrow
+\systeme{
+a+b+c=2,
+b+c=4,
+c=0
+}
+\Leftrightarrow
+\begin{cases}
+a=-2\\
+b=4\\
+c=0
+\end{cases} \\
+%--------------------------
+\begin{bmatrix}
+-1 & 2\\ 0 & 2
+\end{bmatrix}
+& =
+\begin{bmatrix}
+a+b+c & b+c\\ 0 & c
+\end{bmatrix}
+\Leftrightarrow
+\systeme{
+a+b+c=-1,
+b+c=2,
+c=2
+}
+\Leftrightarrow
+\begin{cases}
+a=-3\\
+b=0\\
+c=2
+\end{cases}
+\end{align*}
+e portanto $[I]^B_C =
+\begin{bmatrix}
+-1 & -2 & -3 \\
+ 0 &  4 &  0 \\
+ 0 &  0 &  2
+\end{bmatrix}$ é a matriz de transição da base $B$ para a base $C$.
+\item Como, $[I]^C_B = \left([I]^B_C\right)^{-1}$, basta realizar um escalonamento para obter a matriz de mudança de base de $C$ para $B$ (outra alternativa seria fazer como no item anterior, escrevendo cada vetor de $C$ como combinação linear dos vetores de $B$, e resolver os sistemas lineares correspondentes). Tem-se:
+\begin{align*}
+\begin{bmatrix}
+-1 & -2 & -3 & 1 & 0 & 0\\
+ 0 &  4 &  0 & 0 & 1 & 0 \\
+ 0 &  0 &  2 & 0 & 0 & 1
+\end{bmatrix}
+& \grstep[L_3/2]{ -L_1 }
+\begin{bmatrix}
+1 & 2 & 3 & -1 & 0 & 0\\
+0 & 4 & 0 &  0 & 1 & 0 \\
+0 & 0 & 1 &  0 & 0 & 1/2
+\end{bmatrix}
+\grstep[L_2/4]{L_1-3L_3}
+\begin{bmatrix}
+1 & 2 & 0 & -1 & 0 & -3/2 \\
+0 & 1 & 0 &  0 & 1/4 & 0 \\
+0 & 0 & 1 &  0 & 0 & 1/2
+\end{bmatrix} \\
+& \grstep{ L_1-2L_2 }
+\begin{bmatrix}
+1 & 0 & 0 & -1 & -1/2 & -3/2 \\
+0 & 1 & 0 &  0 & 1/4 & 0 \\
+0 & 0 & 1 &  0 & 0 & 1/2
+\end{bmatrix}
+\end{align*}
+Portanto, $[I]^C_B =
+\begin{bmatrix}
+-1 & -1/2 & -3/2 \\
+ 0 &  1/4 &  0 \\
+ 0 &  0 &  1/2
+\end{bmatrix}$.
+
+\item As coordenadas de $v$ em relação à base $C$ são o resultado da multiplicação da matriz de mudança da base $B$ para a base $C$ pelo vetor de coordenadas de $v$ na base $B$, isto é,
+\[
+[v]_C
+=
+[I]^B_C [v]_B
+=
+\begin{bmatrix}
+-1 & -2 & -3 \\
+ 0 &  4 &  0 \\
+ 0 &  0 &  2
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+3 \\
+2 \\
+1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-10 \\
+  8 \\
+  2
+\end{bmatrix}.
+\]
+\end{enumerate}
+
+\Exercise[title={2,5}] Prove (se for verdadeira) ou dê um contraexemplo (se for falsa):
+\begin{enumerate}
+\item (1,3) Se $T: U \to V$ é uma transformação linear e $U = V$ então $T$ é um isomorfismo.
+\item (1,2) Se $T: \R^3 \to M_{2 \times 2}$ é uma transformação linear injetora então $T$ também é sobrejetora.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item \textbf{Falsa}. Não é suficiente (nem necessário) que o domínio de uma transformação linear seja igual ao seu contradomínio para que a transformação seja um isomorfismo. Por exemplo, se $T: \R^2 \to \R^2$ é a transformação linear nula, definida por $T(x,y) = (0,0)$, então o domínio e o contradomínio são iguais, mas $N(T) = \R^2 \neq \{(0,0)\}$, o que significa que $T$ não é injetora. Logo $T$ não é um isomorfismo, apesar de seu domínio e seu contradomínio coincidirem.
+
+\item \textbf{Falsa}. Se $T: \R^3 \to M_{2 \times 2}$ é injetora, então $\dim{N(T)} = 0$. Consequentemente, pelo teorema do núcleo e da imagem, tem-se
+\[
+\dim{\im{T}} = \dim{\R^3} - \dim{N(T)} = 3 - 0 = 3 < 4 = \dim{M_{2 \times 2}}.
+\]
+Então $\im{T} \neq M_{2 \times 2}$ e $T$ não é sobrejetora.
+\end{enumerate}
+
+
+\Exercise[title={2,5}] Obtenha a fórmula explícita da transformação linear $T: \R^3 \to \R^3$, tal que
+$T(3,2,-1) = (7,0,0)$,
+$T(1,1,0) = (0,0,0)$,
+$T(-1,0,0) = (0,3,0)$ e verifique se $(-3,-1,1) \in N(T)$.
+
+\Answer Dado $(x,y,z) \in \R^3$, sejam $a,b,c$ tais que
+\[
+(x,y,z) = a(3,2,-1) + b(1,1,0) + c(-1,0,0) = (3a+b-c,2a+b,-a)
+\]
+então
+\[
+\systeme{
+3a+b-c = x,
+2a+b = y,
+-a = z
+}
+\Leftrightarrow
+\begin{cases}
+a=-z\\
+b=y+2z\\
+c=-x+y-z
+\end{cases}
+\]
+Logo,
+\begin{align*}
+T(x,y,z)
+& = T( (-z)(3,2,-1) + (y+2z)(1,1,0) + (-x+y-z)(-1,0,0) )\\
+& = (-z)T(3,2,-1) + (y+2z)T(1,1,0) + (-x+y-z)T(-1,0,0)\\
+& = (-z)(7,0,0) + (y+2z)(0,0,0) + (-x+y-z)(0,3,0)\\
+& = (-7z,-3x+3y-3z,0).
+\end{align*}
+Em particular, tem-se
+\[
+T(-3,-1,1)
+= (-7 \cdot 1,-3 \cdot (-3)+3 \cdot(-1)-3 \cdot 1,0)
+= (-7,3,0)
+\neq (0,0,0).
+\] Portanto $(-3,-1,1) \not \in N(T)$.
+
+
+\Exercise[title={2,5}] Considere a função $L: \R^3 \to P_2$ definida por $L(a,b,c) = (2c+b)x + (3a)x^2$.
+\begin{enumerate}
+\item (1,0) Mostre que $L$ é uma transformação linear.
+\item (1,5) Calcule as dimensões do núcleo e da imagem de $L$, isto é, $\dim(N(L))$ e $\dim(\im{L})$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item Dados $u = (a_1,b_1,c_1)$ e $v = (a_2,b_2,c_2)$, e $k \in \R$, tem-se:
+\begin{align*}
+L(u+v)
+& = L(a_1+a_2, b_1+b_2, c_1+c_2)
+  = (2(c_1+c_2)+b_1+b_2)x + 3(a_1+a_2)x^2\\
+& = (2c_1+2c_2+b_1+b_2)x + (3a_1+3a_2)x^2\\
+& = \left[(2c_1+b_1)x + 3a_1x^2\right] + \left[(2c_2+b_2)x + 3a_2x^2\right]\\
+& = L(a_1, b_1, c_1) + L(a_2, b_2, c_2)
+  = L(u) + L(v)\\
+L(ku)
+& = L(ka_1, kb_1, kc_1)
+  = (2(kc_1)+kb_1)x + 3(ka_1)x^2\\
+& = k(2c_1+b_1)x + k(3a_1)x^2
+  = k\left[(2c_1+b_1)x + 3a_1x^2\right]
+  = kL(a_1, b_1, c_1)
+  = kL(u)
+\end{align*}
+Portanto, $L$ é uma transformação linear.
+
+\item \textbf{Solução 1:} Um vetor $v = (a,b,c)$ pertence ao núcleo de $L$ se, e somente se, $L(a,b,c) = (2c+b)x + (3a)x^2 = 0 + 0x + 0x^2$, o que equivale às condições
+\[
+\begin{cases}
+2c+b=0\\
+3a=0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+b=-2c\\
+a=0
+\end{cases}
+\Leftrightarrow
+v = (a,b,c) = (0,-2c,c) = c(0,-2,1).
+\]
+Isto significa que $N(L) = \ger{(0,-2,1)}$ e como este vetor é diferente de zero, ele é L.I. e forma uma base de $N(L)$. Consequentemente, $\dim{N(L)} = 1$. Pelo teorema do núcleo e da imagem, tem-se
+\[
+\dim{\im{L}} = \dim{\R^3} - \dim{N(L)} = 3 - 1 = 2.
+\]
+
+\textbf{Solução 2:} Observe que $\im{L} = \ger{x,x^2}$, e como estes vetores são linearmente independentes, eles são uma base da imagem de $L$. Logo, $\dim{\im{L}} = 2$ e $\dim{N(L)} = \dim{\R^3} - \dim{\im{L}} = 3 - 2 = 1$.
+
+\end{enumerate}
+
+\Exercise[title={2,5}] Seja $T(a,b,c) = \begin{bmatrix}
+  a & c-a\\
+c-a & b-c
+\end{bmatrix}$ a transformação linear de $\R^3$ no espaço $S_{2\times 2}$ das matrizes simétricas $2 \times 2$.
+\begin{enumerate}
+\item (1,0) Mostre que $T$ é um isomorfismo.
+\item (1,5) Obtenha uma fórmula explícita para o isomorfismo inverso $T^{-1}: S_{2 \times 2} \to \R^3$.
+\end{enumerate}
+
+\Answer \begin{enumerate}
+\item Uma transformação linear é um isomorfismo se for injetora e sobrejetora. Como $B = \{ (1,0,0), (0,1,0), (0,0,1)\}$ é uma base de $\R^3$ e $C = \left\{
+\begin{bmatrix}
+1 & 0\\
+0 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1\\
+1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0\\
+0 & 1
+\end{bmatrix}
+\right\}$ é uma base de $S_{2 \times 2}$, segue que $\dim{\R^3} = 3 = \dim{ S_{2 \times 2} }$, e $T$ será injetora se, e somente se, for sobrejetora. Então basta mostrar que que $N(T) = \{(0,0,0)\})$. Tem-se:
+\[
+(a,b,c) \in N(T)
+\Leftrightarrow
+T(a,b,c)
+=
+ \begin{bmatrix}
+  a & c-a\\
+c-a & b-c
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0\\
+0 & 0
+\end{bmatrix}
+\Leftrightarrow
+\systeme{
+a=0,
+c-a=0,
+b-c=0
+}
+\Leftrightarrow
+\begin{cases}
+a=0\\
+b=0\\
+c=0
+\end{cases}
+\]
+Então $T$ é, de fato, um isomorfismo.
+\item \textbf{Solução 1:} Pela definição de função inversa, tem-se
+\begin{align*}
+(a,b,c)
+= T^{-1}\left(
+\begin{bmatrix}
+x & y\\
+y & z
+\end{bmatrix}\right)
+& \Leftrightarrow
+T(a,b,c)
+=
+\begin{bmatrix}
+x & y\\
+y & z
+\end{bmatrix}
+\Leftrightarrow
+\begin{bmatrix}
+  a & c-a\\
+c-a & b-c
+\end{bmatrix}
+=
+\begin{bmatrix}
+x & y\\
+y & z
+\end{bmatrix}\\
+& \Leftrightarrow
+\systeme{
+a=x,
+c-a=y,
+b-c=z
+}
+\Leftrightarrow
+\begin{cases}
+a=x\\
+b=x+y+z\\
+c=x+y
+\end{cases}
+\end{align*}
+Portanto, $T^{-1}\left(
+\begin{bmatrix}
+x & y\\
+y & z
+\end{bmatrix}\right) = (x,x+y+z,x+y)$.
+
+\textbf{Solução 2:} Obter a matriz de $T$ em relação às bases $B$ e $C$, calcular a matriz inversa, que será a matriz de $T^{-1}$, e então utilizá-la para obter a fórmula desejada. Aplicando $T$ aos vetores da base $B$, resulta que $
+[T]^B_C = \begin{bmatrix}
+ 1 & 0 & 0\\
+-1 & 0 & 1\\
+ 0 & 1 & -1
+\end{bmatrix}$ e então a matriz da transformação inversa $[T^{-1}]^C_B = ([T]^B_C)^{-1}$ pode ser obtida por escalonamento:
+\begin{align*}
+\begin{bmatrix}
+ 1 & 0 &  0 & 1 & 0 & 0\\
+-1 & 0 &  1 & 0 & 1 & 0\\
+ 0 & 1 & -1 & 0 & 0 & 1
+\end{bmatrix}
+& \grstep{ L_2 \swap L_3 }
+\begin{bmatrix}
+ 1 & 0 &  0 & 1 & 0 & 0\\
+ 0 & 1 & -1 & 0 & 0 & 1\\
+-1 & 0 &  1 & 0 & 1 & 0
+\end{bmatrix}
+\grstep{ L_3+L_1 }
+\begin{bmatrix}
+1 & 0 &  0 & 1 & 0 & 0\\
+0 & 1 & -1 & 0 & 0 & 1\\
+0 & 0 &  1 & 1 & 1 & 0
+\end{bmatrix} \\
+& \grstep{ L_2+L_1 }
+\begin{bmatrix}
+1 & 0 & 0 & 1 & 0 & 0\\
+0 & 1 & 0 & 1 & 1 & 1\\
+0 & 0 & 1 & 1 & 1 & 0
+\end{bmatrix}
+\Rightarrow
+[T^{-1}]^C_B = \begin{bmatrix}
+1 & 0 & 0\\
+1 & 1 & 1\\
+1 & 1 & 0
+\end{bmatrix}.
+\end{align*}
+Assim, sendo $u=
+\begin{bmatrix}
+x & y\\
+y & z
+\end{bmatrix}$ e $[T^{-1}(u)]_B = [T^{-1}]^C_B \cdot [u]_C = \begin{bmatrix}
+1 & 0 & 0\\
+1 & 1 & 1\\
+1 & 1 & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}
+=
+\begin{bmatrix}
+x\\
+x+y+z\\
+x+y
+\end{bmatrix}$, conclui-se que $T^{-1}\left(
+\begin{bmatrix}
+x & y\\
+y & z
+\end{bmatrix}\right) = (x,x+y+z,x+y)$.
+\end{enumerate}
+\end{ExerciseList}
+
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

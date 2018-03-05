@@ -1,0 +1,582 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+\newcommand{\swap}{\leftrightarrow}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{NEX162-C}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{30/08/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 6 questões (apenas 5 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+
+\Exercise[title={2,0}] Prove (sem dar exemplo) as afirmações verdadeiras e exemplifique o erro nas demais:
+\begin{enumerate}
+\item Se uma matriz não é simétrica, então ela é antissimétrica.
+\item A soma de matrizes inversíveis é uma matriz inversível.
+\item Se uma matriz triangular inferior é antissimétrica, então ela é a matriz nula,
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item \textbf{Falso}. Por exemplo, a matriz $A=
+\begin{bmatrix}
+0 & 2 \\
+0 & 0
+\end{bmatrix}
+$ não é simétrica, uma vez que $A^T
+= \begin{bmatrix}
+0 & 0 \\
+2 & 0
+\end{bmatrix}
+\neq
+A$, e não é antissimétrica, pois $A^T = \begin{bmatrix}
+0 & 0 \\
+2 & 0
+\end{bmatrix}
+\neq
+\begin{bmatrix}
+0 & -2 \\
+0 & 0
+\end{bmatrix}
+= -A$.
+
+\item \textbf{Falso}. Nem mesmo para matrizes de ordem $1 \times 1$ isto é verdade. Por exemplo, se $A = \begin{bmatrix} 3 \end{bmatrix}$ e $B = \begin{bmatrix} -3 \end{bmatrix}$ então $A + B = \begin{bmatrix} 0 \end{bmatrix}$, que não é uma matriz inversível.
+
+Um outro exemplo, com matrizes $2 \times 2$, é o caso em que $A = \begin{bmatrix} 1 & 2 \\ 0 & 3 \end{bmatrix}$, $B = \begin{bmatrix} 5 & 4 \\ 6 & 3 \end{bmatrix}$ e $A + B = \begin{bmatrix} 6 & 6 \\ 6 & 6 \end{bmatrix}$. Como $\det{A+B} = 0$, esta soma de matrizes inversíveis não é inversível.
+
+\item \textbf{Verdadeiro}. Se $A$ é triangular inferior, as entradas acima da diagonal de $A$ são iguais a zero, o que implica que as entradas abaixo da diagonal de $A^T$ também são nulas. Mas se $A$ é antissimétrica, então $A^T = -A$, e resulta que as entradas abaixo da diagonal de $-A$ (e, portanto, de $A$) são todas nulas. Assim, todas as entradas de $A$ fora da diagonal são iguais a zero. Mas a diagonal de qualquer matriz antissimétrica é igual a zero, então $A$ deve ser a matriz nula.
+\end{enumerate}
+
+
+\Exercise[title={2,0}] Calcule a matriz $\operatorname{adj}(M)$ e a soma $(M^2)^{-1} +(M^T)^{-1}$, sendo $M=
+\begin{bmatrix}
+-1 &  2 & -3\\
+ 3 & -1 &  0\\
+ 1 &  0 &  0
+\end{bmatrix}$.
+\Answer $\operatorname{Adj}(M)=
+\begin{bmatrix}
++\begin{vmatrix}
+-1 & 0\\
+0 & 0
+\end{vmatrix}
+&
+-\begin{vmatrix}
+3 & 0\\
+1 & 0
+\end{vmatrix}
+&
++\begin{vmatrix}
+3 & -1\\
+1 & 0
+\end{vmatrix}
+\\
+-\begin{vmatrix}
+2 & -3\\
+0 & 0
+\end{vmatrix}
+&
++\begin{vmatrix}
+-1 & -3\\
+1 & 0
+\end{vmatrix}
+&
+-\begin{vmatrix}
+-1 & 2\\
+ 1 & 0
+\end{vmatrix}
+\\
++\begin{vmatrix}
+ 2 & -3\\
+-1 &  0
+\end{vmatrix}
+&
+-\begin{vmatrix}
+-1 & -3\\
+ 3 &  0
+\end{vmatrix}
+&
++\begin{vmatrix}
+-1 &  2\\
+ 3 & -1
+\end{vmatrix}
+\\
+\end{bmatrix}^T
+=
+\begin{bmatrix}
+0 & 0 & -3\\
+0 & 3 & -9\\
+1 & 2 &  -5
+\end{bmatrix}
+$
+então
+\[
+M^{-1}
+= \frac{1}{\det{M}} \operatorname{Adj}(M)
+=
+\frac{1}{-3}
+\begin{bmatrix}
+0 & 0 & -3\\
+0 & 3 & -9\\
+1 & 2 &  -5
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0 & 1\\
+0 & -1 & 3\\
+\frac{-1}{3} & \frac{-2}{3} & \frac{5}{3}
+\end{bmatrix}
+\]
+
+Além disso, como $(M^2)^{-1} +(M^T)^{-1} = (M^{-1})^2 +(M^{-1})^T$ e
+\begin{align*}
+(M^{-1})^2
+=
+\frac{-1}{3}
+\begin{bmatrix}
+0 & 0 & -3\\
+0 & 3 & -9\\
+1 & 2 &  -5
+\end{bmatrix}
+\cdot
+\frac{-1}{3}
+\begin{bmatrix}
+0 & 0 & -3\\
+0 & 3 & -9\\
+1 & 2 &  -5
+\end{bmatrix}
+=
+\frac{1}{9}
+\begin{bmatrix}
+-3&-6&15\\
+-9&-9&18\\
+-5&-4&4
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{-1}{3} & \frac{-2}{3} & \frac{5}{3}\\
+-1 & -1 & 2 \\
+\frac{-5}{9} & \frac{-4}{9} & \frac{4}{9}
+\end{bmatrix}
+\end{align*}
+tem-se
+\[
+(M^2)^{-1} +(M^T)^{-1}
+=
+\begin{bmatrix}
+\frac{-1}{3} & \frac{-2}{3} & \frac{5}{3}\\
+-1 & -1 & 2 \\
+\frac{-5}{9} & \frac{-4}{9} & \frac{4}{9}
+\end{bmatrix}
++
+\begin{bmatrix}
+0 &  0 & \frac{-1}{3}\\
+0 & -1 & \frac{-2}{3}\\
+1 &  3 & \frac{5}{3}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\frac{-1}{3} & \frac{-2}{3} & \frac{4}{3} \\
+-1           &      -2      & \frac{4}{3} \\
+\frac{4}{9}  & \frac{23}{9} & \frac{19}{9}
+\end{bmatrix}.
+\]
+
+
+\Exercise[title={2,0}] Suponha que $M$ é uma matriz quadrada inversível e que $N = \left(3 M^{-1}\right)^T\left(\frac{1}{3}M\right)^{-1}$.
+\begin{enumerate}
+\item Use as propriedades das operações com matrizes para simplificar a fórmula de $N$. Na fórmula resultante, deve ocorrer no máximo uma operação de cada tipo (transposição, inversão, produto matricial, produto por escalar, etc).
+\item Calcule a matriz $N$ no caso em que $M =
+\begin{bmatrix}
+-1 & -2 & 0 & 2\\
+-2 &  2 & 0 & 1\\
+ 0 &  0 & 3 & 0\\
+ 2 &  1 & 0 & 2
+\end{bmatrix}$.
+\end{enumerate}
+
+\Answer
+\begin{enumerate}
+\item Como $(mA)^T = mA^T$, $(mA)^{-1} = m^{-1}A^{-1}$ e $(A^T)^{-1} = (A^{-1})^T$, tem-se:
+\[
+D = \left(3 M^{-1}\right)^T\left(\frac{1}{3}M\right)^{-1}
+  = 3 \left(M^{-1}\right)^T \left(\frac{1}{3}\right)^{-1} M^{-1}
+  = 9 \left(M^T\right)^{-1} M^{-1}
+  = 9 \left(M M^T \right)^{-1}.
+\]
+
+\item Pelo item anterior, $D = 9 \left(M M^T \right)^{-1}$, e como $M^T = M$ (ou seja, $M$ é simétrica), tem-se:
+\[
+M M^T
+= M^2
+= \begin{bmatrix}
+-1 & -2 & 0 & 2\\
+-2 &  2 & 0 & 1\\
+ 0 &  0 & 3 & 0\\
+ 2 &  1 & 0 & 2
+\end{bmatrix}
+\begin{bmatrix}
+-1 & -2 & 0 & 2\\
+-2 &  2 & 0 & 1\\
+ 0 &  0 & 3 & 0\\
+ 2 &  1 & 0 & 2
+\end{bmatrix}
+=
+\begin{bmatrix}
+9 & 0 & 0 & 0\\
+0 & 9 & 0 & 0\\
+0 & 0 & 9 & 0\\
+0 & 0 & 0 & 9
+\end{bmatrix}
+= 9I.
+\]
+Assim, $D = 9 (9I)^{-1} = 9 \left(\frac{1}{9} I^{-1}\right) = I$.
+\end{enumerate}
+
+\Exercise[title={2,0}] Considerando que $A=
+\begin{bmatrix}
+ 3 & -6 &  9\\
+ k & 10 &  0\\
+-2 &  4 & -5
+\end{bmatrix}
+$, $X=
+\begin{bmatrix}
+x\\
+y\\
+z
+\end{bmatrix}$ e $B=
+\begin{bmatrix}
+-12\\
+  5\\
+  7
+\end{bmatrix}$, quais devem ser os valores de $k \in \R$ (se houver) para que o sistema linear $AX = B$ seja possível e determinado? E para ser possível e indeterminado? E para ser impossível?
+\Answer
+\begin{enumerate}
+\item Observe que $\det{A} = \begin{vmatrix}
+ 3 & -6 &  9\\
+ k & 10 &  0\\
+-2 &  4 & -5
+\end{vmatrix} = 6k+30$. Então para $k \neq -5$, tem-se $\det{A} \neq 0$ e a matriz $A$ é inversível, o que implica que o sistema é \textbf{possível e determinado}.
+\item Caso contrário, considerando $k = -5$ tem-se:
+\begin{align*}
+[A|B]
+& =
+\begin{amatrix}{3}
+3 & -6 & 9 & -12 \\
+-5 & 10 & 0 & 5\\
+-2 & 4 & -5 & 7
+\end{amatrix}
+\grstep[ \frac{-1}{5}L_2 ]{ \frac{1}{3}L_1 }
+\begin{amatrix}{3}
+1 & -2 & 3 & -4 \\
+1 & -2 & 0 & -1\\
+-2 & 4 & -5 & 7
+\end{amatrix}
+\grstep[ L_3 + 2 L_1 ]{ L_2 - L_1 }
+\begin{amatrix}{3}
+1 & -2 & 3 & -4 \\
+0 & 0 & -3 & 3 \\
+0 & 0 & 1 & -1
+\end{amatrix}\\
+&
+\grstep{ \frac{-1}{3} L_2 }
+\begin{amatrix}{3}
+1 & -2 & 3 & -4 \\
+0 & 0 & 1 & -1 \\
+0 & 0 & 1 & -1
+\end{amatrix}
+\grstep[ L_3 - L_2 ]{ L_1 - 3 L_2 }
+\begin{amatrix}{3}
+1 & -2 & 0 & -1 \\
+0 & 0 & 1 & -1 \\
+0 & 0 & 0 & 0
+\end{amatrix}
+\end{align*}
+Assim, tanto o posto da matriz $A$ quanto da matriz ampliada $[A|B]$ são iguais a $2$, sendo que o número de variáveis é maior do que $2$, logo o sistema é \textbf{possível e indeterminado}.
+
+\item Pela análise acima, nenhum valor de $k \in \R$ torna o sistema \textbf{impossível} pois o posto de $A$ é sempre igual ao posto da matriz ampliada $[A|B]$.
+\end{enumerate}
+
+\Exercise[title={2,0}] Obtenha todo(s) os $(t,x,y,z)$, se existirem, que verificam $
+\systeme{
+x+8y+2z+8t=2,
+2x+16y-z-t=-7,
+x+8y+z+7t=-5.
+}$
+\Answer Pode-se obter um sistema linear equivalente ao do enunciado aplicando o método de Gauss-Jordan à matriz ampliada, como segue:
+\begin{align*}
+[A|B]
+& =
+\begin{amatrix}{4}
+8 & 1 & 8 & 2 & 2 \\
+-1 & 2 & 16 & -1 & -7 \\
+7 & 1 & 8 & 1 & -5
+\end{amatrix}
+\grstep{ \frac{1}{4}L_1 }
+\begin{amatrix}{4}
+1 & \frac{1}{8} & 1 & \frac{1}{4} & \frac{1}{4} \\
+-1 & 2 & 16 & -1 & -7 \\
+7 & 1 & 8 & 1 & -5
+\end{amatrix}
+\grstep[ L_3 - 7 L_1 ]{ L_2 + L_1 }
+\begin{amatrix}{4}
+1 & \frac{1}{8} & 1 & \frac{1}{4} & \frac{1}{4} \\
+0 & \frac{17}{8} & 17 & \frac{-3}{4} & \frac{-27}{4} \\
+0 & \frac{1}{8} & 1 & \frac{-3}{4} & \frac{-27}{4}
+\end{amatrix} \\
+\grstep{ \frac{8}{17} L_2 }
+&
+\begin{amatrix}{4}
+1 & \frac{1}{8} & 1 & \frac{1}{4} & \frac{1}{4} \\
+0 & 1 & 8 & \frac{-6}{17} & \frac{-54}{17} \\
+0 & \frac{1}{8} & 1 & \frac{-3}{4} & \frac{-27}{4}
+\end{amatrix}
+\grstep{ L_3 -\frac{1}{8} L_1 }
+\begin{amatrix}{4}
+1 & \frac{1}{8} & 1 & \frac{1}{4} & \frac{1}{4} \\
+0 & 1 & 8 & \frac{-6}{17} & \frac{-54}{17} \\
+0 & 0 & 0 & \frac{-12}{17} & \frac{-108}{17}
+\end{amatrix}
+\grstep{ \frac{-17}{12} L_3 }
+\begin{amatrix}{4}
+1 & \frac{1}{8} & 1 & \frac{1}{4} & \frac{1}{4} \\
+0 & 1 & 8 & \frac{-6}{17} & \frac{-54}{17} \\
+0 & 0 & 0 & 1 & 9
+\end{amatrix}\\
+\grstep{ L_1 -\frac{1}{8} L_2 }
+&
+\begin{amatrix}{4}
+1 & 0 & 0 & \frac{5}{17} & \frac{11}{17} \\
+0 & 1 & 8 & \frac{-6}{17} & \frac{-54}{17} \\
+0 & 0 & 0 & 1 & 9
+\end{amatrix}
+\grstep[ L_2 + \frac{6}{17} L_3 ]{ L_2 - \frac{5}{17} L_3 }
+\begin{amatrix}{4}
+1 & 0 & 0 & 0 & -2 \\
+0 & 1 & 8 & 0 & 0 \\
+0 & 0 & 0 & 1 & 9
+\end{amatrix}
+\Leftrightarrow
+\systeme{
+t=-2,
+x+8y=0,
+z=9
+}
+\end{align*}
+Logo, as soluções são da forma $(-2, -8y, y, 9)$, em que $y \in \R$ é uma variável livre.
+
+\Exercise[title={2,0}] Se $A = \begin{bmatrix}
+1 & 2\\
+2 & 3
+\end{bmatrix}$, obtenha todos os $(x,y,z,w)$ tais que $X = \begin{bmatrix}
+x & y\\
+z & w
+\end{bmatrix}$ satisfaz $AX = XA$.
+\Answer Para as matrizes dadas, tem-se
+\begin{align*}
+AX = XA
+& \Leftrightarrow
+\begin{bmatrix}
+1 & 2\\
+2 & 3
+\end{bmatrix}
+\begin{bmatrix}
+x & y\\
+z & w
+\end{bmatrix}
+=
+\begin{bmatrix}
+x & y\\
+z & w
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2\\
+2 & 3
+\end{bmatrix}
+\Leftrightarrow
+\begin{bmatrix}
+x+2z & y+2w\\
+2x+3z & 2y+3w
+\end{bmatrix}
+=
+\begin{bmatrix}
+x+2y & 2x+3y\\
+z+2w & 2z+3w
+\end{bmatrix}
+\\
+& \Leftrightarrow
+\begin{cases}
+x+2z &= x + 2y\\
+y+2w &= 2x + 3y\\
+2x+3z &= z + 2w\\
+2y+3w &= 2z + 3w
+\end{cases}
+\Leftrightarrow
+\systeme[xyzw]{
+ 2z -2y = 0,
+-2x-2y+2w = 0,
+2x+2z-2w = 0,
+2y-2z = 0
+}
+\Leftrightarrow
+\systeme[xyzw]{
+ z -y = 0,
+-x-y+w = 0,
+x+z-w = 0,
+y-z = 0
+}
+\end{align*}
+Escalonando a matriz deste sistema, resulta:
+\begin{align*}
+A
+& =
+\begin{bmatrix}
+0 & -1 & 1 & 0 \\
+-1 & -1 & 0 & 1 \\
+1 & 0 & 1 & -1 \\
+0 & 1 & -1 & 0
+\end{bmatrix}
+\grstep{ L_3 \swap L_1}
+\begin{bmatrix}
+1 & 0 & 1 & -1 \\
+-1 & -1 & 0 & 1 \\
+0 & -1 & 1 & 0 \\
+0 & 1 & -1 & 0
+\end{bmatrix}
+\grstep[ L_4 + L_3 ]{ L_2+L_1}
+\begin{bmatrix}
+1 & 0 & 1 & -1 \\
+0 & -1 & 1 & 0 \\
+0 & -1 & 1 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\grstep[ L_3 - L_2 ]{ -L_2 }
+\begin{bmatrix}
+1 & 0 & 1 & -1 \\
+0 & 1 & -1 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix}
+\end{align*}
+Desconsiderando as linhas nulas desta matriz, resulta o sistema homogêneo
+\[
+\systeme[xyzw]{
+x+z-w = 0,
+y-z = 0
+}
+\]
+cujas soluções são da forma $(-z+w,z,z,w)$.
+
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

@@ -1,0 +1,183 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{PRO112-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{22/03/2017}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Resolva (integralmente) apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+
+\Exercise[title={2,5}] Prove (sem dar exemplo) as afirmações verdadeiras e exemplifique o erro nas demais:
+\begin{enumerate}
+\item Se uma matriz $2 \times 2$ inversível é triangular \textit{superior}, então sua inversa é triangular \textit{superior}.
+\item Se $A$ e $B$ são matrizes $n \times n$ tais que $AB = 0$ e $B$ é inversível, então $A$ é inversível.
+\end{enumerate}
+\Answer \fixme
+
+\Exercise[title={2,5}] Considere $M = R^T S + I$, sendo $R = \begin{bmatrix}
+1 & 0 & t & 0
+\end{bmatrix}$, $S = \begin{bmatrix}
+-1 & 2 & t & t
+\end{bmatrix}$ e $I$ a matriz identidade de um tamanho apropriado. Para quais valores de $t$ a matriz $M$ é inversível?
+\Answer $t \neq \pm \sqrt{2}$
+
+\Exercise[title={2,5}] Sejam $
+A =
+\begin{bmatrix}
+-1 &  0 \\
+ 2 & -1
+\end{bmatrix}
+$, $B = -A$ e $C = A^2$. Encontre a(s) matriz(es) $
+X =
+\begin{bmatrix}
+x & y \\
+z & w
+\end{bmatrix}
+$, se existir(em), de tal modo que $AX + B = C - 2BX$.
+\Answer $M = -A - I =
+\begin{bmatrix}
+ 0 & 0 \\
+-2 & 0
+\end{bmatrix}$.
+
+\Exercise[title={2,5}] Uma estudante observou que ao multiplicar uma matriz $M$ de ordem $2\times 2$ pela matriz coluna $C =
+\begin{bmatrix}
+1\\2
+\end{bmatrix}
+$ o resultado era $D =
+\begin{bmatrix}
+-1\\4
+\end{bmatrix}
+$. Outro estudante percebeu que, curiosamente, o produto de $M$ por $D$ era $C$. Qual foi a matriz $M$ utilizada nesses cálculos? Alguma outra matriz produziria os mesmos resultados?
+
+\Exercise[title={2,5}]
+Determine se os sistemas lineares têm soluções. Se houver, descreva-as precisamente em função das variáveis livres, e dê dois exemplos de soluções (atribuindo números às variáveis):
+\begin{enumerate}
+\begin{multicols}{2}
+\item $\begin{cases}
+     2y -6z      = 0\\
+ x - 2y     + 8w = 0\\
+ x - 2y + z + 7w = 0.
+\end{cases}$
+\item $\begin{cases}
+2x + 3y -5z -  w - 8t = 17\\
+3x - 4y + z -10w + 5t = 0.
+\end{cases}$
+\end{multicols}
+\end{enumerate}
+
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+%\newpage
+%\restoregeometry
+%\section*{Respostas}
+%\shipoutAnswer
+\end{document}

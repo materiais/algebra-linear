@@ -1,0 +1,193 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand{\norm}[1]{\left|\left|{#1}\right|\right|}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova IV}
+\newcommand*\turma{MAT102-03U/LEF102-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{28/06/2016}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Anule \textsc{\textbf{uma}} das 5 questões (apenas 4 serão corrigidas): \framebox(30,10){}
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Seja $L: M_{2\times 2} \to M_{2\times 2}$ o operador linear definido por $L(X) = X + X^T$.
+\begin{enumerate}
+\item (1,5) Obtenha os autovalores e autovetores de $L$.
+\item (1,0) A matriz do operador $L$ em relação à base canônica é diagonalizável? Explique.
+\end{enumerate}
+\Answer \fixme
+
+
+\Exercise[title={2,5}] Considere a matriz $A =
+\begin{bmatrix}
+ 3 &  0 &  4\\
+ 3 &  0 &  3\\
+-2 &  0 & -3
+\end{bmatrix}$ e obtenha:
+\begin{enumerate}
+\item (0,5) O polinômio característico de $A$.
+\item (1,0) Uma matriz $P$ que diagonaliza $A$.
+\item (0,5) Uma matriz diagonal semelhante à matriz $A$.
+\item (0,5) A matriz $A^{100}$, utilizando os dados anteriores.
+\end{enumerate}
+\Answer \fixme
+
+
+\Exercise[title={2,5}] Identifique e justifique as afirmações a seguir que forem verdadeiras. Para as demais, forneça um simples contra-exemplo:
+\begin{enumerate}
+\item (1,3) Nos espaços com produto interno, quaisquer vetores ortogonais $u$ e $v$, não nulos, são linearmente independentes.
+\item (1,2) Sempre que $A$ e $B$ são matrizes semelhantes pode-se dizer que $A^2$ é semelhante a $B^2$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item \textbf{Verdadeira}. Se os vetores $u$ e $v$ fossem linearmente dependentes, um deles seria múltiplo do outro. Em outras palavras, existiria, por exemplo, algum $\alpha \in \R$ tal que $u = \alpha v$. Com isso, resultaria da ortogonalidade entre $u$ e $v$ que:
+\[
+0
+= \langle u,v \rangle
+= \langle \alpha v, v \rangle
+= \alpha \langle v, v \rangle
+= \alpha \norm{v}^2.
+\]
+Mas isso implica que $\alpha = 0$ ou $\norm{v} = 0$, o que é impossível para vetores não nulos $u$ e $v$. Logo, $u$ e $v$ só podem ser linearmente independentes.
+
+\item \textbf{Verdadeira} Se $A$ é semelhante a $B$ então existe alguma matriz inversível $P$ tal que $A = P^{-1} B P$. Consequentemente,
+\[
+A^2 = (P^{-1} B P)(P^{-1} B P)
+    = P^{-1} B (PP^{-1}) B P
+    = P^{-1} B I B P
+    = P^{-1} B^2 P,
+\]
+isto é, $A^2$ e $B^2$ são semelhantes.
+\end{enumerate}
+
+
+\Exercise[title={2,5}] Seja
+$B = \{ (-4, 1, 0), (1, 2, 0), (0, 0, 6) \}$
+uma base de $\R^3$ e considere o produto interno definido por $\langle (a, b, c), (x,y,z) \rangle = \frac{1}{9}(ax+2by+cz)$.
+\begin{enumerate}
+\item (1,0) Verifique que, em relação ao produto interno acima, a base $B$ é ortogonal.
+\item (1,0) Use o produto interno acima para escrever o vetor $v = (-5, 8, 6)$ como combinação linear dos vetores de $B$.
+\item (0,5) Obtenha uma base ortonormal de $\R^3$ a partir de $B$.
+\end{enumerate}
+\Answer \fixme
+
+
+\Exercise[title={2,5}] Considere o espaço $\R^4$ com o produto interno usual e seja $W$ o subespaço vetorial gerado pela base $B = \{ v_1, v_2, v_3\}$, em que $v_1 = (0,3,0,0)$, $v_2 = (0,-4,0,3)$ e $v_3 = (1,1,1,0)$. Obtenha:
+\begin{enumerate}
+\item (1,0) Uma base para o complemento ortogonal $W^\perp$ do subespaço $W$.
+\item (1,5) Uma base ortonormal para $W$.
+\end{enumerate}
+\Answer \fixme
+\end{ExerciseList}
+
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}
