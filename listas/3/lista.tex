@@ -23,7 +23,7 @@
 
 \newcommand{\fixme}{{\color{red}(...)}}
 \newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
-\newcommand\ii{\mathrm{i}} 
+\newcommand\ii{\mathrm{i}}
 
 \newcommand*\R{\mathbb{R}}
 
@@ -72,7 +72,7 @@
 
 \author{\eu}
 \title{\tipo - \disciplina}
-\date{}
+\date{\data}
 
 \begin{document}
 
@@ -222,7 +222,7 @@ Encontre $U+V$ para os seguintes subespaços $U$ e $V$ e verifique se é uma som
 \section*{Respostas}
 
 \begin{enumerate}
-\item 
+\item
 \begin{enumerate}
 \item \textbf{Verdadeira}. Como todo subespaço vetorial deve conter o vetor nulo, a interseção de dois subespaços vetoriais quaisquer tem pelo menos um elemento, ou seja, não é vazia.
 \item \textbf{Falsa}. Mesmo que $V$ seja o espaço gerado por ${ u_1, u_2, u_3 }$, pode ser que um destes vetores seja combinação linear dos demais. Neste caso, os vetores são linearmente dependentes, e não são uma base de $V$. Por exemplo: $\R^2 = \ger{(1,0),(0,1),(2,3)}$, mas $(1,1) = 2(1,0)+3(0,1)$, ou seja, estes três vetores geram $\R^2$ mas não são uma base.
@@ -406,7 +406,7 @@ a
 com $a,b,c,d,e,f \in \R$. Então estas 6 matrizes geram $U$.
 \end{enumerate}
 
-\item 
+\item
 \begin{enumerate}
 \item $v_1=(0,3,-9)$, $v_2=(1,4,-10)$, $v_3=(2,5,-11)$ em $\R^3$.
 
@@ -443,7 +443,7 @@ Como o número de equações é o mesmo do número de incógnitas, pode-se deter
  3 &   4 \\
 -9 & -10
 \end{vmatrix}
-= 
+=
 (-1) \cdot 12
 +2 \cdot 6
 = 0
@@ -582,12 +582,12 @@ Como o sistema tem $c_5$ como uma variável livre, é possível obter o vetor nu
 
 \item A condição $a v_1 + b v_2 + c v_3 + d v_4 = 0$ equivale às seguintes condições:
 \begin{align*}
-& a ( x^3 + x^2 + x + 1 ) + b ( x^2 + x + 1 ) + c (x + 1) + d 
+& a ( x^3 + x^2 + x + 1 ) + b ( x^2 + x + 1 ) + c (x + 1) + d
 = 0 x^3 + 0 x^2 + 0 x + 0 \\
 & \Leftrightarrow
 a x^3 + (a+b) x^2 + (a+b+c)x + (a+b+c+d) = 0 x^3 + 0 x^2 + 0 x + 0 \\
 \Leftrightarrow
-& 
+&
 \systeme{
 a=0,
 a+b=0,
@@ -784,7 +784,7 @@ Além disso, com base no cálculo acima, o único modo de obter $(a,b,c) = (0,0,
 
 \item Sejam $W = \ger{ v_1, \ldots, v_n }$ e $z \in W$, isto é, $z = k_1 v_1 + \ldots + k_n v_n$, com $k_1, \ldots, k_n \in \R$. Sendo $U = \ger{ v_1, \ldots, v_n, z }$, pode-se dizer que os conjuntos $U$ e $W$ são iguais se for explicado por que todo elemento de $W$ pertence a $U$ e vice-versa ($W \subseteq U$ e $U \subseteq W$).
 \begin{itemize}
-\item 
+\item
 Se $u \in W$, então $u$ é uma combinação linear dos vetores $v_i$, isto é, $u = c_1 v_1 + \ldots + c_n v_n$. Mas então é claro que $u$ também é combinação linear dos vetores $v_i$ e de $z$ pois basta considerar um coeficiente zero para $z$, como em $u = c_1 v_1 + \ldots + c_n v_n + 0 \cdot z$. Isto quer dizer que $z \in \ger{ v_1, \ldots, v_n, z } = U$, ou seja, que $W \subseteq U$.
 \item Por outro lado, todo $u \in W$ é combinação linear de $v_1, \ldots, v_n, z$, isto é,
 \begin{align*}
@@ -832,7 +832,7 @@ Então $L(A) = \ger{
 \begin{bmatrix}
 0 & 1
 \end{bmatrix}
-} = \{ 
+} = \{
 \begin{bmatrix}
 a & b
 \end{bmatrix} \mid a,b, \in \R
@@ -852,7 +852,7 @@ a & b
 0 & 0
 \end{bmatrix}$ se $a$ e $b$ forem ambos nulos. Em outras palavras, estes dois vetores formam uma base de $L(A)$, que portanto é um espaço vetorial de dimensão dois.
 
-\item 
+\item
 Para o espaço coluna de $A$, pode-se usar como geradores as colunas de $A$ que correspondem às posições dos pivôs da forma reduzida. Especificamente, tem-se $C(A)
 = \ger{\begin{bmatrix}
 1\\

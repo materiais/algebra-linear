@@ -23,7 +23,7 @@
 
 \newcommand{\fixme}{{\color{red}(...)}}
 \newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
-\newcommand\ii{\mathrm{i}} 
+\newcommand\ii{\mathrm{i}}
 
 \newcommand*\N{\mathbb{N}}
 \newcommand*\R{\mathbb{R}}
@@ -74,7 +74,7 @@
 
 \author{\eu}
 \title{\tipo - \disciplina}
-\date{}
+\date{\data}
 
 \begin{document}
 
@@ -228,7 +228,7 @@ P_n = \{ q(x) \in P_\infty \mid \operatorname{grau}(q(x)) \leq n \}.
 \item $U = \{ M \in M_{n \times n}(\R) \mid M \text{ é antissimétrica} \}$ e $V = \{ M \in M_{n \times n}(\R) \mid M \text{ é simétrica} \}$
 \end{enumerate}
 
-\item \teoria Seja $V$ um espaço vetorial qualquer e $U$ um subespaço de $V$. Prove que para quaisquer vetores $x,y \in V$ vale o seguinte: se $x\in U$ e $y-x \in U$ então $y \in U$. 
+\item \teoria Seja $V$ um espaço vetorial qualquer e $U$ um subespaço de $V$. Prove que para quaisquer vetores $x,y \in V$ vale o seguinte: se $x\in U$ e $y-x \in U$ então $y \in U$.
 
 \item \conceito Dê exemplos de subespaços vetoriais $V_1$ e $V_2$ de $\R^3$ que satisfaçam as seguintes condições (e explique porque satisfazem):
 \begin{enumerate}
@@ -380,9 +380,9 @@ $(A + B)_{ij}
 = (B)_{ij} + (A)_{ij}
 = (B + A)_{ij}$.
 
-O vetor nulo é a matriz nula $0 = 0_{m \times n}$ em que $0_{ij} = 0, \forall i,j$. 
+O vetor nulo é a matriz nula $0 = 0_{m \times n}$ em que $0_{ij} = 0, \forall i,j$.
 
-\item 
+\item
 $(f + g)(x)
 = f(x) + g(x)
 = g(x) + f(x)
@@ -390,7 +390,7 @@ $(f + g)(x)
 
 O vetor nulo é a função constante igual a zero: $f(x) = 0, \forall x \in \R$.
 
-\item 
+\item
 $(a + b \ii)+ (c + d \ii)
 = (a + c) + (b + d) \ii
 = (c + a) + (d + b) \ii
@@ -398,7 +398,7 @@ $(a + b \ii)+ (c + d \ii)
 
 O vetor nulo é o número complexo (e, de fato, real) $0 = 0 + 0 \ii$.
 
-\item 
+\item
 $(x_1, x_2, \ldots) + (y_1, y_2, \ldots)
 = (x_1 + y_1, x_2 + y_2, \ldots) \\
 = (y_1 + x_1, y_2 + x_2, \ldots)
@@ -408,7 +408,7 @@ O vetor nulo é a sequência infinita com todas as posições iguais a zero: $0 
 
 \end{enumerate}
 
-\item 
+\item
 \begin{enumerate}
 \item $\R$ é um espaço vetorial com as operações indicadas. O vetor nulo é $-1$ e $-x-2$ é o oposto do vetor $x$.
 \item $\R^2$ não é espaço vetorial com as operações indicadas, pois
@@ -416,7 +416,7 @@ O vetor nulo é a sequência infinita com todas as posições iguais a zero: $0 
 \item $\R^2$ é um espaço vetorial com as operações indicadas. O vetor nulo é $(-1, 2)$ e o vetor oposto de $(x,y)$ é $(-x-2, -y+4)$.
 \end{enumerate}
 
-\item 
+\item
 \begin{enumerate}
 \item Se $u = (a,b,c,d) \in U$ e $v = (p,q,r,s) \in U$, então $a-b = c+d$ e $p-q = r+s$. Assim, como $u + v = (a+p,b+q,c+r,d+s)$ tem-se
 \[
@@ -446,7 +446,7 @@ Dados $(a,b,0,0) \in W$ e $(c,d,0,0) \in W$, tem-se
 \in W
 \end{align*}
 \end{enumerate}
-\item 
+\item
 \begin{enumerate}
 \item Se $X$ e $Y$ são matrizes simétricas então $X^T = X$ e $Y^T = Y$. Consequentemente, $(X+Y)^T = X^T+Y^T = X + Y$, ou seja, $X+Y$ é simétrica. Dado $k \in \R$, $(kX)^T = k(X^T) = kX$, ou seja, $kX$ é simétrica. Note que a matriz nula também é simétrica.
 
@@ -465,7 +465,7 @@ Logo, $A+B \in U$, e este é um conjunto fechado para a adição. Em relação �
 \[[kA]_{ij} = ka_{ij} = k0 = 0,\]
 ou seja, $kA \in U$ (a multiplicação por escalar é fechada em $U$), e conclui-se que $U$ é um subespaço de $M_{3 \times 3} (\R)$.
 \end{enumerate}
-\item 
+\item
 \begin{enumerate}
 \item
 Se $p$ e $q$ são polinômios e $c \in \R$, a soma $p+q$ e o produto $c \cdot p$ também são polinômios, logo $p + q \in P_\infty$ e $cp \in P_\infty$. Mais precisamente, se $p(x) = a_n x^n + \ldots + a_1 x^1 + a_0$ e $q(x) = b_m x^m + \ldots + b_1 x^1 + b_0$, com $m, n \in \N$ e $a_i,b_i \in \R$ então $p + q$ é dado por
@@ -560,7 +560,7 @@ Portanto, $U$ é um subespaço vetorial de $\R^2$ (é a reta que passa pela orig
 \item Se $AX_1=0$ e $AX_2=0$ então $A(X_1+X_2)=AX_1 + AX_2 = 0 + 0$.
 \item Se $AX=0$ e $t \in \R$ então $A(tX)=t(AX) = t0 = 0$.
 \end{itemize}
-Em outras palavras, $U$ é fechado para as operações do espaço vetorial $V$. 
+Em outras palavras, $U$ é fechado para as operações do espaço vetorial $V$.
 
 Note que as propriedades acima são válidas independentemente de quais sejam os números que aparecem na matriz $A$, então não é necessário expandir os produtos em termos das entradas das matrizes. De fato, $U = N(A)$, isto é, é o espaço nulo de $A$.
 
@@ -728,7 +728,7 @@ Em outras palavras, todo elemento $x_2$ de $V_2$ tem que pertencer a $V_1$, isto
 
 %ANTIGA LISTA 3, DE 2016
 
-\item 
+\item
 \begin{enumerate}
 \item \textbf{Verdadeira}. Como todo subespaço vetorial deve conter o vetor nulo, a interseção de dois subespaços vetoriais quaisquer tem pelo menos um elemento, ou seja, não é vazia.
 \item \textbf{Falsa}. Mesmo que $V$ seja o espaço gerado por ${ u_1, u_2, u_3 }$, pode ser que um destes vetores seja combinação linear dos demais. Neste caso, os vetores são linearmente dependentes, e não são uma base de $V$. Por exemplo: $\R^2 = \ger{(1,0),(0,1),(2,3)}$, mas $(1,1) = 2(1,0)+3(0,1)$, ou seja, estes três vetores geram $\R^2$ mas não são uma base.
@@ -912,7 +912,7 @@ a
 com $a,b,c,d,e,f \in \R$. Então estas 6 matrizes geram $U$.
 \end{enumerate}
 
-\item 
+\item
 \begin{enumerate}
 \item $v_1=(0,3,-9)$, $v_2=(1,4,-10)$, $v_3=(2,5,-11)$ em $\R^3$.
 
@@ -949,7 +949,7 @@ Como o número de equações é o mesmo do número de incógnitas, pode-se deter
  3 &   4 \\
 -9 & -10
 \end{vmatrix}
-= 
+=
 (-1) \cdot 12
 +2 \cdot 6
 = 0
@@ -1088,12 +1088,12 @@ Como o sistema tem $c_5$ como uma variável livre, é possível obter o vetor nu
 
 \item A condição $a v_1 + b v_2 + c v_3 + d v_4 = 0$ equivale às seguintes condições:
 \begin{align*}
-& a ( x^3 + x^2 + x + 1 ) + b ( x^2 + x + 1 ) + c (x + 1) + d 
+& a ( x^3 + x^2 + x + 1 ) + b ( x^2 + x + 1 ) + c (x + 1) + d
 = 0 x^3 + 0 x^2 + 0 x + 0 \\
 & \Leftrightarrow
 a x^3 + (a+b) x^2 + (a+b+c)x + (a+b+c+d) = 0 x^3 + 0 x^2 + 0 x + 0 \\
 \Leftrightarrow
-& 
+&
 \systeme{
 a=0,
 a+b=0,
@@ -1290,7 +1290,7 @@ Além disso, com base no cálculo acima, o único modo de obter $(a,b,c) = (0,0,
 
 \item Sejam $W = \ger{ v_1, \ldots, v_n }$ e $z \in W$, isto é, $z = k_1 v_1 + \ldots + k_n v_n$, com $k_1, \ldots, k_n \in \R$. Sendo $U = \ger{ v_1, \ldots, v_n, z }$, pode-se dizer que os conjuntos $U$ e $W$ são iguais se for explicado por que todo elemento de $W$ pertence a $U$ e vice-versa ($W \subseteq U$ e $U \subseteq W$).
 \begin{itemize}
-\item 
+\item
 Se $u \in W$, então $u$ é uma combinação linear dos vetores $v_i$, isto é, $u = c_1 v_1 + \ldots + c_n v_n$. Mas então é claro que $u$ também é combinação linear dos vetores $v_i$ e de $z$ pois basta considerar um coeficiente zero para $z$, como em $u = c_1 v_1 + \ldots + c_n v_n + 0 \cdot z$. Isto quer dizer que $z \in \ger{ v_1, \ldots, v_n, z } = U$, ou seja, que $W \subseteq U$.
 \item Por outro lado, todo $u \in W$ é combinação linear de $v_1, \ldots, v_n, z$, isto é,
 \begin{align*}
@@ -1338,7 +1338,7 @@ Então $L(A) = \ger{
 \begin{bmatrix}
 0 & 1
 \end{bmatrix}
-} = \{ 
+} = \{
 \begin{bmatrix}
 a & b
 \end{bmatrix} \mid a,b, \in \R
@@ -1358,7 +1358,7 @@ a & b
 0 & 0
 \end{bmatrix}$ se $a$ e $b$ forem ambos nulos. Em outras palavras, estes dois vetores formam uma base de $L(A)$, que portanto é um espaço vetorial de dimensão dois.
 
-\item 
+\item
 Para o espaço coluna de $A$, pode-se usar como geradores as colunas de $A$ que correspondem às posições dos pivôs da forma reduzida. Especificamente, tem-se $C(A)
 = \ger{\begin{bmatrix}
 1\\
