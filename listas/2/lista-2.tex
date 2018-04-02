@@ -108,14 +108,14 @@ Este é um material de acesso livre distribuído sob os termos da licença \href
 k \cdot (x_1, \ldots, x_n)
 & = (kx_1, \ldots, kx_n)
 \end{align*}
-\item $V = M_{m \times n} (\R)$, formado por todas as matrizes de ordem $m \times n$, com $m,n$ fixos e
+\item $V = \R^{m \times n} = M_{m \times n} (\R)$, formado pelas matrizes de ordem $m \times n$, com $m,n$ fixos e
 \begin{align*}
 (A + B)_{ij}
 & = (A)_{ij} + (B)_{ij}, \text{ para } 1 \leq i \leq m \text{ e } 1 \leq j \leq n,\\
 (k \cdot B)_{ij}
 & = k(A_{ij}), \text{ para } 1 \leq i \leq m \text{ e } 1 \leq j \leq n
 \end{align*}
-\item $V = \mathcal{F}(\R) = \mathcal{F}(-\infty, +\infty)$, formado por todas as funções $f: \R \to \R$ e
+\item $V = \R^{\R} = \mathcal{F}(\R) = \mathcal{F}(-\infty, +\infty)$, formado por todas as funções $f: \R \to \R$ e
 \begin{align*}
 (f + g)(x)
 & = f(x) + g(x), \quad \forall x \in \R\\
@@ -138,7 +138,7 @@ k \cdot (x_1, \ldots, x_n)
 \end{align*}
 \end{enumerate}
 
-\item \conceito Verifique se as operações definidas a seguir fazem com que os conjuntos $V$ indicados sejam espaços vetoriais. Em particular, determine se há algum elemento $z \in V$ que faz o papel de ``vetor nulo'', ou seja, que satisfaz $z + v = v, \forall v \in V$, e para cada vetor $v \in V$, indique qual $x \in V$ é o seu ``oposto'', no sentido de que $x + v = z$.
+\item \conceito Verifique se as operações definidas a seguir fazem com que os conjuntos $V$ indicados sejam espaços vetoriais. Em particular, determine se há algum elemento $z \in V$ que faz o papel de ``vetor nulo'', ou seja, que satisfaz $v + z = v, \forall v \in V$, e para cada vetor $v \in V$, indique qual $x \in V$ é o seu ``oposto'', no sentido de que $x + v = z$.
 \begin{enumerate}
 \item $V = \R$, sendo
 $\begin{cases}
@@ -162,6 +162,16 @@ k \cdot (x,y)
  = ( k x + k - 1, k y - 2 k + 2 ), \quad \forall k \in \R, \forall (x, y) \in V
 \end{cases}$
 \end{enumerate}
+\item \teoria
+Assumindo que $V$ seja um espaço vetorial sobre $\R$ e que $u \in V$, $v \in V$ e $a \in \R$, mostre que as seguintes igualdades decorrem dos axiomas satisfeitos por $V$ e por suas operações:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $-(-u)=u$
+\item $-(a u) = (-a) u$
+\item $-(a u) = a (-u)$
+\item $-(u+v) = (-u) + (-v)$
+\end{enumerate}
+\end{multicols}
 
 \item \conceito Seja $V = \R^4$, o espaço vetorial das quádruplas de números reais, com as operações usuais. Mostre que os seguintes subconjuntos são subespaços vetoriais de $V$:
 \begin{enumerate}
@@ -217,6 +227,30 @@ P_n = \{ q(x) \in P_\infty \mid \operatorname{grau}(q(x)) \leq n \}.
 -2 &  4 & 2
 \end{bmatrix}$ vetores de $M_{3 \times 2}(\R)$. Resolva a seguinte equação na variável $X \in M_{3 \times 2}(\R)$: $\displaystyle \frac{A-X}{5}-\frac{X+B}{2} = C$.
 
+\item \calc
+Seja $U$ o conjunto de todas as funções $q: \R \setminus \{3\} \to \R$, para as quais existem $a \in \R$ e $b \in \R$ tais que $q(x) = \dfrac{ax+b}{(x-3)^2}$, para todo $x\neq 3$. Demonstre as afirmações a seguir:
+\begin{enumerate}
+\item O conjunto $U$ é um espaço vetorial.
+\item As funções $q_1$ e $q_2$, definidas por $q_1(x) = \dfrac{1}{x-3}$ e $q_2(x) = \dfrac{1}{(x-3)^2}$, pertencem a $U$.
+\item A função $q_3$, definida por $q_3(x) = \dfrac{-2x+11}{(x-3)^2}$, pertence ao espaço gerado por $\{q_1, q_2\}$.
+\item Toda função pertencente a $U$ também pertence ao espaço gerado por $\{q_1, q_2\}$.
+\item Toda função pertencente ao espaço gerado por $\{q_1, q_2\}$ também pertence a $U$.
+\item O conjunto de funções $B = \{q_1, q_2\}$ é linearmente independente.
+\item O conjunto $B$ é uma base de $U$.
+\end{enumerate}
+
+\item \calc
+Sejam $b_1 = (2,-3, 1)$ e $b_2 = (4,0,0)$ e $b_3 = (0,2,2)$ vetores de $\R^3$. Determine vetores $u,v,w \in \R^3$ tais que
+\systeme{
+  u  +  2 v - 2w = b_1,
+ 2u  +  5 v - 5w = b_2,
+-2u  -  5 v + 6w = b_3.
+}
+(\textbf{Dica:} não resolva um sistema linear $9 \times 9$).
+
+\item \calc
+Seja $S$ o conjunto das funções $y = f(x)$, de $\R$ em $\R$, que satisfazem a equação diferencial $y^{\prime\prime} - 4y = 0$. Mostre que $S$ é um subespaço do espaço vetorial das funções $f: \R \to \R$.
+
 \item \teoria Prove que os únicos subespaços de $\R$ (com as operações usuais) são o trivial $\{ 0 \}$ e $\R$. (dica: mostre que se $U$ é um subespaço de $\R$ e $U \neq \{0\}$ então $U = \R$)
 
 \item \teoria Seja $U$ um subespaço de um espaço vetorial $V$. Explique por que $W = \{ x \in V \mid x \not \in U \}$ não pode ser um subespaço de $V$.
@@ -251,6 +285,8 @@ Explique todas as afirmações verdadeiras a seguir, e dê contraexemplos para a
 \end{enumerate}
 
 \item \calc É verdade que $\R^4 = \ger{ (1,-1,0,0), (0,0,1,-1), (0,2,1,0), (0,0,1,1)}$? Por que?
+
+\item \calc Sob quais condições o vetor $v = (a,b,c,d) \in \R^4$ é combinação linear dos vetores $w_1 = (1,-1,1,0)$, $w_2 = (2,-3,2,-1)$ e $w_3 = (0,0,-1,0)$?
 
 \item \calc Encontre um conjunto de vetores geradores de um dos seguintes subespaços de $M_{3 \times 3}(\R)$:
 \begin{enumerate}
@@ -307,6 +343,8 @@ a & b & c \\p & q & r
 
 \item \teoria Prove que se $S_1 = \{ u_1, u_2, u_3 \}$ é um conjunto de vetores linearmente independentes, então $S_2 = \{ u_1, u_2 \}$ também é um conjunto de vetores linearmente independentes.
 
+\item \teoria Mostre que se $U$ é um subespaço de $V$ então $U=\ger{U}$.
+
 \item \calc Dada uma matriz $A$, denote por $L(A)$ o espaço linha (subespaço gerado pelas linhas de $A$), por $C(A)$ o espaço coluna (subespaço gerado pelas colunas de $A$) e por $N(A)$ o núcleo de $A$ (o espaço das matrizes coluna $X$ que satisfazem $AX = 0$). Encontre uma base e a dimensão de $L(A)$, $C(A)$ e $N(A)$ para as seguintes matrizes:
 \begin{enumerate}
 \begin{multicols}{2}
@@ -358,6 +396,7 @@ Encontre $U+V$ para os seguintes subespaços $U$ e $V$ e verifique se é uma som
 
 \item \teoria Mostre que se $B = \{u, v\}$ é uma base de $V$ então $B^\prime = \{ u+v, u-v \}$ também é base.
 
+\item \teoria Mostre que para qualquer espaço vetorial $V$, é verdade que $V=V+V$ e $V={0}\oplus V$.
 \end{enumerate}
 
 \newpage
@@ -410,10 +449,34 @@ O vetor nulo é a sequência infinita com todas as posições iguais a zero: $0 
 
 \item
 \begin{enumerate}
-\item $\R$ é um espaço vetorial com as operações indicadas. O vetor nulo é $-1$ e $-x-2$ é o oposto do vetor $x$.
+\item $\R$ é um espaço vetorial com as operações indicadas. O vetor nulo é $\vec{0} = -1$ e o oposto do vetor $v = x$ é o vetor $-v = -x-2$.
 \item $\R^2$ não é espaço vetorial com as operações indicadas, pois
-\[1 \cdot(x,y) = (-3x+y,5x-2y) \neq (x,y), \text{ para vários valores de }x,y.\]
-\item $\R^2$ é um espaço vetorial com as operações indicadas. O vetor nulo é $(-1, 2)$ e o vetor oposto de $(x,y)$ é $(-x-2, -y+4)$.
+\[1 \cdot(x,y) = (-3x+y,5x-2y) \neq (x,y), \text{ para vários valores de }x \text{ e }y.\]
+\item $\R^2$ é um espaço vetorial com as operações indicadas. O vetor nulo é $\vec{0} = (-1, 2)$ e o vetor oposto de $v = (x,y)$ é o vetor $-v = (-x-2, -y+4)$.
+\end{enumerate}
+
+
+\item \begin{enumerate}
+\item Basta observar que pela propriedade comutativa da adição, tem-se $u + (-u) = -u + u$ e que por definição de elemento oposto, $-u + u = \vec{0}$. Logo, $u + (-u) = \vec{0}$ e $-(-u) = u$.
+\item Como $((-a) u) + (a u)
+= ((-a) + a) u
+= 0 u
+= \vec{0}$, conclui-se que $-(a u) = (-a) u$.
+\item Isso resulta das seguintes igualdades: $(a (-u)) + (a u)
+= a((-u) + u)
+= a \vec{0}
+= \vec{0}$.
+\item Como o oposto do vetor $u+v$ é único, basta mostrar que $(-u) + (-v)$ satisfaz a propriedade que caracteriza o vetor oposto, ou seja, que
+\begin{align*}
+  ((-u) + (-v)) + (u+v)
+& = -u + (-v + (u+v))
+  = -u + (-v + (v+u))\\
+& = -u + ((-v + v)+u)
+  = -u + (\vec{0}+u)
+  = -u + (u+\vec{0})\\
+& = -u + u
+  = \vec{0}.
+\end{align*}
 \end{enumerate}
 
 \item
@@ -631,6 +694,119 @@ Assim, $X = \frac{1}{7}\left(2\begin{bmatrix}
 3 & 2 & 1
 \end{bmatrix}$
 
+\item
+\begin{enumerate}
+\item Considerando que, para qualquer conjunto $A$, as funções $f:A \to \R$ formam um espaço vetorial com as operações usuais, basta considerar $A = \R \setminus \{3\}$ e mostrar que $U$ é um subespaço vetorial desse espaço vetorial. Para isso, observe que
+\begin{enumerate}
+\item Se $q_1 \in U$ e $q_2 \in U$ são definidas por $q_1(x) = \dfrac{a_1x+b_1}{(x-3)^2}$ e $q_2(x) = \dfrac{a_2x+b_2}{(x-3)^2}$, para todo $x\neq 3$, então $q_1+q_2$ é dada por
+\[
+(q_1+q_2)(x)
+= q_1(x) + q_2(x)
+= \dfrac{a_1x+b_1}{(x-3)^2}
+ +\dfrac{a_2x+b_2}{(x-3)^2}
+= \dfrac{(a_1+a_2)x+(b_1+b_2)}{(x-3)^2}, x\neq 3
+\]
+\item Se $k \in \R$ e $q_1 \in U$ é definida por $q_1(x) = \dfrac{a_1x+b_1}{(x-3)^2}$, para todo $x\neq 3$, então $k q_1$ é dada por
+\[
+(kq_1)(x)
+= kq_1(x)
+= k \dfrac{a_1x+b_1}{(x-3)^2}
+= \dfrac{(ka_1)x+(kb_1)}{(x-3)^2}, x\neq 3.
+\]
+\end{enumerate}
+Portanto, $q_1+q_2 \in U$ e $k q_1\in U$ e o conjunto $U$ é um (sub)espaço vetorial.
+\item Basta observar que
+$
+q_1(x) = \dfrac{1}{x-3}
+= \dfrac{1x+(-3)}{(x-3)^2}
+$
+e
+$
+q_2(x) = \dfrac{1}{(x-3)^2}
+=\dfrac{0x+1}{(x-3)^2}
+$.
+\item Para que $q_3$ esteja no espaço gerado por $\{q_1, q_2\}$, devem existir escalares $m_1$ e $m_2$ tais que $q_3 = m_1 q_1 + m_2q_2$, isto é,
+\begin{align*}
+\dfrac{-2x+11}{(x-3)^2}
+& = m_1 \dfrac{1}{x-3}
+  + m_2 \dfrac{1}{(x-3)^2}\\
+& = \dfrac{m_1(x-3)+m_2}{(x-3)^2},\forall x\neq3
+\end{align*}
+Assim, deve ocorrer $-2x+11 = m_1x + (-3m_1+m_2)$, ou seja, $m_1 = -2$ e $-3m_1+m_2=11$, o que é possível para $m_1 = -2$ e $m_2=5$. Logo, $q_3 \in \ger{q_1,q_2}$.
+
+\item Seja $q \in U$. Então $q(x) = \dfrac{ax+b}{(x-3)^2}$, para todo $x \neq 3$. Usando a decomposição em frações parciais, obtém-se:
+\[
+q(x)
+= \dfrac{ax+b}{(x-3)^2}
+= \dfrac{a}{x-3}
++ \dfrac{3a+b}{(x-3)^2}
+= a\dfrac{1}{x-3}
++ (3a+b)\dfrac{1}{(x-3)^2}.
+\]
+Logo, $q = aq_1+(3a+b)q_2 \in \ger{q_1, q_2}$.
+\item Seja $q \in \ger{q_1, q_2}$. Então existem $k_1 \in \R$ e $k_2 \in \R$ tais que $q = k_1 q_1 + k_2q_2$. Assim, para todo $x \neq 3$ tem-se:
+\[
+q(x)
+= k_1\dfrac{1}{x-3}
++ k_2\dfrac{1}{(x-3)^2}
+= \dfrac{k_1(x-3) + k_2}{(x-3)^2}
+= \dfrac{k_1x+(-3k_1+ k_2)}{(x-3)^2}
+= \dfrac{a^\prime x+b^\prime}{(x-3)^2}
+\]
+Logo, $q \in U$.
+
+\item Se $c_1 \in \R$ e $c_2 \in \R$ são tais que  $c_1 q_1 + c_2q_2 = \vec{0}$ então, para todo $x\neq 3$, tem-se:
+$0 = c_1 \dfrac{1}{x-3} + c_2 \dfrac{1}{(x-3)^2}
+   = \dfrac{c_1x+(-3c_1+c_2)}{(x-3)^2}$.
+Logo, $c_1x+(-3c_1 + c_2) = 0x+0$, o que só é possível se $c_1=0$ e $-3c_1 + c_2 = 0 + c_2 = 0$. Portanto, $\{q_1,q_2\}$ é linearmente independente.
+\item Como $B$ gera $U$ e é linearmente independente, conclui-se que $B$ é uma base de $U$.
+\end{enumerate}
+\item Usando as operações de adição e multiplicação por escalar, é possível multiplicar os vetores de ambos os membros de uma equação por uma constante (não nula), e também somar o resultado com os vetores em cada membro de outra equação, obtendo equações equivalentes às que foram dadas. Isso é permite que a matriz ampliada seja escalonada:
+\[
+\begin{bmatrix}
+ 1 &  2 & -2 & b_1\\
+ 2 &  5 & -5 & b_2\\
+-2 & -5 &  6 & b_3
+\end{bmatrix}
+\rightarrow
+\cdots
+\rightarrow
+\begin{bmatrix}
+ 1 & 0 & 0 & 5b_1 - 2b_2\\
+ 0 & 1 & 0 & -2b_1+2b_2+b_3\\
+ 0 & 0 & 1 & b_2+b_3
+\end{bmatrix}.
+\]
+Assim, as equações originais são equivalentes às seguintes:
+\begin{align*}
+u &= 5b_1 - 2b_2
+   = 5(2,-3,1) - 2(4,0,0)
+   = (2,-15,5),\\
+v &= -2b_1+2b_2+b_3
+   = -2(2,-3,1)+2(4,0,0)+(0,2,2)
+   = (4,8,0),\\
+w &= b_2+b_3
+   = (4,0,0)+(0,2,2)
+   = (4,2,2).
+\end{align*}
+
+\item Observe que a função nula satisfaz $0^{\prime\prime}-4\cdot 0 = 0 - 4\cdot 0 = 0$, logo, $S \neq \emptyset$. Além disso, se $y_1 \in S$, $y_2 \in S$ e $k \in \R$, então:
+\[
+  (y_1 + y_2)^{\prime\prime}-4(y_1+y_2)
+= y_1^{\prime\prime} + y_2^{\prime\prime}-4y_1-4y_2
+= (y_1^{\prime\prime}-4y_1)
+ -(y_2^{\prime\prime}-4y_2)
+= 0 + 0 = 0
+\]
+e
+\[
+  (k y_1)^{\prime\prime}-4(k y_1)
+= k (y_1^{\prime\prime})-k(4y_1)
+= k (y_1^{\prime\prime}-4y_1)
+= k 0 = 0
+\]
+Assim, $y_1+y_2 \in S$ e $ky_1 \in S$, o que implica que $S$ é um subespaço vetorial.
+
 \item Se $U$ é um subespaço de $\R$ e $U \neq \{0\}$ então $U$ tem algum elemento não nulo. Denote-o por $b$. Para ver que todo número real $x$ também tem que estar em $U$ basta escrever $x = (\frac{x}{b}) \cdot b$, pois sendo $U$ um subespaço vetorial de $\R$ ele é fechado para a multiplicação por escalar e portanto a multiplicação de $b \in U$ pelo escalar $\frac{x}{b}$ deve resultar em um elemento de $U$, isto é, $x \in U$. Portanto $U = \R$.
 
 \item O conjunto $W = \{ x \in V \mid x \not \in U \}$ não é um subespaço de $V$ pois $0 \in U$ mas $0 \not \in W$.
@@ -700,7 +876,7 @@ Assim, a única matriz que é simétrica e antissimétrica é a matriz nula, ou 
 
 \item Para quaisquer $x, y \in V$ tem-se $y = (y - x) + x$. Então se $x \in U$ e $y-x \in U$ e $U$ é um subespaço de $V$, então $U$ é fechado para a adição, e consequentemente $y = (y - x) + x \in U$.
 
-\item Dê exemplos de subespaços vetoriais $V_1$ e $V_2$ de $\R^3$ que satisfaçam as seguintes condições (e explique porque satisfazem):
+\item
 \begin{enumerate}
 \item Sejam
 \begin{itemize}
@@ -800,7 +976,41 @@ Note que esta matriz poderia ser construída diretamente a partir dos vetores, c
 = -2(1 \cdot 1 - (-1) \cdot 1)
 =-4 \neq 0.
 \]
-Então, de fato, qualquer $(a,b,c,d)$ é combinação linear dos quatro vetores dados, isto é, $R^4 = \ger{u,v,x,z}$.
+Então, de fato, qualquer $(a,b,c,d)$ é combinação linear dos quatro vetores dados, isto é, $\R^4 = \ger{u,v,x,z}$.
+
+\item Seja $v = (a,b,c,d) \in \R^4$. Para que $v$ seja combinação linear de $w_1$, $w_2$ e $w_3$, devem existir escalares $c_1$, $c_2$ e $c_3$ tais que $v = c_1w_1 + c_2w_2 + c_3w_3$, ou seja,
+\[
+(a,b,c,d) = c_1(1,-1,1,0) + c_2(2,-3,2,-1) + c_3(0,0,-1,0).
+\]
+Isso equivale ao seguinte sistema linear ser compatível:
+\[
+\systeme[c_1c_2c_3]{
+ c_1 + 2c_2 = a,
+-c_1 - 3c_2 = b,
+ c_1 + 2c_2 -c_3 = c,
+       -c_2      = d
+}
+\]
+Escalonando a matriz ampliada desse sistema, resulta:
+\[
+\begin{bmatrix}
+ 1 &  2 &  0 & a\\
+-1 & -3 &  0 & b\\
+ 1 &  2 & -1 & c\\
+ 0 & -1 &  0 & d\\
+\end{bmatrix}
+\rightarrow
+\cdots
+\rightarrow
+\begin{bmatrix}
+ 1 & 0 & 0 & 3a+2b\\
+ 0 & 1 & 0 & -a-b \\
+ 0 & 0 & 1 &  a-c  \\
+ 0 & 0 & 0 & -a-b+d \\
+\end{bmatrix}
+\]
+Assim, se $-a-b+d = 0$, o posto da matriz do sistema será igual ao posto da matriz ampliada, e o sistema será possível. Portanto, $v$ é combinação linear de $w_1$, $w_2$ e $w_3$ se, e somente se, $d = a+b$.
+
 \item
 \begin{enumerate}
 \item Para toda matriz diagonal $X \in M_{3 \times 3}(\R)$ tem-se
@@ -1260,9 +1470,7 @@ k = 0
 Portanto $B$ é uma base para $W$ e $\dim(W) = 1$.
 \end{enumerate}
 
-\item \calc Encontre um subconjunto de $S = \{ (1,1,1), (1,1,0), (1,0,1), (0,1,1) \}$ que seja base de $\R^3$.
-
-Como $(1,1,1) = \frac{1}{2} \left( (1,1,0) + (1,0,1) + (0,1,1) \right)$, pode-se dizer que $S$ é L.D. (pois um dos vetores é combinação linear dos demais, ou porque o sistema linear associado tem soluções não nulas) e portanto não forma uma base de $\R^3$. No entanto, se forem considerados apenas os vetores $v_1 = (1,1,0)$, $v_2 = (1,0,1)$ e $v_3 = (0,1,1)$, então o subconjunto $B = \{ v_1, v_2, v_3 \}$ será uma base de $\R^3$ pois $R^3 = \ger{ v_1, v_2, v_3 }$ e estes três vetores são L.I. De fato, qualquer $(a,b,c) \in \R^3$ pode ser escrito como combinação linear de $v_1, v_2$ e $v_3$ pois
+\item Como $(1,1,1) = \frac{1}{2} \left( (1,1,0) + (1,0,1) + (0,1,1) \right)$, pode-se dizer que $S$ é L.D. (pois um dos vetores é combinação linear dos demais, ou porque o sistema linear associado tem soluções não nulas) e portanto não forma uma base de $\R^3$. No entanto, se forem considerados apenas os vetores $v_1 = (1,1,0)$, $v_2 = (1,0,1)$ e $v_3 = (0,1,1)$, então o subconjunto $B = \{ v_1, v_2, v_3 \}$ será uma base de $\R^3$ pois $R^3 = \ger{ v_1, v_2, v_3 }$ e estes três vetores são L.I. De fato, qualquer $(a,b,c) \in \R^3$ pode ser escrito como combinação linear de $v_1, v_2$ e $v_3$ pois
 \begin{align*}
 & (a,b,c) = x(1,1,0) + y(1,0,1) + z(0,1,1)
 \Leftrightarrow
@@ -1304,6 +1512,12 @@ Portanto $u$ é uma combinação linear dos vetores $v_1, \ldots, v_n$, o que qu
 Em resumo, ao adicionar a uma lista de vetores $v_i$ um vetor $z$ que já esteja no espaço gerado por eles, o espaço gerado por todos estes vetores continuará sendo o mesmo.
 
 \item Suponha que $a u_1 + bu_2 = 0$. Então $a u_1 + b u_2 + 0 u_3= 0$, ou seja, tem-se uma combinação de $u_1, u_2, u_3$ que resulta no vetor nulo. Mas por hipótese, $u_1, u_2, u_3$ são L.I., então esta combinação linear precisa ter todos os coeficientes iguais a zero, isto é, $a=b=0$. Assim, mostrou-se que não há outra forma de obter o vetor nulo como combinação linear de $u_1$ e $u_2$, isto é, $u_1$ e $u_2$ são L.I.
+
+\item Para que os conjuntos $U$ e $\ger{U}$ sejam iguais, cada um deve estar contido no outro.
+\begin{enumerate}
+\item $\ger{U} \subseteq U$, pois dado $u \in \ger{U}$, existem vetores $v_1, \ldots v_n \in U$ e escalares $c_1, \ldots, c_n \in \R$ tais que $u = c_1v_1 + \cdots + c_nv_n \in U$. Logo, $u \in U$ pois $U$ é subespaço vetorial, e como tal, é fechado para as operações de adição e multiplicação por escalar.
+\item $U \subseteq \ger{U}$, pois dado $u \in U$, tem-se $u = 1 \cdot u$, o que significa que $u$ é uma combinação linear de vetores de $U$ e, portanto, um elemento de $\ger{U}$.
+\end{enumerate}
 
 \item
 \begin{enumerate}
@@ -1489,11 +1703,146 @@ $C(A) = \ger{ \begin{bmatrix}
 -2\\1
 \end{bmatrix} }$ e $\dim(L(A)) = 1$.
 \end{enumerate}
+\end{enumerate}
+
+\item \begin{enumerate}
+\item Como $v=(x,y,z,w) \in U$ se, e somente se, $x + y = 0 = z + w$, isto é, $x=-y$ e $z = -w$, ou seja, $v = (-y,y,-w,w) = y(-1,1,0,0) + w(0,0,-1,1)$. Assim,
+\[
+U = \ger{ (-1,1,0,0), (0,0,-1,1) }.
+\]
+
+Além disso, $v = (a,b,c,d) \in V$ se, e somente se, $b=2c$, ou seja, $v = (a,2c,c,d) = a(1,0,0,0) + c(0, 2,1,0)+c(0,0,0,1)$. Logo,
+\[
+V = \ger{ (1,0,0,0), (0, 2,1,0), (0,0,0,1) }
+\]
+e, consequentemente,
+\[
+U+V = \ger{(-1,1,0,0), (0,0,-1,1), (1,0,0,0), (0,2,1,0), (0,0,0,1)}
+    = \R^4.
+\]
+A soma não é direta pois, por exemplo, $(2,-2,-1,1) \in U \cap V$.
+
+\item Os elementos de $U$ são da forma
+\begin{align*}
+M =
+\begin{bmatrix}
+ 0 &  x & y\\
+-x &  0 & z\\
+-y & -z & 0
+\end{bmatrix}
+& =x
+\underbrace{
+\begin{bmatrix}
+ 0 & 1 & 0\\
+-1 & 0 & 0\\
+ 0 & 0 & 0
+\end{bmatrix}
+}_{M_1}
++y
+\underbrace{
+\begin{bmatrix}
+ 0 & 0 & 1\\
+ 0 & 0 & 0\\
+-1 & 0 & 0
+\end{bmatrix}
+}_{M_2}
++z
+\underbrace{
+\begin{bmatrix}
+0 &  0 & 0\\
+0 &  0 & 1\\
+0 & -1 & 0
+\end{bmatrix}
+}_{M_3}\\
+& = xM_1+yM_2+zM_3.
+\end{align*}
+Logo $U = \ger{
+M_1, M_2, M_3
+}$.
+Por outro lado, os elementos de $V$ são da forma
+\begin{footnotesize}
+\begin{align*}
+N =
+\begin{bmatrix}
+a & b & c\\
+b & d & e\\
+c & e & f
+\end{bmatrix}
+& =a
+\underbrace{
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+}_{N_1}
++b
+\underbrace{
+\begin{bmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+}_{N_2}
++c
+\underbrace{
+\begin{bmatrix}
+0 & 0 & 1\\
+0 & 0 & 0\\
+1 & 0 & 0
+\end{bmatrix}
+}_{N_3}
++d
+\underbrace{
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{bmatrix}
+}_{N_4}
++e
+\underbrace{
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 1\\
+0 & 1 & 0
+\end{bmatrix}
++f
+}_{N_5}
+\underbrace{
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+}_{N_6}\\
+&=aN_1 + bN_2+cM_3+dN_4+eN_5+fN_6.
+\end{align*}
+\end{footnotesize}
+
+Logo $V = \ger{N_1, N_2, N_3, N_4, N_5, N_6}$ e
+\[
+U+V= \ger{M_1, M_2, M_3, N_1, N_2, N_3, N_4, N_5, N_6}
+= \R^{3 \times 3}.
+\]
+Além disso $U \cap V = \{ 0_{3 \times 3} \}$ pois se $A \in U \cap V$ então $A = A^T = -A$, ou seja, $2A = 0_{3\times3}$ e $A=0_{3\times3}$. Logo, $\R^{3 \times 3} = U \oplus V$.
+
+\item Se $q(x)=b_0 + b_1x+b_2x^2+b_3x^3$, então $q(-x)=b_0 - b_1x + b_2x^2 - b_3x^3$. Assim:
+\begin{itemize}
+\item $q \in U$ se, e somente se, $\forall x \in \R, q(-x) = -q(x)$, isto é, $\forall x \in \R, b_0 - b_1x + b_2x^2 - b_3x^3 = -b_0 - b_1x - b_2x^2 - b_3x^3$, o que equivale a $b_0 = -b_0$ e $b_2 = -b_2$, ou seja, $b_0 = b_2 = 0$. Portanto, $\forall x \in \R, q(x) = b_1 x + b_3 x^3$, ou seja $U = \ger{x, x^3}$.
+\item $q \in V$ se, e somente se, $\forall x \in \R, q(-x) = q(x)$, isto é, $\forall x \in \R, b_0 - b_1x + b_2x^2 - b_3x^3 = b_0 + b_1x + b_2x^2 + b_3x^3$, o que equivale a $b_1 = -b_1$ e $b_3 = -b_3$, ou seja, $b_1 = b_3 = 0$. Portanto, $\forall x \in \R, q(x) = b_0 + b_3 x^2$, ou seja $U = \ger{1, x^2}$.
+\end{itemize}
+Com base nos itens anteriores, $U + V = \ger{1,x,x^2,x^3} = P_3$. Além disso, $U \cap V = \{ \vec{0} \}$, pois se $\forall x \in \R, p(x) = p(-x) = -p(x)$, então $\forall x \in \R, 2p(x)=0$, ou seja, $p = \vec{0}$. Logo, $P_3 = U \oplus V$.
 
 \end{enumerate}
-\item \fixme
 
-\item \fixme
+\item \begin{enumerate}
+\item O conjunto $B_1 = \{ (-1,1,0,0), (0,0,-1,1), (1,0,0,0), (0,2,1,0) \}$ é uma base de $U+V$ e assim, $\dim{U+V} = 4$.
+\item O conjunto $B_2 = \{ M_1, M_2, M_3, N_1, N_2, N_3, N_4, N_5, N_6 \}$ é uma base de $U+V$ e assim, $\dim{U+V} = 9$.
+\item O conjunto $B_3 = \{ 1, x, x^2, x^3 \}$ é uma base de $U+V$ e assim, $\dim{U+V} = 4$.
+\end{enumerate}
+
+
 \item Suponha que $a(u+v) + b(u-v) + c(u-w) = 0$. Então $(a+b+c)u+(a-b)v + (-c)w = 0$ e como $u,v,w$ são L.I. esta combinação linear só resulta no vetor nulo se os três coeficientes forem zero, isto é, se
 \[
 \begin{cases}
@@ -1504,12 +1853,104 @@ a-b=0\\
 \]
 Mas a única solução deste sistema é $a=b=c=0$, o que implica que vetores $u+v$, $u-v$ e $u-w$ são L.I..
 
+\item Se $B = \{u, v\}$ é uma base de $V$ então $V = \ger{u} \oplus \ger{v}$, pois:
+\begin{itemize}
+\item $V = \ger{u} + \ger{v}$. De fato, como $B$ é base, seus elementos geram $V$, ou seja todo $w \in V$ pode ser escrito na forma $w = \alpha u + \beta v$, com $\alpha, \beta \in \R$. Mas $\alpha u \in \ger{u}$ e $\beta v \in \ger{v}$, então $w \in \ger{u} + \ger{v}$, o que significa que $V \subseteq \ger{u} + \ger{v}$. Reciprocamente, dado $w \in \ger{u} + \ger{v}$, tem-se $w \in V$, pois a soma de subespaços de $V$ também é um subespaço de $V$. Assim, $\ger{u} + \ger{v} \subseteq V$.
+\item $\ger{u} \cap \ger{v} = \{ 0 \}$. De fato, se $w \in \ger{u} \cap \ger{v}$ então $w = \alpha u$ e $w = \beta v$, para algum $\alpha, \beta \in \R$. Consequentemente, $\alpha u - \beta v = 0$ e o fato de $u$ e $v$ serem linearmente independentes implica que $\alpha = 0$ e $-\beta = 0$, ou seja, $w = 0 u = 0 w = \vec{0}$.
+Assim, $\ger{u} \cap \ger{v} \subseteq \{ 0 \}$. Por outro lado, é imediato que $\{ 0 \} \subseteq \ger{u} \cap \ger{v}$, pois a interseção de subespaços é um subespaço vetorial, e como tal deve conter o vetor nulo.
+\end{itemize}
 
-\item \fixme
-\item \fixme
-\item \fixme
+\item Sejam $U = \ger{ (1,0,0), (2,1,1) }$ e $V = \ger{ (0,-1,0), (0,0,1) }$ subespaços de $\R^3$.
+\begin{enumerate}
+\item Um vetor $v \in \R^3$ está em $U \cap V$ se, e somente se, existirem $x_1$, $x_2$, $x_3$ e $x_4$ tais que $v = x_1(1,0,0) + x_2(2,1,1) = x_3(0,-1,0) + x_4(0,0,1)$, o que equivale a:
+\begin{footnotesize}
+\[
+\systeme[x_1x_2x_3x_4]{
+ x_1+2x_2=0x_3+0x_4,
+ 0x_1+x_2=-x_3+0x_4,
+ 0x_1+x_2=0x_3+x_4
+}
+\Leftrightarrow
+\systeme[x_1x_2x_3x_4]{
+ 1x_1+2x_2+0x_3+0x_4=0,
+ 0x_1+1x_2+1x_3+0x_4=0,
+ 0x_1+1x_2+0x_3-1x_4=0
+}
+\Leftrightarrow
+\begin{bmatrix}
+1 & 2 & 0 & 0 \\
+0 & 1 & 1 & 0 \\
+0 & 1 & 0 & -1
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\x_2\\x_3\\x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+0\\0\\0
+\end{bmatrix}.
+\]
+\end{footnotesize}
+Como a solução deste sistema é $S = \{ (-2x_4, x_4, -x_4, x_4) \mid x_4 \in \R \}$, conclui-se que $v = x_1(1,0,0) + x_2(2,1,1) = -2x_4(1,0,0) + x_4(2,1,1)
+= x_4(0, 1, 1)$. Logo $U \cap V = \ger{ (0,1,1) }$ e como $B=\{(0,1,1)\}$ é linearmente independente, conclui-se que $B$ é uma base de $U\cap V$ e que $\dim{U \cap V} = 1$.
+\item  Um vetor $w = (a,b,c) \in \R^3$ está em $U + V$ se, e somente se, existirem $u \in U$ e $v \in V$ tais que $w=u+v$, ou seja, se existirem $x_1$, $x_2$, $x_3$ e $x_4$ tais que
+\[
+w = x_1(1,0,0) + x_2(2,1,1) + x_3(0,-1,0) + x_4(0,0,1),
+\]
+o que equivale a:
+\[
+\systeme[x_1x_2x_3x_4]{
+ 1x_1+2x_2+0x_3+0x_4=a,
+ 0x_1+1x_2-1x_3+0x_4=b,
+ 0x_1+1x_2+0x_3+1x_4=c
+}
+\Leftrightarrow
+\begin{bmatrix}
+1 & 2 & 0 & 0 \\
+0 & 1 & -1 & 0 \\
+0 & 1 & 0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\x_2\\x_3\\x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+a\\b\\c
+\end{bmatrix}.
+\]
+Realizando a eliminação de Gauss-Jordan, obtém-se:
+\[
+\begin{bmatrix}
+1 & 2 & 0 & 0 & a \\
+0 & 1 & -1 & 0 & b\\
+0 & 1 & 0 & 1 & c
+\end{bmatrix}
+\rightarrow
+\cdots
+\rightarrow
+\begin{bmatrix}
+1 & 0 & 0 & -2 & a -2c \\
+0 & 1 & 0 &  1 & b \\
+0 & 0 & 1 &  1 & c-b
+\end{bmatrix},
+\]
+Como o posto da matriz de coeficientes é igual ao da matriz ampliada do sistema, ele é possível (e indeterminado), ou seja, todo $w \in \R^3$ está em $U+V$, isto é, $\R^3 = U+V$. No entanto, como $U \cap V = \ger{ (0,1,1) } \neq \{ (0,0,0) \}$, a soma não é direta.
+\end{enumerate}
 
+\item Se $B = \{u, v\}$ é uma base de $V$, então $\dim{V} = 2$ e qualquer conjunto linearmente independente com dois vetores gera (e é base de) $V$. Em particular, isso pode ser usado para mostrar que  $B^\prime = \{ u+v, u-v \}$  é base: supondo que $\alpha_1 (u+v) + \alpha_2 (u-v) = \vec{0}$, então $(\alpha_1 +\alpha_2)u + (\alpha_1 -\alpha_2)v = \vec{0}$. Como $u$ e $v$ são linearmente independentes, então 
+\[
+\systeme[\alpha_1\alpha_2]{
+\alpha_1 + \alpha_2 = 0,
+\alpha_1 - \alpha_2 = 0
+}
+\]
+o que implica que $\alpha_1 = \alpha_2 = 0$, pois este sistema homogêneo é possível e determinado. Logo, $B^\prime$ é linearmente independente e, portanto, uma base de $V$.
 
+\item
+\begin{itemize}
+\item Dado $v \in V$, tem-se $v = 0 + v \in V + V$. Então $V \subseteq V + V$. Reciprocamente, dado $w \in V + V$, existem vetores $v_1 \in V$ e $v_2 \in V$ tais que $w = v_1 + v_2$. Como $V$ é um espaço vetorial, a soma de vetores de $V$ pertence a $V$ e, em particular, $w \in V$. Logo $V+V \subseteq V$, e portanto, $V = V + V$.
+\item Por um argumento bastante similar ao do item anterior, demonstra-se que $V = 0 + V$. Além disso, como $0 \cap V = 0$, conclui-se que a soma é direta, isto é, $V = 0 \oplus V$.
+\end{itemize}
 \end{enumerate}
 
 \end{document}
