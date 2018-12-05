@@ -179,18 +179,19 @@ Seja $T : \R^3 \to \R^3$ o operador linear definido por
 T(x,y,z) = (x,x-2y+z,-2y+z).
 \]
 Verifique se $T$ é diagonalizável, e justifique sua resposta.
-\Answer Como a matriz de $T$ em relação à base canônica é $[T] =
+\Answer
+Como a matriz de $T$ em relação à base canônica é $[T] =
 \begin{bmatrix}
-1 &  1 &  0\\
-0 & -2 & -2\\
-0 &  1 &  1
+1 &  0 &  0\\
+1 & -2 &  1\\
+0 & -2 &  1
 \end{bmatrix}$, o seu polinômio característico é
 \begin{align*}
 p_{[T]}(\lambda)
 = \begin{vmatrix}
-\lambda - 1 &         -1 &            0\\
-          0 & \lambda +2 &            2\\
-          0 &         -1 &  \lambda - 1
+\lambda - 1 &          0 &            0\\
+        - 1 & \lambda +2 &          - 1\\
+          0 &          2 &  \lambda - 1
 \end{vmatrix}
 & =(\lambda - 1)^2(\lambda +2)+2(\lambda - 1)
   =(\lambda - 1)[(\lambda - 1)(\lambda +2)+2]\\
