@@ -1,0 +1,334 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova III}
+\newcommand*\turma{CIV122-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{05/11/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Resolva (integralmente) apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,0}] A função $f: \R^2 \to \R$ definida por $f(x,y) = \sqrt[3]{x^3+y^3}$ é linear? Em caso afirmativo, justifique com todos os detalhes necessários. Caso contrário, dê um exemplo numérico mostrando claramente que uma das propriedades das transformações lineares não é satisfeita.
+\Answer Para que $f$ fosse uma transformação linear, deveria ser verdade que $f(u+v) = f(u)+f(v)$, para quaisquer $u$ e $v$ em $\R^2$. No entanto, se $u = (1,0)$ e $v=(0,1)$, então $u+v = (1,1)$ e
+\[
+f(u)+f(v)
+= \sqrt[3]{1^3+0^3} + \sqrt[3]{0^3+1^3}
+= 1 + 1
+\neq \sqrt[3]{2}
+= \sqrt[3]{1^3+1^3}
+= f(u+v).
+\]
+Portanto, $f$ não é uma transformação linear.
+
+
+\Exercise[title={2,0}] Seja
+$\alpha = \{(2, 0, 0), (0, 4, 4), (0,0,8)\}$ uma base de $\R^3$ e $\beta = \{(1, 2),(-1, 0)\}$ uma base de $\R^2$. Se $T:\R^3 \to \R^2$ é uma transformação linear e $[T]_\beta^\alpha =
+\begin{bmatrix}
+ 0 &  6 & 4\\
+-6 & 10 & 4
+\end{bmatrix}
+$, encontre $T(x,y,z)$.
+\Answer Como as colunas de $[T]_\beta^\alpha$ são formadas pelas coordenadas de $T(v_i)$, para cada $v_i$ da base $\alpha$, tem-se:
+\begin{align*}
+T(2,0,0) & = 0 \cdot (1,2) - 6 \cdot (-1,0) = (6,0),\\
+T(0,4,4) & = 6 \cdot (1,2) +10 \cdot (-1,0) = (-4, 12),\\
+T(0,0,8) & = 4 \cdot (1,2) + 4 \cdot (-1,0) = (0, 8).
+\end{align*}
+Além disso, como $\alpha$ é uma base, dado qualquer $v = (x,y,z) \in \R^3$, existem $c_1, c_2, c_3 \in \R$ tais que
+\[
+(x,y,z) = c_1 (2,0,0) + c_2(0,4,4) + c_3(0,0,8) = (2c_1, 4c_2,4c_2+8c_3).
+\]
+De fato, $c_1 = \frac{x}{2}$, $c_2 = \frac{y}{4}$ e $c_3 = \frac{z-y}{8}$. Assim, pode-se obter $T$ do seguinte modo:
+\begin{align*}
+T(x,y,z)
+& = T( c_1 (2,0,0) + c_2(0,4,4) + c_3(0,0,8) )\\
+& = c_1 T(2,0,0) + c_2T(0,4,4) + c_3T(0,0,8)\\
+& = \frac{x}{2} (6,0)
+  + \frac{y}{4}(-4, 12)
+  + \frac{z-y}{8}(0, 8)\\
+& = (3x-y,2y+z).
+\end{align*}
+
+\textbf{Solução alternativa} Como as coordenadas de $(x,y,z)$ em relação à base $\alpha$ foram calculadas acima, tem-se:
+\[
+[T(x,y,z)]_\beta
+= [T]_\beta^\alpha \cdot [(x,y,z)]_\alpha
+= \begin{bmatrix}
+ 0 &  6 & 4\\
+-6 & 10 & 4
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\frac{x}{2} \\ \frac{y}{4} \\ \frac{z-y}{8}
+\end{bmatrix}
+=
+\begin{bmatrix}
+y+\frac{z}{2}\\
+-3x+\frac{z}{2}+2y
+\end{bmatrix}.
+\]
+Assim, combinando linearmente os vetores de $\beta$ com estas coordenadas, conclui-se que:
+\[
+T(x,y,z)
+= \left(y+\frac{z}{2}\right)\cdot (1,2) + \left(-3x+\frac{z}{2}+2y\right)\cdot (-1,0)
+= (3x-y,2y+z).
+\]
+
+\Exercise[title={2,0}] Seja $P_2 = \{ q \mid q(x) = ax^2+bx+c\}$ o espaço vetorial formado pelos polinômios de grau no máximo dois e considere o operador linear $T:P_2 \to P_2$ definido por $T(q) = q - q^\prime$, para cada $q \in P_2$. Verifique se $T$ é um isomorfismo, justificando todas as suas afirmações.
+\Answer Como o domínio e o contradomínio de $T$ são iguais, e portanto de mesma dimensão, basta que $T$ seja injetora para que também seja bijetora, isto é, um isomorfismo.
+
+Para checar a injetividade de $T$, basta conferir se o seu núcleo é o espaço nulo:
+
+Por definição, para todo polinômio $q \in P_2$, com $q(x) = ax^2+bx+c$, tem-se
+\[
+T(q)
+= T(ax^2+bx+c)
+= (ax^2+bx+c)-(2ax+b)
+= ax^2+(b-2a)x+(c-b)
+\]
+Além disso, para checar a injetividade de $T$, basta conferir se o seu núcleo é o espaço nulo:
+\[
+T(q) = \vec{0}
+\Leftrightarrow ax^2+(b-2a)x+(c-b) = 0x^2+0x+0, \forall x \in \R\\
+\Leftrightarrow
+\begin{cases}
+a = 0\\
+b-2a = 0\\
+c-b =0
+\end{cases}
+\]
+Como o sistema anterior é possível determinado, $a=b=c=0$, e conclui-se que $N(T) = \{ \vec{0} \}$, ou seja, que $T$ é injetora. Portanto, $T$ é um isomorfismo.
+
+
+\Exercise[title={2,0}] Sejam $V$ e $W$ espaços vetoriais, e $T: V \to W$ uma transformação linear bijetora e $T^{-1}: W \to V$ a inversa de $T$, isto é, a função definida por
+\[
+T^{-1}(w) = v \Leftrightarrow T(v) = w.
+\]
+Demonstre que $T^{-1}$ também é uma transformação linear.
+\Answer Para concluir que $T^{-1}$ é uma transformação linear, basta observar o seguinte:
+\begin{enumerate}
+\item Sejam $w_1$ e $w_2$ vetores arbitrários de $W$. Então
+$w_1 = T(v_1)$ e $w_2 = T(v_2)$, para certos vetores $v_1$ e $v_2$ de $V$. Neste caso,
+\[
+T^{-1}(w_1 + w_2)
+\stackrel{*}{=} T^{-1}(T(v_1) + T(v_2))
+= T^{-1}(T(v_1+v_2)))
+= v_1 + v_2
+= T^{-1}(w_1)+T^{-1}(w_1).
+\]
+
+\item Se $w$ é um vetor arbitrário de $W$ e $\alpha \in \R$, então $w = T(v)$, para algum $v\in V$. Neste caso,
+\[
+T^{-1}(\alpha \cdot w)
+= T^{-1}(\alpha \cdot T(v))
+\stackrel{*}{=} T^{-1}(T(\alpha \cdot v))
+= \alpha \cdot v
+= \alpha \cdot T^{-1}(w).
+\]
+\end{enumerate}
+Nos itens anteriores, as igualdades marcadas com um asterisco (*) decorrem fato de $T$ ser linear.
+
+\Exercise
+Sejam $\alpha = \left\{ (-4,6), (-3,17)\right\}$ e $\beta = \{ (-5,15), (0,-10) \}$ bases de $\R^2$. Demonstre, baseando-se em cálculos ou em argumentos teóricos (o que for mais apropriado), que:
+\begin{enumerate}
+\item \textbf{(2,0)} Se $[v]_{\alpha} =
+\begin{bmatrix}
+7\\9
+\end{bmatrix}$, então $[v]_{\beta} =
+\begin{bmatrix}
+11\\-3
+\end{bmatrix}$.
+\item \textbf{(2,0)} As matrizes $[I]_{\beta}^{\alpha}$ e $[I]_{\alpha}^{\beta}$, neste caso, são iguais.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item Se $[v]_{\alpha} =
+\begin{bmatrix}
+7\\9
+\end{bmatrix}$, então, pela definição de coordenadas, tem-se
+\[
+v = 7\cdot (-4,6)+9\cdot (-3,17) = (-55, 195).
+\]
+Por outro lado,
+\[
+(-55, 195) = 11\cdot (-5,15) + (-3)\cdot (0,-10),
+\]
+então conclui-se que $[v]_{\beta} =
+\begin{bmatrix}
+11\\-3
+\end{bmatrix}$.
+\item
+Observando que
+\begin{align*}
+(-4, 6)& =\frac{4}{5}(-5,15)+\frac{3}{5}(0,-10)\\
+(-3,17)& =\frac{3}{5}(-5,15)-\frac{4}{5}(0,-10)
+\end{align*}
+conclui-se que $[I]_{\beta}^{\alpha}
+=\begin{bmatrix}
+\frac{4}{5} & \frac{3}{5} \\
+\frac{3}{5} & -\frac{4}{5}
+\end{bmatrix}$. Consequentemente,
+\[
+[I]_{\alpha}^{\beta}
+= \left([I]_{\beta}^{\alpha}\right)^{-1}
+= \left(
+\begin{bmatrix}
+\frac{4}{5} & \frac{3}{5} \\
+\frac{3}{5} & -\frac{4}{5}
+\end{bmatrix}
+\right)^{-1}
+=
+\frac{1}{\frac{4}{5} \cdot \left(-\frac{4}{5}\right) - \frac{3}{5} \cdot \frac{3}{5}}
+\begin{bmatrix}
+-\frac{4}{5} & -\frac{3}{5} \\
+-\frac{3}{5} & \frac{4}{5}
+\end{bmatrix}
+=
+\frac{1}{-1}
+\begin{bmatrix}
+-\frac{4}{5} & -\frac{3}{5} \\
+-\frac{3}{5} & \frac{4}{5}
+\end{bmatrix}
+=[I]_{\beta}^{\alpha}.
+\]
+
+\textbf{Solução alternativa:}
+Considerando que
+\[
+[I]_{\alpha}^{\beta} = ([I]_{\beta}^{\alpha})^{-1},
+\Leftrightarrow
+[I]_{\alpha}^{\beta} \cdot [I]_{\beta}^{\alpha} = I_{2\times 2},
+\]
+a igualdade $[I]_{\beta}^{\alpha} = [I]_{\alpha}^{\beta}$ só será verdadeira se $[I]_{\beta}^{\alpha} \cdot [I]_{\beta}^{\alpha} = {([I]_{\beta}^{\alpha})}^2 = I_{2\times 2}$, o que é verdade:
+\[
+{([I]_{\beta}^{\alpha})}^2
+=
+\begin{bmatrix}
+\frac{4}{5} & \frac{3}{5} \\
+\frac{3}{5} & -\frac{4}{5}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\frac{4}{5} & \frac{3}{5} \\
+\frac{3}{5} & -\frac{4}{5}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1&0\\0&1
+\end{bmatrix}.
+\]
+\end{enumerate}
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

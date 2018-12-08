@@ -1,0 +1,387 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{CIV122-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{08/10/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu \footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Resolva (integralmente) apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,0}] Mostre que em todo espaço vetorial $V$, sempre que os vetores $u$, $v$ e $w$ de $V$ satisfazem a equação $u+v=w+v$ pode-se concluir que $u = w$. Indique explicitamente axiomas ou propriedades que justifiquem cada passo de sua demonstração.
+\Answer
+Dados os vetores $u$, $v$ e $w$ de $V$, existe o vetor oposto de $v$, isto é, $-v \in V$. Então, se $u+v=w+v$, pode-se somar $-v$ a ambos os membros da igualdade, obtendo-se $(u+v)+(-v)=(w+v)+(-v)$. Pela propriedade associativa, a igualdade anterior equivale a $u+(v+(-v))=w+(v+(-v))$, o que, pela comutatividade, pode ser reescrito como $u+((-v)+v)=w+((-v)+v)$. Pela definição de oposto, resulta que $u+\vec{0}=w+\vec{0}$ e, como $\vec{0}$ é o elemento neutro da adição, conclui-se que $u = w$.
+
+\Exercise[title={2,0}] Sabendo que o conjunto $W$ formado por todas as funções $f:\R \to \R$ é um espaço vetorial, verifique se o subconjunto $P \subset W$ das funções pares é um subespaço vetorial de $W$. Lembre-se que uma função $f:\R \to \R$ é par se $f(x) = f(-x)$, para todo $x \in \R$.
+\Answer
+O subconjunto $P$ das funções pares $f:\R \to \R$ é um subespaço de $W$ pois:
+\begin{itemize}
+\item A função nula, dada por $g(x) = 0$ para todo $x \in \R$, está em $P$, pois para todo $x \in \R$ tem-se:
+\[
+g(-x) = 0 = g(x);
+\]
+\item Se $f \in P$ e $g \in P$, então $f+g \in P$ pois, para todo $x \in \R$, tem-se:
+\[
+(f+g)(-x) = f(-x) + g(-x) = f(x) + g(x) = (f+g)(x);
+\]
+\item Se $f \in P$ e $\alpha \in \R$, então $\alpha \cdot f \in P$ pois, para todo $x \in \R$, tem-se:
+\[
+(\alpha \cdot f)(-x) = \alpha \cdot f(-x) = \alpha \cdot f(x) = (\alpha \cdot f)(x);
+\]
+\end{itemize}
+
+\Exercise[title={2,0}] Verifique se $\R^4$ é soma direta dos subespaços
+\[
+W_1 = \{(0,a,b,c) \mid a \in \R, b \in \R, c \in \R\}
+\quad\text{ e }\quad
+W_2 = \{(d,d,0,0) \mid d \in \R\}.
+\]
+\Answer
+A verificação será feita em duas partes:
+\begin{enumerate}
+\item Mostrar que $W_1 \cap W_2 = \{ (0,0,0,0) \}$
+
+Se $v = (x,y,z,w) \in W_1$, então $x=0$ e $v = (0,y,z,w)$. Além disso, se $v = (0,y,z,w) \in W_2$ então $0 = y$ e $z=w=0$, ou seja, $v = (0,0,0,0)$.
+
+\item Mostrar que $\R^4 = W_1 + W_2$
+
+Como a $W_1 + W_2$ é subespaço de $\R^4$, é suficiente mostrar que todo vetor $v = (x,y,z,w) \in \R^4$ pode ser escrito como soma de um vetor de $W_1$ com um de $W_2$, isto é, que
+\[
+(x,y,z,w) = \underbrace{(0,a,b,c)}_{\in W_1} + \underbrace{(d,d,0,0)}_{\in W_2} = (d,a+d,b,c),
+\]
+para alguma escolha de $a,b,c,d \in \R$. Para isso, basta que $a = y-x$, $b = z$, $c=w$ e $d=x$:
+\[
+(x,y,z,w) = \underbrace{(0,y-x,z,w)}_{\in W_1} + \underbrace{(x,x,0,0)}_{\in W_2}.
+\]
+
+\textbf{Solução alternativa}: Observe que
+\begin{itemize}
+\item $W_1 = \operatorname{ger}\{ (0,1,0,0), (0,0,1,0), (0,0,0,1) \}$, e portanto $\dim{W_1} = 3$.
+\item $W_2 = \operatorname{ger}\{ (1,1,0,0) \}$, e portanto $\dim{W_1} = 1$.
+\item $\dim{(W_1 \cap W_2)} = 0$ (pelos cálculos do item anterior).
+\end{itemize}
+Então,
+\[
+\dim{(W_1 + W_2)}
+= \dim{(W_1)} + \dim{(W_2)} - \dim{(W_1 \cap W_2)}
+= 3 + 1 - 0
+= 4 = \dim{(\R^4)}
+\]
+Como $W_1 + W_2$ é subespaço de $\R^4$ e eles têm a mesma dimensão, segue que $W_1 + W_2 = \R^4$.
+\end{enumerate}
+\Exercise[title={2,0}] Determine a dimensão do seguinte subespaços de $\R^{2 \times 2}$, justificando suas afirmações:
+\[
+W = \left\{
+\begin{bmatrix}
+a-b     & b+c-a \\
+a-b+c & b-a + d
+\end{bmatrix}
+\mid a \in \R, b \in \R, c \in \R, d \in \R
+\right\}.
+\]
+
+\Answer
+Observe que se $M \in W$, então existem $a,b,c,d \in \R$ tais que
+\[
+M = \begin{bmatrix}
+a-b     & b+c-a \\
+a-b+c & b-a + d
+\end{bmatrix}
+=
+a\cdot
+\begin{bmatrix}
+1 & -1 \\
+1 & -1
+\end{bmatrix}
++b\cdot
+\begin{bmatrix}
+-1 & 1 \\
+-1 & 1
+\end{bmatrix}
++c\cdot
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
++d\cdot
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}.
+\]
+Logo, $W = \operatorname{ger}\left\{
+\begin{bmatrix}
+1 & -1 \\
+1 & -1
+\end{bmatrix},
+\begin{bmatrix}
+-1 & 1 \\
+-1 & 1
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}
+\right\}$. Mas a segunda destas matrizes é a matriz oposta da primeira, então também é correto afirmar que $W = \operatorname{ger}\left\{
+\begin{bmatrix}
+1 & -1 \\
+1 & -1
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}
+\right\}$. De fato, pode-se chegar à mesma conclusão observando que
+\[
+M =
+(a-b)\cdot
+\begin{bmatrix}
+1 & -1 \\
+1 & -1
+\end{bmatrix}
++c\cdot
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
++d\cdot
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}.
+\]
+Além disso, estas três matrizes são linearmente independentes, pois se
+\[
+\alpha_1 \cdot
+\begin{bmatrix}
+1 & -1 \\
+1 & -1
+\end{bmatrix}
++\alpha_2 \cdot
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}
++\alpha_3\cdot
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}
+=\begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}
+\]
+então $\begin{bmatrix}
+\alpha_1 & -\alpha_1+\alpha_2 \\
+\alpha_1+\alpha_2 & \alpha_3
+\end{bmatrix}
+=\begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}$, ou seja,
+$
+\begin{cases}
+ \alpha_1 = 0\\
+-\alpha_1+\alpha_2 =0\\
+ \alpha_1+\alpha_2=0\\
+ \alpha_3=0
+\end{cases}
+\Leftrightarrow
+\alpha_1 = \alpha_2 = \alpha_3 = 0.
+$
+Portanto, $B = \left\{
+\begin{bmatrix}
+1 & -1 \\
+1 & -1
+\end{bmatrix},
+\begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix},
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}
+\right\}$ é uma base de $W$ e $\dim W = 3$.
+
+\Exercise[title={2,0}] Dê um exemplo de um conjunto de vetores de $P_2$ (polinômios de grau no máximo $2$) que gere $P_2$ mas que seja linearmente dependente. Justifique suas escolhas e suas afirmações.
+\Answer
+Sabe-se que $B = \{1, x, x^2\}$ é uma base de $P_2$ e que, portanto, $\dim(P_2) = 3$. Assim, qualquer conjunto com 4 ou mais vetores será linearmente dependente. Além disso, se for adicionado qualquer outro vetor $v$ ao conjunto $B$, o novo conjunto continuará gerando $P_2$, pois o novo vetor será combinação linear dos demais. Logo, pode-se escolher, por exemplo, $v = q(x) = 10x + 2018x^2$, o que resulta no conjunto $B^\prime = \{1, x, x^2, 10x + 2018x^2\}$ que é linearmente dependente mas gera $P_2$.
+
+
+\Exercise[title={2,0}] Sejam $B = \{v_1, v_2, v_3\}$ e $C = \{ w_1, w_2, w_3 \}$ subconjuntos de um espaço vetorial $V$. Demonstre que se $B$ for uma base de $V$ tal que
+$[w_1]_B =
+\begin{bmatrix}
+1 \\ 1 \\ 0
+\end{bmatrix}$,
+$[w_2]_B =
+\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix}$ e
+$[w_3]_B =
+\begin{bmatrix}
+0 \\ 1 \\ 1
+\end{bmatrix}$, então $C$ é linearmente independente.
+\Answer
+Se $B = \{v_1, v_2, v_3\}$ for uma base de $V$ então
+$[w_1]_B =
+\begin{bmatrix}
+1 \\ 1 \\ 0
+\end{bmatrix}
+\Leftrightarrow
+w_1 = 1 v_1 + 1 v_2 + 0 v_3$,
+$[w_2]_B =
+\begin{bmatrix}
+1 \\ 1 \\ 1
+\end{bmatrix}
+\Leftrightarrow
+w_2 = 1 v_1 + 1 v_2 + 1 v_3$ e, além disso,
+$[w_1]_B =
+\begin{bmatrix}
+0 \\ 1 \\ 1
+\end{bmatrix}
+\Leftrightarrow
+w_3 = 0 v_1 + 1 v_2 + 1 v_3$.
+
+Para mostrar que $C = \{ w_1, w_2, w_3 \}$ é linearmente independente, observe que:
+\begin{align*}
+&c_1 w_1 + c_2 w_2 + c_3 w_3 = \vec{0}\\
+\Leftrightarrow
+&c_1 (v_1 + v_2) + c_2 (v_1 + v_2 + v_3) + c_3 (v_2 + v_3) = \vec{0}\\
+\Leftrightarrow
+&(c_1 +c_2)v_1 + (c_1+c_2+c_3)v_2 + (c_2+c_3) v_3 = \vec{0}\\
+\end{align*}
+Como $B = \{v_1, v_2, v_3\}$ é linearmente independente, pode-se concluir que
+\[
+\systeme{
+c_1 + c_2 = 0,
+c_1 + c_2 + c_3=0,
+c_2 + c_3 = 0
+}
+\Leftrightarrow
+c_1 = c_2 = c_3 = 0.
+\]
+
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

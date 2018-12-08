@@ -1,0 +1,179 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\ger[1]{\operatorname{ger}\left\{#1\right\}}
+\newcommand*\R{\mathbb{R}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova IV}
+\newcommand*\turma{PRO112-02U}
+\newcommand*\disciplina{ALI0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{05/12/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Resolva (integralmente) apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+\end{minipage}
+}
+\end{center}
+
+\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,0}]
+Demonstre a(s) afirmação(ões) verdadeira(s) e dê um contra-exemplo para a(s) falsa(s):
+\begin{enumerate}
+\item Se $\alpha \neq 7$ então a matriz $A
+=
+\begin{bmatrix}
+1 & 2 \\ 3 & 4
+\end{bmatrix}
+$ não é semelhante à matriz $B=
+\begin{bmatrix}
+-2 & 4 \\ -3 & \alpha
+\end{bmatrix}$.
+\item Se uma matriz $C \in \R^{2 \times 2}$ tem um único autovalor então $C$ não é diagonalizável.
+\end{enumerate}
+\Answer
+\color{red}
+\ldots
+
+
+\Exercise[title={2,0}] Mostre que se $w$ é um autovetor do operador linear $T: V \to V$, então $c \cdot w$ também é um autovetor de $T$, contanto que $c \neq 0$.
+\Answer
+\color{red}
+\ldots
+
+
+\Exercise[title={2,0}] Seja $\beta = \{ v_1, v_2, v_3 \}$ uma base de $\R^3$, em que $v_1 = (1,2,3)$, $v_2 = (3,2,1)$ e $v_3 = (0,0,1)$. Se $T: \R^3 \to \R^3$ é o operador linear tal que $T(v_1) = v_2$, $T(v_2) = v_1$ e $T(v_3) = v_3$, quais são os autovetores e autovalores de $T$? (cuidado com os índices acima!)
+\Answer
+\color{red}
+\ldots
+
+
+\Exercise[title={2,0}] Seja $T: P_2 \to P_2$, dado por $T(q) = q^\prime$ (ou seja, $T$ é o operador derivação). Verifique se $T$ é diagonalizável, e justifique sua resposta.
+\Answer
+\color{red}
+\ldots
+
+
+\Exercise[title={2,0}]
+Mostre que existe alguma base $\beta$ de $\R^3$ formada por autovetores do operador linear
+\[
+T(x,y,z) = (x - 6 y, -y, -4 x + 12 y - z).
+\]
+\Answer
+\color{red}
+\ldots
+
+
+\Exercise[title={2,0}]
+Seja $A = 
+\begin{bmatrix}
+2 & 6 \\ 0 & -1
+\end{bmatrix}$. Utilize a diagonalização de $A$ para calcular $A^9$.
+\Answer \ldots
+\color{red}
+\ldots
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA E BOAS FÉRIAS!
+\end{center}
+
+%\newpage
+%\restoregeometry
+%\section*{Respostas}
+%\shipoutAnswer
+\end{document}
