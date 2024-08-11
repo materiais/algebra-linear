@@ -1,0 +1,546 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\tr{\operatorname{tr}}
+
+\newcommand*\R{\mathbb{R}}
+
+\newcommand{\IconPc}{\includegraphics[width=1em]{computer.png}}
+\newcommand{\IconCalc}{\includegraphics[width=1em]{calculator.png}}
+\newcommand{\IconThink}{\includegraphics[width=1em]{pencil.png}}
+\newcommand{\IconCheck}{\includegraphics[width=1em]{checkmark.png}}
+\newcommand{\IconConcept}{\includegraphics[width=1em]{edit.png}}
+
+\newlength{\SmileysLength}
+\setlength{\SmileysLength}{\labelwidth}\addtolength{\SmileysLength}{\labelsep}
+
+\newcommand{\calc}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCalc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\software}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconPc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\teoria}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconThink}%
+   \hspace*{\SmileysLength}}
+\newcommand{\conceito}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+\newcommand{\concept}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+\newcommand{\swap}{\leftrightarrow}
+
+\newcommand*\disciplina{ALI0001}
+\newcommand*\tipo{Lista de Exercícios - Matrizes}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{\today}
+
+\author{\eu}
+\title{\tipo}
+\date{\data}
+
+\begin{document}
+
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\section*{Legenda}
+\begin{multicols}{4}
+\begin{itemize}
+\item[] \hspace*{\SmileysLength} \calc \hspace*{-\SmileysLength} Cálculos
+\item[] \hspace*{\SmileysLength} \conceito \hspace*{-\SmileysLength} Conceitos
+\item[] \hspace*{\SmileysLength} \teoria \hspace*{-\SmileysLength} Teoria
+\item[] \hspace*{\SmileysLength} \software \hspace*{-\SmileysLength} Software
+\end{itemize}
+\end{multicols}
+
+\section*{Questões}
+
+\begin{enumerate}
+\item \conceito
+Exiba matrizes quadradas $A$ e $B$ de ordem $2 \times 2$ que exemplifiquem as situações a seguir. Compare com o que ocorreria se $A$ e $B$ fossem números reais.
+
+\begin{enumerate}
+\item É possível que $A^2 = B^2$ mesmo que $A \neq B$ e $A \neq -B$.
+\item $(AB)^2 \neq A^2B^2$.
+\item Pode ocorrer que $A^2 = 0$ apesar de $A \neq 0$.
+\item Há casos em que $AB = 0$ ao mesmo tempo em que $0 \neq A \neq B \neq 0$.
+\end{enumerate}
+
+\item \conceito Seja $M = (m_{ij})$ a matriz de ordem $7 \times 7$ cujo termo geral é $m_{ij} = \begin{cases}
+1, & \text{se}\ i \leq j,\\
+0, & \text{se}\ i > j.
+\end{cases}$
+
+Utilize a definição do produto de matrizes para obter uma fórmula (em função de $i$ e $j$) para as seguintes entradas da matriz $C = M^2$:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $c_{1j}$, sendo $1 \leq j \leq 7$.
+\item $c_{4j}$, quando $1 \leq j < 4$.
+\item $c_{4j}$, quando $4 \leq j \leq 7$.
+\item $c_{ij}$, quando $1 \leq j < i \leq 7$.
+\item $c_{ij}$, quando $1 \leq i \leq j \leq 7$.
+\end{enumerate}
+\end{multicols}
+
+\item \conceito Uma matriz $A$ é considerada \textbf{simétrica} se $A^T = A$ e \textbf{antissimétrica} se $A^T = -A$. Levando em conta as propriedades da transposição de matrizes, justifique as afirmações que forem verdadeiras e exiba um contraexemplo para as falsas:
+\begin{enumerate}
+\item Todas as entradas da diagonal de uma matriz antissimétrica devem ser nulas.
+\item Não existem matrizes simétricas que também sejam antissimétricas.
+\item Toda matriz simétrica é antissimétrica.
+\item Toda matriz antissimétrica é simétrica.
+\item Se uma matriz não é simétrica, então ela é antissimétrica.
+\end{enumerate}
+
+\item \conceito Se $A$ é uma matriz $p \times q$, $B$ uma matriz $q \times r$ e $C$ uma matriz $r \times q$, qual é o tamanho da matriz $M = (B + C^T) ((AB)^T + CA^T)$?
+
+\item \teoria Se $X$ é uma matriz $m \times n$, para que valores de $m$ e $n$ as operações a seguir fazem sentido?
+Quais os tamanhos das matrizes obtidas? Quais delas são simétricas? Justifique.
+\begin{multicols}{5}
+\begin{enumerate}
+\item $X X^T$
+\item $X^T X$
+\item $X + X^T$
+\item $X^T + X$
+\item $X - X^T$
+\end{enumerate}
+\end{multicols}
+
+\item \conceito Justifique as afirmações verdadeiras e exiba um contraexemplo para as demais:
+
+\begin{enumerate}
+\item A matriz nula é uma matriz na forma escalonada reduzida por linhas.
+\item A matriz identidade $4 \times 4$ está na forma escalonada reduzida por linhas.
+\item Se uma matriz triangular superior é simétrica então ela é uma matriz diagonal.
+\item Se $U$ e $V$ são matrizes diagonais, então $UV = VU$.
+\item Se $A$ é uma matriz antissimétrica, isto é, se $A^T = -A$, então $A^T$ é antissimétrica.
+\item Se $A$ é uma matriz $n \times n$ antissimétrica, então sua diagonal é igual a zero.
+\item Nenhuma matriz $A$ $n \times n$ pode ser simétrica e antissimétrica simultaneamente.
+\end{enumerate}
+
+\item \calc Quantas matrizes diagonais $D$ de ordem $2 \times 2$ satisfazem $D^2 = I$, isto é, quantas matrizes diagonais são ``raízes quadradas'' da matriz identidade de ordem 2? E se $D$ for $3 \times 3$?
+\item \calc Encontre todas as matrizes diagonais $D$ de ordem $3 \times 3$ tais que $D^2 - 7D + 10I = 0$.
+
+
+\item \teoria Mostre que se $S$ é uma matriz simétrica então $S^2$ também é simétrica. Decida se vale o mesmo para $S^n$, qualquer que seja $n \in \mathbb{N}$, e explique sua conclusão.
+\item \teoria Se $M$ é uma matriz quadrada $n \times n$, a soma das entradas da diagonal de $M$ é chamada de \textbf{traço} de $M$, e denotada por $\tr(M) = m_{11} + m_{22} + \ldots + m_{nn}$. Explique por que são válidas as seguintes afirmações, para quaisquer matrizes $A$ e $B$ e todo $c \in \R$:
+\begin{enumerate}
+\item $\tr(A+B) = \tr(A)+\tr(B)$
+\item $\tr(c \cdot A) = c \cdot \tr(A)$
+\item $\tr(A^T) = \tr(A)$
+\end{enumerate}
+\end{enumerate}
+
+
+
+\newpage
+\section*{Respostas}
+\begin{enumerate}
+\item Em todos os itens há uma infinidade de matrizes que exemplificam as afirmações feitas. Seguem alguns exemplos:
+\begin{enumerate}
+\item Para $A =
+\begin{bmatrix}
+1 & 0 \\
+0 & 1
+\end{bmatrix}$ e $B =
+\begin{bmatrix}
+-1 & 0 \\
+ 0 & 1
+\end{bmatrix}$ é verdade que $A^2 = I = B^2$, mas $A \neq B$ e $A \neq -B$.
+\item Se $A =
+\begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}$ e $B =
+\begin{bmatrix}
+0 & 2 \\
+2 & 2
+\end{bmatrix}$
+então $(AB)^2 = \begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}$ mas $A^2B^2 = \begin{bmatrix}
+4 & 4 \\
+0 & 0
+\end{bmatrix}$.
+\item Toda matriz $A =
+\begin{bmatrix}
+0 & k \\
+0 & 0
+\end{bmatrix}$
+satisfaz $C^2=0$, até mesmo quando $k \neq 0$ (e então $A \neq 0$).
+\item
+Se $A =
+\begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}$ e $B =
+\begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}$
+então $AB = \begin{bmatrix}
+0 & 0 \\
+0 & 0
+\end{bmatrix}$ mas $0 \neq A \neq B \neq 0$.
+\end{enumerate}
+
+
+\item \begin{enumerate}
+\item
+As entradas da primeira linha são dadas por $c_{1j} = j$ pois, por definição,
+\begin{align*}
+c_{1j} & = \underbrace{m_{11}m_{1j} + m_{12}m_{2j} + \ldots + m_{1j}m_{jj}}_{j\ \text{parcelas}} + \underbrace{\ldots + m_{17}m_{7j}}_{7-j\ \text{parcelas}} \\
+       & =\underbrace{1 + 1 + \ldots 1}_{j\ \text{vezes}} + \underbrace{0 + \ldots 0}_{7-j\ \text{vezes}} = j.
+\end{align*}
+
+\item
+Se $1 \leq j < 4$, então
+$c_{4j} = 0$ pois
+\begin{align*}
+c_{4j} & = m_{41}m_{1j} + m_{42}m_{2j} + m_{43}m_{3j} + m_{44}m_{4j} + \ldots + m_{47}m_{7j} \\
+       & = 0 m_{1j} + 0 m_{2j} + 0 m_{3j} + 1 m_{4j} + \ldots + 1m_{7j} \\
+       & = m_{4j} + \ldots + m_{7j} \\
+       & = 0 + \ldots + 0 = 0.
+\end{align*}
+
+\item
+Se $4 \leq j \leq 7$, então $c_{4j} = j - i + 1$.
+\item
+Se $1 \leq j < i \leq 7$, então $c_{ij} = 0$.
+\item
+Se $1 \leq i \leq j \leq 7$, então $c_{ij} = j - i + 1$.
+\end{enumerate}
+
+\item \begin{enumerate}
+\item
+\textbf{Verdadeira}, pois dada uma matriz antissimétrica $A \in M_{n \times n}(\R)$, tem-se $[A]_{ij} = [A^T]_{ji} = -[A]_{ji}$. Em particular, se $i = j$, vale $[A]_{ii} = -[A]_{ii}$, o que implica que  $2[A]_{ii} = 0$, isto é,  $[A]_{ii} = 0$. Assim, todas as entradas da diagonal de $A$ são nulas.
+\item
+\textbf{Falsa}, pois a matriz nula $0 \in M_{n \times n}(\R)$ é simétrica e antissimétrica simultaneamente.
+\item
+\textbf{Falsa}, pois $C = \begin{bmatrix}
+1 & 2 \\ 2 & 3
+\end{bmatrix}$ é simétrica mas não é antissimétrica.
+\item
+\textbf{Falsa}, pois $D = \begin{bmatrix}
+0 & 2 \\ -2 & 0
+\end{bmatrix}$ é antissimétrica mas não é simétrica.
+\item
+\textbf{Falsa}, pois $E = \begin{bmatrix}
+1 & 2 \\ 3 & 4
+\end{bmatrix}$ não é uma matriz simétrica mas não é antissimétrica.
+\end{enumerate}
+
+\item A matriz $(B + C^T) ((AB)^T + CA^T)$ tem tamanho $q \times p$, pois
+\begin{itemize}
+\item $B$ e $C^T$ têm tamanho $q \times r$, de modo que $B + C^T$ também é $q \times r$.
+\item $AB$ têm tamanho $p \times r$, de modo que $(AB)^T$ é $r \times p$.
+\item $A^T$ têm tamanho $q \times p$, de modo que $CA^T$ é $r \times p$.
+\item O produto de qualquer matriz $q \times r$ por uma matriz $r \times p$ tem tamanho $q \times p$.
+\end{itemize}
+
+\item
+\begin{enumerate}
+\item Para quaisquer $m$ e $n$, se $X$ é $m \times n$ então sua transposta $X^T$ é $n \times m$. Em particular, o número de colunas de $X$ é sempre igual ao número de linhas de $X^T$, e estas matrizes podem ser multiplicadas (nesta ordem), gerando um produto que é $m \times m$. Além disso, $X X^T$ é simétrica pois
+\[
+(X X^T)^T = (X^T)^T X^T = X X^T.
+\]
+\item De forma análoga ao item anterior, o número de colunas de $X^T$ é sempre igual ao número de linhas de $X$, e estas matrizes podem ser multiplicadas (nesta ordem), desta vez gerando um produto que é $n \times n$. Além disso, $X^T X$ também é simétrica:
+\[
+(X^T X)^T = X^T (X^T)^T = X^T X.
+\]
+\item Para que seja possível calcular $X + X^T$, é necessário que $X$ e $X^T$ tenham o mesmo tamanho. Como uma delas é $m \times n$ e a outra é $n \times m$, a adição só será possível se $m = n$. Neste caso, a soma será uma matriz simétrica, pois
+\[
+(X + X^T)^T = X^T + (X^T)^T = X^T + X = X + X^T.
+\]
+\item Como no item anterior, para que $X^T + X$ faça sentido é preciso que $X$ e $X^T$ tenham o mesmo tamanho, isto é, que $m = n$. Neste caso, a soma também será uma matriz simétrica, já que
+\[
+(X^T + X)^T = (X^T)^T + X^T = X + X^T = X^T + X.
+\]
+\item Novamente, é preciso que $m=n$ para que a operação $X - X^T$ seja possível. No entanto, neste caso
+\[
+(X - X^T)^T = X^T - (X^T)^T = X^T - X = -(X - X^T).
+\]
+No entanto, $D = X - X^T$ só será igual a $-(X - X^T)$ se $d_{ij} = -d_{ij}$, para cada $i,j$, e isso só é possível se todos os $d_{ij}$ forem nulos. Em outras palavras, $X - X^T$ só é uma matriz simétrica se $X - X^T = 0$.
+\end{enumerate}
+
+\item
+\begin{enumerate}
+\item A matriz nula é uma matriz na forma escalonada reduzida por linhas, pois
+\begin{itemize}
+\item Não há nenhuma linha não nula em que o primeiro elemento não nulo seja diferente de 1 (nem sequer existem linhas não nulas);
+\item Todas as linhas nulas estão na parte inferior
+\item Não há pivôs mais a esquerda dos pivôs de linhas anteriores (já que não há pivôs)
+\item Não há elementos não nulos acima ou abaixo de nenhum pivô
+\end{itemize}
+\item A matriz identidade $I_{4 \times 4}$ está na forma escalonada reduzida por linhas pois
+\begin{itemize}
+\item Em todas as linhas o o primeiro elemento não nulo é 1;
+\item Não há linhas nulas
+\item Todos os pivôs estão na diagonal
+\item Exceto pelos pivôs que estão na diagonal, as colunas só contém zeros
+\end{itemize}
+
+\item Em uma matriz triangular superior $S \in M_{n \times n}(K)$, todos os elementos abaixo da diagonal principal são nulos, ou seja, $s_{ij} = 0$ sempre que $i > j$. Se $S$ é simétrica, então $s_{ij} = s_{ji}$, sendo $1 \leq i,j \leq n$. Em particular, se $i < j$ então $s_{ij} = s_{ji} = 0$, pois $j > i$. Logo, $T$ é uma matriz diagonal, já que $s_{ij} = 0$ sempre que que $i > j$ ou $i < j$, isto é, para $i \neq j$.
+
+\item Se $U, V \in M_{m \times m} (K)$ são matrizes diagonais, então $UV = VU$. De fato, se $i \neq j$ então $u_{ij} = v_{ij} = 0$ e além disso
+\[
+\left[UV\right]_{ij}
+= \sum_{k=1}^m u_{ik} v_{kj}
+= u_{i1} v_{1j} + u_{i2} v_{2j} + \ldots + u_{im} v_{mj}.
+\]
+Nesta soma, tem-se $u_{ik} = 0$, exceto possivelmente quando $k = i$. Mesmo assim, a parcela $u_{ii}v_{ij}$ será nula, pois $k = i \neq j \Rightarrow v_{kj} = v_{ij} = 0$. Assim, todos os termos da soma são nulos, e as entradas $\left[UV\right]_{ij}$ são nulas sempre que $i \neq j$. De forma análoga, tem-se $\left[VU\right]_{ij} = 0 $ para $i \neq j$, ou seja, $UV$ e $VU$ coincidem fora da diagonal principal. Por outro lado, na diagonal principal tem-se $i = j$ e então
+\[
+\left[UV\right]_{ij} = u_{ii} v_{ii} = v_{ii} u_{ii} = \left[VU\right]_{ij}.
+\]
+
+\item Seja $A$ antissimétrica. Então $A^T = -A$ e resulta que $
+\left( A^T \right)^T = A = -A^T$, ou seja, $A^T$ também é antissimétrica.
+
+\item Dada uma matriz antissimétrica $A \in M_{n \times n}(\R)$, tem-se $[A]_{ij} = [A^T]_{ji} = -[A]_{ji}$. Em particular, se $i = j$, vale $[A]_{ii} = -[A]_{ii}$, o que implica que  $2[A]_{ii} = 0$, isto é,  $[A]_{ii} = 0$. Assim, todas as entradas da diagonal de $A$ são nulas.
+
+\item A matriz nula $0 \in M_{n \times n}(\R)$ é simétrica e antissimétrica simultaneamente.
+
+\end{enumerate}
+
+
+\item Seja $D \in M_{2\times 2} (\R)$ uma matriz diagonal. Então
+$
+D = \begin{bmatrix}
+x_1 & 0\\
+0 & x_2
+\end{bmatrix},
+$
+com $x_1, x_2 \in \R$
+e tem-se
+\begin{align*}
+D^2
+& =
+\begin{bmatrix}
+x_1 & 0 \\
+0 & x_2
+\end{bmatrix}^2
+=
+\begin{bmatrix}
+x_1^2 & 0 \\
+0 & x_2^2
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix}.
+\end{align*}
+Assim, os escalares $x_1$ e $x_2$ satisfazem $x_i^2 = 1$, ou seja, $x_i = 1$ ou $x_i = -1$. Logo, $D$ pode ser uma destas 4 matrizes:
+\[
+\begin{bmatrix}
+1 & 0\\
+0 & 1
+\end{bmatrix},
+\begin{bmatrix}
+1 & 0\\
+0 & -1
+\end{bmatrix},
+\begin{bmatrix}
+-1 & 0\\
+0 & 1
+\end{bmatrix}
+\text{ e }
+\begin{bmatrix}
+-1 & 0\\
+0 & -1
+\end{bmatrix}
+\]
+No caso de matrizes $3 \times 3$, cada uma das três entradas da diagonal pode ser igual a $1$ ou a $-1$, e consequentemente $I = I_3$ tem 8 raízes quadradas distintas.
+
+\item Seja $D \in M_{3 \times 3} (\R)$ uma matriz diagonal. Então
+$
+D = \begin{bmatrix}
+x_1 & 0 & 0\\
+0 & x_2 & 0\\
+0 & 0 & x_3
+\end{bmatrix},
+$
+com $x_1, x_2, x_3 \in \R$
+e tem-se
+\begin{align*}
+D^2 - 7D + 10I
+& =
+\begin{bmatrix}
+x_1 & 0 & 0\\
+0 & x_2 & 0\\
+0 & 0 & x_3
+\end{bmatrix}^2
+-7
+\begin{bmatrix}
+x_1 & 0 & 0\\
+0 & x_2 & 0\\
+0 & 0 & x_3
+\end{bmatrix}
++10
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix} \\
+& =
+\begin{bmatrix}
+x_1^2 - 7x_1 + 10& 0 & 0\\
+0 & x_2^2 - 7x_2 + 10 & 0\\
+0 & 0 & x_3^2 - 7x_3 + 10
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{bmatrix}.
+\end{align*}
+Assim, se $D^2 - 7D + 10I = 0$ os escalares $x_1$, $x_2$ e $x_3$ são soluções de $x_i^2 - 7x_i + 10 = 0$, ou seja, de $(x_i-2)(x_i-5)=0$. Portanto, cada $x_i$ pode assumir os valores $2$ ou $5$, e há as seguintes possibilidades para $D$:
+{\footnotesize
+\[
+\begin{bmatrix}
+2 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 2
+\end{bmatrix},
+\begin{bmatrix}
+2 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 5
+\end{bmatrix},
+\begin{bmatrix}
+2 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 2
+\end{bmatrix},
+\begin{bmatrix}
+2 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 5
+\end{bmatrix},
+\begin{bmatrix}
+5 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 2
+\end{bmatrix},
+\begin{bmatrix}
+5 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 5
+\end{bmatrix},
+\begin{bmatrix}
+5 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 2
+\end{bmatrix}
+\text{ e }
+\begin{bmatrix}
+5 & 0 & 0\\
+0 & 5 & 0\\
+0 & 0 & 5
+\end{bmatrix}.
+\]
+}
+
+\item Seja $S$ uma matriz simétrica $n \times n$, isto é, $S^T = S$. As entradas de $S^2$ e de $(S^2)^T$, são dadas por
+\begin{equation}\label{eq:S-quadrado}
+[S^2]_{ij}
+= \sum_{k=1}^n s_{ik} s_{kj}
+= s_{i1} s_{1j} + s_{i2} s_{2j} + \ldots + s_{in} s_{nj}
+\end{equation}
+e
+\[
+[(S^2)^T]_{ij}
+= [S^2]_{ji}
+= \sum_{k=1}^n s_{jk} s_{ki}
+= s_{j1} s_{1i} + s_{j2} s_{2i} + \ldots + s_{jn} s_{ni}
+\]
+respectivamente. Mas as entradas de $S$ satisfazem a igualdade $s_{ij} = s_{ji}$, então resulta desta última equação, permutando os índices de cada termo, que
+\begin{align*}
+[(S^2)^T]_{ij}
+& = s_{j1} s_{1i} + s_{j2} s_{2i} + \ldots + s_{jn} s_{ni} \\
+& = s_{1j} s_{i1} + s_{2j} s_{i2} + \ldots + s_{nj} s_{in}\\
+& = s_{i1} s_{1j} + s_{i2} s_{2j} + \ldots + s_{in} s_{nj},
+\end{align*}
+onde a última igualdade deve-se à propriedade comutativa dos escalares $s_{ij}$. Comparando com \eqref{eq:S-quadrado}, conclui-se que $[(S^2)^T]_{ij} = [S^2]_{ij}$, ou seja, que $(S^2)^T = S^2$, o que significa que $S^2$ é simétrica.
+
+\textbf{Observação:} Para uma verificação mais direta, sem comparar entradas individuais das matrizes, poderia ser usada o fato de que $(AB)^T = B^T A^T$:
+\[
+(S^2)^T = (S S)^T = S^T S^T = S S = S^2.
+\]
+
+Por este raciocínio fica fácil ver que as potências de uma matriz simétrica são simétricas:
+\[
+(S^n)^T
+= (S \cdot \ldots \cdot S)^T
+= S^T \cdot \ldots \cdot S^T
+= S \cdot \ldots \cdot S = S^n.
+\]
+
+\item
+\begin{enumerate}
+\item Usando a definição de traço e as propriedades da adição, resulta que:
+\begin{align*}
+\tr(A+B)
+& = [A+B]_{11} + [A+B]_{22} + \ldots + [A+B]_{nn} \\
+& = ([A]_{11} + [A]_{11}) + ([A]_{22} + [B]_{22}) + \ldots + ([A]_{nn} + [B]_{nn}) \\
+& = ([A]_{11} + \dots + [A]_{nn}) + ([B]_{11} + \ldots + [B]_{nn})\\
+& = \tr(A)+\tr(B).
+\end{align*}
+\item Segue da definição de traço e das propriedades da multiplicação por escalar que:
+\begin{align*}
+\tr(cB)
+& = [cA]_{11} + [cA]_{22} + \ldots + [cA]_{nn} \\
+& = c[A]_{11} + c[A]_{22} + \ldots + c[A]_{nn} \\
+& = c([A]_{11} + \dots + [A]_{nn}) \\
+& = c \cdot \tr(A).
+\end{align*}
+\item Como a diagonal principal não é alterada pela transposição de matrizes, e o traço só depende destas entradas, tem-se:
+\begin{align*}
+\tr(A^T)
+& = [A^T]_{11} + [A^T]_{22} + \ldots + [A^T]_{nn} \\
+& = [A]_{11} + [A]_{22} + \ldots + [A]_{nn} \\
+& = \tr(A).
+\end{align*}
+\end{enumerate}
+\end{enumerate}
+\end{document}

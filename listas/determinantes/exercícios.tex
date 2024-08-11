@@ -1,0 +1,495 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\tr{\operatorname{tr}}
+
+\newcommand*\R{\mathbb{R}}
+
+\newcommand{\IconPc}{\includegraphics[width=1em]{computer.png}}
+\newcommand{\IconCalc}{\includegraphics[width=1em]{calculator.png}}
+\newcommand{\IconThink}{\includegraphics[width=1em]{pencil.png}}
+\newcommand{\IconCheck}{\includegraphics[width=1em]{checkmark.png}}
+\newcommand{\IconConcept}{\includegraphics[width=1em]{edit.png}}
+
+\newlength{\SmileysLength}
+\setlength{\SmileysLength}{\labelwidth}\addtolength{\SmileysLength}{\labelsep}
+
+\newcommand{\calc}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCalc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\software}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconPc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\teoria}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconThink}%
+   \hspace*{\SmileysLength}}
+\newcommand{\conceito}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+\newcommand{\concept}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/2238/25761
+\newenvironment{amatrix}[1]{%
+  \left[\begin{array}{@{}*{#1}{c}|c@{}}
+}{%
+  \end{array}\right]
+}
+
+% Loop Space / CC BY-SA-3.0 / https://tex.stackexchange.com/a/3164/25761
+%--------grstep
+% For denoting a Gauss' reduction step.
+% Use as: \grstep{\rho_1+\rho_3} or \grstep[2\rho_5 \\ 3\rho_6]{\rho_1+\rho_3}
+\newcommand{\grstep}[2][\relax]{%
+   \ensuremath{\mathrel{
+       {\mathop{\longrightarrow}\limits^{#2\mathstrut}_{
+                                     \begin{subarray}{l} #1 \end{subarray}}}}}}
+\newcommand{\swap}{\leftrightarrow}
+
+\newcommand*\disciplina{ALI0001}
+\newcommand*\tipo{Lista de Exercícios - Determinantes}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{\today}
+
+\author{\eu}
+\title{\tipo}
+\date{\data}
+
+\begin{document}
+
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\section*{Legenda}
+\begin{multicols}{4}
+\begin{itemize}
+\item[] \hspace*{\SmileysLength} \calc \hspace*{-\SmileysLength} Cálculos
+\item[] \hspace*{\SmileysLength} \conceito \hspace*{-\SmileysLength} Conceitos
+\item[] \hspace*{\SmileysLength} \teoria \hspace*{-\SmileysLength} Teoria
+\item[] \hspace*{\SmileysLength} \software \hspace*{-\SmileysLength} Software
+\end{itemize}
+\end{multicols}
+
+\section*{Questões}
+
+\begin{enumerate}
+\item \calc Encontre uma matriz triangular superior equivalente por linhas a cada matriz $P$ indicada a seguir, e utilize-as para calcular o determinante de $P$.
+\begin{multicols}{2}
+\begin{enumerate}
+\item $P =
+\begin{bmatrix}
+ 0 &  5 &  21\\
+-3 & -7 & -13\\
+ 1 &  2 &   3
+\end{bmatrix}$
+\item $P =
+\begin{bmatrix}
+0 & 6 & 0 & 10\\
+0 & 3 & -1 & 5\\
+0 & 9 & -3 & 14\\
+5 & 0 & 0 & 1
+\end{bmatrix}$
+\item $P =
+\begin{bmatrix}
+ 1 & 0 & 0 & 0 & 2 \\
+ 0 & 2 & 4 & 2 & 0 \\
+ 0 & 3 & 0 & 3 & 0 \\
+ 0 & 1 & 2 & -2 & 0 \\
+ 5 & 0 & 0 & 0 & 1
+\end{bmatrix}$
+\end{enumerate}
+\end{multicols}
+
+\item \calc Supondo que a matriz $M =
+\begin{bmatrix}
+a & b \\
+c & d
+\end{bmatrix}$
+satisfaz $\det{M} = 9$, calcule $\begin{vmatrix}
+a+c & a+b+c+d \\
+2a & 2(a+b)
+\end{vmatrix}$.
+
+\item \conceito Dê exemplos de matrizes não nulas $A$ e $B$ de tamanho $n \times n$ (com $n \geq 2$) tais que:
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\det(A + B)    = \det(A) + \det(B)$
+\item $\det(A + B) \neq \det(A) + \det(B)$
+\item $\det(c A) = c \det(A)$, para algum $c \neq 0$
+\item $\det(c A) \neq c \det(A)$, para algum $c \neq 0$
+\end{enumerate}
+\end{multicols}
+
+\item \calc Verifique que as matrizes $P = \begin{bmatrix}
+2 &  0 &  0 & 0\\
+0 & -2 &  0 & 0\\
+0 &  1 &  1 & 0\\
+2 & -5 & -1 & 2
+\end{bmatrix}$ e $Q = \begin{bmatrix}
+ 1 &  0 &  0 & -1\\
+ 0 &  1 & -1 &  2\\
+ 0 & -1 &  5 &  0\\
+-1 &  2 &  0 &  7
+\end{bmatrix}$ satisfazem:
+\begin{enumerate}
+\item $\det(PQ) = \det(P) \det(Q)$
+\item $\det(QP) = \det(P) \det(Q)$
+\item $\det(R^T) = \det(R)$, sendo $R = P + Q$
+\end{enumerate}
+
+\item \calc Calcule o determinante das seguintes matrizes:
+\begin{enumerate}
+\item $Q =
+\begin{bmatrix}
+ \frac{1}{12} & \frac{2}{3} & -\frac{1}{4} \\
+ \frac{1}{3}  & \frac{1}{6} & -\frac{3}{4} \\
+-\frac{1}{12} & \frac{1}{6} & 0
+\end{bmatrix}$
+
+\item $R = \begin{bmatrix}
+\frac{\sqrt{3}}{2} & \frac{\sqrt{2}}{4} & -\frac{\sqrt{2}}{4} \\
+-\frac{1}{2} & \frac{\sqrt{6}}{4} & -\frac{\sqrt{6}}{4} \\
+0 & \frac{\sqrt{2}}{2} & \frac{\sqrt{2}}{2}
+\end{bmatrix}$
+
+\item $T = D D^{T}$, sendo $D =
+\begin{bmatrix}
+-1 & 1 & 1 &  0 \\
+ 2 & 2 & 0 & -1
+\end{bmatrix}$
+
+\item $U = D^{T} D$, sendo $D$ como no item anterior
+
+\item $A = L U$, sendo $L =
+\begin{bmatrix}
+2 & 0 & 0 \\
+1/2 & 3 & 0 \\
+-5/4 & 9/2 & 1
+\end{bmatrix}$ e $U = \begin{bmatrix}
+-1 & 1/2 & 0 \\
+ 0 & 2 & -3/2 \\
+ 0 & 0 & 1
+\end{bmatrix}$
+\end{enumerate}
+
+\item \calc Mostre que
+\begin{enumerate}
+\begin{multicols}{3}
+\item
+$\begin{vmatrix}
+x & y & z \\
+u & v & 0 \\
+w & 0 & 0
+\end{vmatrix}
+= -wvz$
+
+\item
+$\begin{vmatrix}
+a & b & c & d \\
+e & f & g & 0\\
+h & i & 0 & 0\\
+j & 0 & 0 & 0
+\end{vmatrix}
+= jigd$
+
+\item
+$\begin{vmatrix}
+a & b & c & d & e \\
+f & g & h & i & 0 \\
+x & y & z & 0 & 0 \\
+u & v & 0 & 0 & 0 \\
+w & 0 & 0 & 0 & 0
+\end{vmatrix}
+= wvzie$
+\end{multicols}
+\end{enumerate}
+
+\item \calc Determine para que valores de $t$ o sistema linear $(A - tI)X = 0$ possui mais de uma solução, sendo $I$ a matriz identidade, $A$ a matriz definida nos casos a seguir, $(A - tI)$ a matriz de coeficientes do sistema, e $0$ uma matriz coluna de ordem apropriada.
+\begin{multicols}{3}
+\begin{enumerate}
+\item $A = \begin{bmatrix}
+0 & 3 \\
+1 & 2
+\end{bmatrix}$
+\item $A = \begin{bmatrix}
+0 & 0 &  0 \\
+1 & 0 & 20 \\
+0 & 1 & -1
+\end{bmatrix}$
+\item $A = \begin{bmatrix}
+0 & 0 & 0 &  0 \\
+1 & 0 & 0 &  0 \\
+0 & 1 & 0 & 3 \\
+0 & 0 & 1 & -2
+\end{bmatrix}$
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+
+\newpage
+\section*{Respostas}
+\begin{enumerate}
+\item \begin{enumerate}
+\item
+$\det{P} =
+-
+\begin{vmatrix}
+0 & 5 & 21\\
+3 & 7 & 13\\
+1 & 2 &  3
+\end{vmatrix}
+=
+\begin{vmatrix}
+1 & 2 &  3\\
+3 & 7 & 13\\
+0 & 5 & 21
+\end{vmatrix}
+=
+\begin{vmatrix}
+1 & 2 &  3\\
+0 & 1 &  4\\
+0 & 5 & 21
+\end{vmatrix}
+=
+\begin{vmatrix}
+1 & 2 & 3\\
+0 & 1 & 4\\
+0 & 0 & 1
+\end{vmatrix}
+= 1$
+
+\item
+$\det{P}
+%=
+%\begin{vmatrix}
+%0 & 6 & 0 & 10\\
+%0 & 3 & -1 & 5\\
+%0 & 9 & -3 & 14\\
+%5 & 0 & 0 & 1
+%\end{vmatrix}
+=
+-
+\begin{vmatrix}
+5 & 0 & 0 & 1\\
+0 & 3 & -1 & 5\\
+0 & 9 & -3 & 14\\
+0 & 6 & 0 & 10
+\end{vmatrix}
+=
+-
+\begin{vmatrix}
+5 & 0 & 0 & 1\\
+0 & 3 & -1 & 5\\
+0 & 0 & 0 & -1\\
+0 & 0 & 2 & 0
+\end{vmatrix}
+=
+\begin{vmatrix}
+5 & 0 & 0 & 1\\
+0 & 3 & -1 & 5\\
+0 & 0 & 2 & 0\\
+0 & 0 & 0 & -1
+\end{vmatrix}
+= -30$
+
+\item
+\begin{align*}
+\det{P}
+& =
+2 \cdot 3 \cdot
+\begin{vmatrix}
+ 1 & 0 & 0 & 0 & 2 \\
+ 0 & 1 & 2 & 1 & 0 \\
+ 0 & 1 & 0 & 1 & 0 \\
+ 0 & 1 & 2 & -2 & 0 \\
+ 5 & 0 & 0 & 0 & 1
+\end{vmatrix}
+=
+6
+\begin{vmatrix}
+ 1 & 0 & 0 & 0 & 2 \\
+ 0 & 1 & 2 & 1 & 0 \\
+ 0 & 1 & 0 & 1 & 0 \\
+ 0 & 1 & 2 & -2 & 0 \\
+ 0 & 0 & 0 & 0 & -9
+\end{vmatrix}
+=
+6
+\begin{vmatrix}
+ 1 & 0 & 0 & 0 & 2 \\
+ 0 & 1 & 2 & 1 & 0 \\
+ 0 & 0 & -2 & 0 & 0 \\
+ 0 & 0 & 0 & -3 & 0 \\
+ 0 & 0 & 0 & 0 & -9
+\end{vmatrix} \\
+& =
+6 \cdot 1 \cdot 1 \cdot (-2) \cdot (-3) \cdot (-9)
+= -324
+\end{align*}
+\end{enumerate}
+
+\item Usando as propriedades dos determinantes relacionadas ao uso de operações elementares sobre as linhas e colunas da matriz $S$, resulta que:
+\begin{align*}
+\det{S}
+& = \begin{vmatrix}
+a+c & a+b+c+d \\
+2a & 2(a+b)
+\end{vmatrix}
+= 2
+\begin{vmatrix}
+a+c & a+b+c+d \\
+a & a+b
+\end{vmatrix}
+= 2
+\begin{vmatrix}
+a+c & b+d \\
+a & b
+\end{vmatrix} \\
+& = 2
+\begin{vmatrix}
+c & d \\
+a & b
+\end{vmatrix}
+= -2
+\begin{vmatrix}
+a & b \\
+c & d
+\end{vmatrix}
+= -2 \det{M}
+=-18.
+\end{align*}
+
+\item \begin{enumerate}
+\item Considere $A = I \in M_{3 \times 3}(\R)$ e $B = -I \in M_{3 \times 3}(\R)$. Então $\det(A+B) = \det(0) = 0 = 1 + (-1) = \det(A) + \det(B)$.
+\item Considere $A = B = I \in M_{2 \times 2}(\R)$. Então $\det(A) = \det(B) = 1$ e $\det(A+B) = \det(2I) = 4$, enquanto que $\det(A) + \det(B) = 1 + 1 = 2$.
+\item Sabe-se que para $A \in M_{n \times n}(\R)$, vale $\det(cA) = c^n\det(A)$. Deste modo, $\det(cA) = c \det(A)$ se, e somente se, $c^n\det(A) = c\det(A)$. Ou seja, pode-se escolher qualquer matriz que tenha determinante nulo, e o resultado será \[c^n\det(A) = c^n 0 = 0 = c 0 = c\det(A).\] Outra opção é escolher $c = 1$ e qualquer matriz $A$.
+\item Seguindo o raciocínio do item anterior, basta escolher uma matriz $A$ com determinante não nulo e qualquer $c \in \R$ tal que $c^n \neq c$, ou seja, $c \neq 1$ e $c \neq 0$.
+\end{enumerate}
+
+\item \begin{enumerate}
+\item $\det(PQ) = -32 = (-8) \cdot 4 = \det(P) \cdot \det(Q)$
+\item $\det(QP) = -32 = (-8) \cdot 4 = \det(P) \cdot \det(Q)$
+\item $R = P+Q = \begin{bmatrix}
+3 &  0 &  0 & -1\\
+0 & -1 & -1 &  2\\
+0 &  0 &  6 &  0\\
+1 & -3 & -1 &  9
+\end{bmatrix}$ e $\det(R)^T = -60 = \det(R)$.
+\end{enumerate}
+
+\item
+\begin{enumerate}
+\item $\det(Q) = \frac{5}{144}$
+\item $\det(R) = 1$
+\item $T = DD^T = \begin{bmatrix}
+3 & 0\\
+0 & 9
+\end{bmatrix}$ e $\det(T) = 27$
+\item $U = D^TD = \begin{bmatrix}
+ 5 &  3 & -1 & -2\\
+ 3 &  5 &  1 & -2\\
+-1 &  1 &  1 &  0\\
+-2 & -2 &  0 &  1
+\end{bmatrix}$ e $\det(T) = 0$
+\item $A = LU = \begin{bmatrix}
+          -2 &            1 &             0 \\
+-\frac{1}{2} & \frac{25}{4} &  -\frac{9}{2} \\
+ \frac{5}{4} & \frac{67}{8} & -\frac{23}{4}
+\end{bmatrix}$ e $\det(T) = \det(L) \det(U) = (2 \cdot 3 \cdot 1) \cdot (-1 \cdot 2 \cdot 1)= -12$
+\end{enumerate}
+
+\item \begin{enumerate}
+\item
+$\begin{vmatrix}
+\textbf{x} & \textbf{y} & \textbf{z} \\
+u & v & 0 \\
+\textbf{w} & \textbf{0} & \textbf{0}
+\end{vmatrix}
+= -
+\begin{vmatrix}
+\textbf{w} & 0 & 0 \\
+u & \textbf{v} & 0 \\
+x & y & \textbf{z}
+\end{vmatrix}
+= -wvz$, pois o determinante de matrizes triangulares inferiores é o produto das entradas que aparecem na diagonal.
+
+\item
+$\begin{vmatrix}
+\textbf{a} & \textbf{b} & \textbf{c} & \textbf{d} \\
+e & f & g & 0\\
+h & i & 0 & 0\\
+\textbf{j} & \textbf{0} & \textbf{0} & \textbf{0}
+\end{vmatrix}
+= -
+\begin{vmatrix}
+j & 0 & 0 & 0\\
+\textbf{e} & \textbf{f} & \textbf{g} & \textbf{0}\\
+\textbf{h} & \textbf{i} & \textbf{0} & \textbf{0}\\
+a & b & c & d
+\end{vmatrix}
+=
+\begin{vmatrix}
+\textbf{j} & 0 & 0 & 0\\
+h & \textbf{i} & 0 & 0\\
+e & f & \textbf{g} & 0\\
+a & b & c & \textbf{d}
+\end{vmatrix}
+= jigd$
+
+\item
+$\begin{vmatrix}
+\textbf{a} & \textbf{b} & \textbf{c} & \textbf{d} & \textbf{e} \\
+f & g & h & i & 0 \\
+x & y & z & 0 & 0 \\
+u & v & 0 & 0 & 0 \\
+\textbf{w} & \textbf{0} & \textbf{0} & \textbf{0} & \textbf{0}
+\end{vmatrix}
+= -
+\begin{vmatrix}
+w & 0 & 0 & 0 & 0 \\
+\textbf{f} & \textbf{g} & \textbf{h} & \textbf{i} & \textbf{0} \\
+x & y & z & 0 & 0 \\
+\textbf{u} & \textbf{v} & \textbf{0} & \textbf{0} & \textbf{0} \\
+a & b & c & d & e
+\end{vmatrix}
+=
+\begin{vmatrix}
+\textbf{w} & 0 & 0 & 0 & 0 \\
+u & \textbf{v} & 0 & 0 & 0 \\
+x & y & \textbf{z} & 0 & 0 \\
+f & g & h & \textbf{i} & 0 \\
+a & b & c & d & \textbf{e}
+\end{vmatrix}
+= wvzie$
+\end{enumerate}
+
+\item O sistema $(A - tI)X = 0$ possui mais de uma solução se, e somente se, a matriz $(A - tI)$ tiver determinante nulo, isto é, se $\det(A - tI) = 0$. Em cada um dos casos, esta condição resultará em uma equação polinomial na variável $t$, cujas soluções são dadas a seguir:
+\begin{enumerate}
+\item $t=3$ ou $t=-1$
+\item $t=-5$ ou $t=0$ ou $t=4$
+\item $t=-3$ ou $t=0$ ou $t=1$
+\end{enumerate}
+\end{enumerate}
+\end{document}
