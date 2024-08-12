@@ -93,6 +93,41 @@ Este é um material de acesso livre distribuído sob os termos da licença \href
 \section*{Questões}
 
 \begin{enumerate}
+\item \conceito Considere o sistema de equações lineares
+\[
+\systeme{
+6x + 2y + 8z = 52,
+3x + 2y + 2z = 19.
+}
+\]
+\begin{enumerate}
+   \item Verifique que $(3, 1, 4)$ é uma solução do sistema.
+   \item Verifique que $(4, 2, 3)$ não é uma solução do sistema.
+   \item Verifique que $(11 - 2 z, -7 + 2 z, z)$ é solução do sistema, para todo $z \in \R$.
+\end{enumerate}
+
+\item \conceito Quais dos seguintes sistemas lineares são equivalentes?
+\begin{multicols}{4}
+   \begin{enumerate}
+      \item $\systeme{
+      2x + 3y = 0,
+           4y = 8
+      }$
+      \item $\systeme{
+      3x + 2y = 0,
+      4x      = 8
+      }$
+      \item $\systeme{
+      2x      = 0,
+      3x + 4y = 8
+      }$
+      \item $\systeme{
+           4y = 8,
+      2x + 3y = 0
+      }$
+   \end{enumerate}
+\end{multicols}
+
 \item \calc Obtenha a forma escalonada reduzida por linhas da matriz de coeficientes de cada um dos sistemas lineares a seguir, e partir dela determine as soluções dos sistemas:
 \begin{multicols}{2}
 \begin{enumerate}
@@ -128,9 +163,12 @@ $
 $
 \end{enumerate}
 \end{multicols}
+
+\item \calc Determine os valores de $a, b, c \in \R$ para que o gráfico da função $f(x) = ax^2 + bx + c$ passe pelos pontos $(0, 7)$, $(2, 1)$ e $(3, 4)$.
+
 \item \software Considere o sistema de equações lineares
 \[
-\systeme*{
+\systeme{
 2x - 3y = -4,
 5x +  y = 7
 }
@@ -177,12 +215,51 @@ e utilize um software como o GeoGebra\footnote{\url{https://www.geogebra.org/dow
 \end{enumerate}
 
 \item \teoria Seja $M = \begin{bmatrix}a & b \\ c & d\end{bmatrix} \in M_{2 \times 2} (\R)$ a matriz associada a um sistema linear homogêneo. Utilize a eliminação de Gauss-Jordan para provar que se $ad-bc \neq 0$ então o sistema possui somente a solução trivial.
-
+\item \teoria Mostre que se $(x_0, y_0)$ e $(x_1, y_1)$ forem soluções do sistema linear homogêneo
+\[
+\systeme[xy]{
+a x + b y = 0,
+c x + d y = 0{,}
+}
+\]
+então:
+\begin{enumerate}
+   \item $(k x_0, k y_0)$ também é solução do sistema, para todo $k \in \R$.
+   \item $(x_0 + x_1, y_0 + y_1)$ também é solução do sistema.
+\end{enumerate}
 \end{enumerate}
 
 \newpage
 \section*{Respostas}
 \begin{enumerate}
+\item
+   \begin{enumerate}
+      \item Ao substituir $x=3$, $y=1$ e $z=4$ obtém-se
+      \[
+      \begin{cases}
+         6 \cdot 3 + 2 \cdot 1 + 8 \cdot 4 = 18 + 2 + 32 = 52\\
+         3 \cdot 3 + 2 \cdot 1 + 2 \cdot 4 = 9 + 2 + 8 = 19.
+      \end{cases}
+      \]
+      Logo, ambas as equações são satisfeitas.
+      \item A substituição $x=4$, $y=2$ e $z=3$ torna verdadeira a primeira equação:
+      \[
+         6 \cdot 4 + 2 \cdot 2 + 8 \cdot 3 = 24 + 4 + 24 = 52.
+      \]
+      No entanto, o mesmo não ocorre com a segunda equação:
+      \[
+         3 \cdot 4 + 2 \cdot 2 + 2 \cdot 3 = 12 + 4 + 6 = 22 \neq 19.
+      \]
+      Logo, $(4, 2, 3)$ não é uma solução do sistema.
+      \item Basta observar que para todo $z \in \R$, tem-se:
+      \[
+         \begin{cases}
+         6 \cdot (11 - 2 z) + 2 \cdot (-7 + 2 z) + 8z = 66 - 12z - 14 + 4z + 8z = 52\\
+         3 \cdot (11 - 2 z) + 2 \cdot (-7 + 2 z) + 2z = 33 - 6z - 14 + 4z + 2z = 19.
+         \end{cases}
+      \]
+   \end{enumerate}
+\item O primeiro sistema é equivalente ao quarto sistema, pois têm o mesmo conjunto-solução, $S = \{(-3, 2)\}$.
 \item \begin{enumerate}
 \item A matriz aumentada associada ao sistema dado é $A = \begin{amatrix}{2}
    5 & -5\pi & -5\pi^2 \\
@@ -410,6 +487,16 @@ e sua forma escalonada reduzida é obtida por meio das seguintes operações ele
 Como a última linha corresponde a uma equação da forma $0 = 1$, o sistema é impossível, ou seja, $S = \emptyset$.
 \end{enumerate}
 
+\item Para que o gráfico de $f(x)$ passe pelos pontos dados, é preciso que $f(0) = 7$, $f(2)=1$ e $f(3)=4$. Isso significa que $(a, b, c)$ deve ser uma solução do sistema linear
+\[
+\begin{cases}
+   a \cdot 0^2 + b \cdot 0 + c = 7\\
+   a \cdot 2^2 + b \cdot 2 + c = 1\\
+   a \cdot 3^2 + b \cdot 3 + c = 4.
+\end{cases}
+\]
+Resolvendo o sistema, obtém-se $(a, b, c) = (2, -7, 7)$ e portanto $f(x) = 2x^2 - 7x + 7$.
+
 \item \begin{enumerate}
 \item Digite \texttt{2x-3y=-4} para que o GeoGebra mostre a reta formada pelos pontos que satisfazem a primeira equação, e \texttt{5x+y=7} para representar a segunda reta.
 \item Ao trocar o $-4$ por um número maior, a reta correspondente se desloca para baixo, mantendo-se paralela à reta original. Ao diminuir este valor, a reta se desloca paralelamente para cima. Na segunda equação, a troca de $7$ por um número maior resulta em um deslocamento para a direita, e a diminuição deste valor desloca a reta para a esquerda.
@@ -540,5 +627,36 @@ Assim, o sistema $MX = 0$ só tem a solução trivial $X = 0$.
 a & b \\
 c & d
 \end{bmatrix}$.
+\item Supondo que
+\[
+\systeme[x_0y_0]{
+a x_0 + b y_0 = 0,
+c x_0 + d y_0 = 0
+}
+\text{ e }
+\systeme[x_1y_1]{
+a x_1 + b y_1 = 0,
+c x_1 + d y_1 = 0{,}
+}
+\]
+tem-se:
+\begin{enumerate}
+   \item Para todo $k \in \R$,
+   \[
+   \begin{cases}
+      a (k x_0) + b (k y_0) = k (a x_0 + b y_0) = k \cdot 0 = 0, \\
+      c (k x_0) + d (k y_0) = k (c x_0 + d y_0) = k \cdot 0 = 0.
+   \end{cases}
+   \]
+   Logo, $(k x_0, k y_0)$ é solução do sistema.
+   \item
+   \[
+   \begin{cases}
+      a (x_0 + x_1) + b (y_0 + y_1) = (a x_0 + b y_0) + (a x_1 + b y_1) = 0 + 0 = 0, \\
+      c (x_0 + x_1) + d (y_0 + y_1) = (c x_0 + d y_0) + (c x_1 + d y_1) = 0 + 0 = 0.
+   \end{cases}
+   \]
+   Logo, $(x_0 + x_1, y_0 + y_1)$ também é solução do sistema.
+\end{enumerate}
 \end{enumerate}
 \end{document}
